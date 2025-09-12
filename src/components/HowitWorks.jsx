@@ -4,7 +4,7 @@ const steps = [
   {
     id: 1,
     icon: <Search className="w-6 h-6 text-white" />,
-    bgColor: "bg-indigo-600",
+    bgColor: "bg-indigo-500",
     title: "Browse Talents",
     description: "Explore our curated collection of top-tier professionals across various disciplines."
   },
@@ -21,41 +21,47 @@ const steps = [
     bgColor: "bg-green-500",
     title: "Connect & Hire",
     description: "Reach out directly and start collaborating with your chosen talent."
-  },
+  }
 ];
 
 export default function HowItWorks() {
   return (
-    <section className="w-full py-16 flex justify-center">
-      <div className="w-full max-w-6xl px-8 flex flex-col items-center gap-16">
+    <section className="w-full py-16 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        
-        <div className="text-center">
-          <h2 className="text-4xl font-bold text-gray-900">How It Works</h2>
-          <p className="mt-2 text-gray-500">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4">
+            How It Works
+          </h2>
+          <p className="text-gray-600 text-base sm:text-lg">
             Simple steps to find your perfect talent match
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-24">
+        {/* Steps */}
+        <div className="flex flex-col md:flex-row justify-center items-start gap-8 md:gap-16 lg:gap-24">
           {steps.map((step) => (
-            <div key={step.id} className="flex flex-col items-center text-center max-w-xs">
-             
-              <div className={`w-14 h-14 flex items-center justify-center rounded-full ${step.bgColor}`}>
+            <div key={step.id} className="flex flex-col items-center text-center max-w-xs mx-auto">
+              
+              {/* Icon Circle */}
+              <div className={`w-16 h-16 flex items-center justify-center rounded-full ${step.bgColor} mb-6`}>
                 {step.icon}
               </div>
-             
-              <h3 className="mt-6 text-lg font-semibold text-gray-900">
+              
+              {/* Title */}
+              <h3 className="text-xl font-bold text-black mb-4">
                 {step.title}
               </h3>
-             
-              <p className="mt-3 text-gray-600 text-sm leading-relaxed">
+              
+              {/* Description */}
+              <p className="text-gray-600 text-sm leading-relaxed">
                 {step.description}
               </p>
             </div>
           ))}
         </div>
-
+        
       </div>
     </section>
   );

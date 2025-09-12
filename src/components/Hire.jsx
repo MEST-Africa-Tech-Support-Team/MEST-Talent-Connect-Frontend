@@ -1,8 +1,8 @@
 export default function HireSection() {
   return (
-    <section className="bg-teal-600 py-20 flex justify-center items-center">
+    <section className="bg-[var(--color-primary-100)] py-20 flex justify-center items-center">
       <div className="text-center">
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 text-center text-[40px] leading-[48px] tracking-[0.2px]">
           Ready to Hire or Be Hired?
         </h2>
         <p className="text-white/90 mb-8">

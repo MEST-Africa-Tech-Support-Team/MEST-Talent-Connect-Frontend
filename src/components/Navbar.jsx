@@ -9,67 +9,60 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
-      <div className="max-w-[1440px] h-[72px] mx-auto px-6 lg:px-20 flex items-center justify-between">
+      <div className="max-w-[1280px] h-[72px] mx-auto px-6 lg:px-20 flex items-center justify-between">
         
+        {/* Logo */}
         <a href="#" className="flex items-center">
-          <img src={logo} alt="Logo" className="h-10 w-auto" />
+          <img
+            src={logo}
+            alt="Logo"
+            className="w-[142px] h-[23px] shrink-0 aspect-[142/23]"
+          />
         </a>
 
-       
-        <nav className="hidden md:block">
-          <ul className="flex items-center space-x-8 lg:space-x-12 text-gray-700 font-medium">
+        {/* Desktop Nav (lg and up) */}
+        <nav className="hidden lg:block">
+          <ul className="flex items-center space-x-8 xl:space-x-12 text-gray-700 font-medium">
             <li>
               <a href="#hire" className="hover:text-teal-600 transition-colors">
                 Hire
               </a>
             </li>
             <li>
-              <a
-                href="#team"
-                className="hover:text-teal-600 transition-colors"
-              >
+              <a href="#team" className="hover:text-teal-600 transition-colors">
                 Build a Team
               </a>
             </li>
             <li>
-              <a
-                href="#talent"
-                className="hover:text-teal-600 transition-colors"
-              >
+              <a href="#talent" className="hover:text-teal-600 transition-colors">
                 Talent
               </a>
             </li>
             <li>
-              <a
-                href="#community"
-                className="hover:text-teal-600 transition-colors"
-              >
+              <a href="#community" className="hover:text-teal-600 transition-colors">
                 Community
               </a>
             </li>
             <li>
-              <a
-                href="#about"
-                className="hover:text-teal-600 transition-colors"
-              >
+              <a href="#about" className="hover:text-teal-600 transition-colors">
                 About
               </a>
             </li>
           </ul>
         </nav>
 
-        
+        {/* Mobile & Tablet Hamburger (< lg) */}
         <button
           onClick={toggleMenu}
-          className="md:hidden text-gray-700 focus:outline-none"
+          className="lg:hidden text-gray-700 focus:outline-none"
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      
+      {/* Mobile & Tablet Dropdown */}
       {isOpen && (
-        <div className="md:hidden bg-white shadow-lg border-t border-gray-100">
+        <div className="lg:hidden bg-white shadow-lg border-t border-gray-100">
           <ul className="flex flex-col px-6 py-4 space-y-4 text-gray-700 font-medium">
             <li>
               <a href="#hire" onClick={toggleMenu} className="block">
