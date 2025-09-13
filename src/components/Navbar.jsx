@@ -16,7 +16,7 @@ export default function Navbar() {
           <img
             src={logo}
             alt="Logo"
-            className="w-[142px] h-[23px] shrink-0 aspect-[142/23]"
+            className="w-[100px] h-[23px] shrink-0 aspect-[142/23]"
           />
         </a>
 
@@ -24,13 +24,13 @@ export default function Navbar() {
         <nav className="hidden lg:block">
           <ul className="flex items-center space-x-8 xl:space-x-12 text-gray-700 font-medium">
             <li>
-              <a href="#hire" className="hover:text-teal-600 transition-colors">
-                Hire
+              <a href="#home" className="hover:text-teal-600 transition-colors">
+                Home
               </a>
             </li>
             <li>
-              <a href="#team" className="hover:text-teal-600 transition-colors">
-                Build a Team
+              <a href="#howitworks" className="hover:text-teal-600 transition-colors">
+                How it Works
               </a>
             </li>
             <li>
@@ -39,15 +39,15 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <a href="#community" className="hover:text-teal-600 transition-colors">
-                Community
+              <a href="#hire" className="hover:text-teal-600 transition-colors">
+                Hire
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href="#about" className="hover:text-teal-600 transition-colors">
                 About
               </a>
-            </li>
+            </li> */}
           </ul>
         </nav>
 

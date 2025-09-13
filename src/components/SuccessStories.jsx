@@ -144,7 +144,7 @@ export default function SuccessStories() {
         
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-primary-100)] mb-4">
             Success Stories
           </h2>
           <p className="text-gray-600 text-base sm:text-lg">
