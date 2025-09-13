@@ -8,10 +8,14 @@ import Talent from '../components/Talent';
 import Stats from '../components/Stats';
 import SuccessStories from '../components/SuccessStories';
 import HireSection from '../components/Hire';
+import Navbar from '../components/Navbar';
+import Footer from "../components/Footer";
+
 
 function LandingPage() {
   return (
     <PageWrapper>
+      <Navbar />
       <Hero />
       <HowItWorks />
       <WhoUsesPlatform />
@@ -20,6 +24,7 @@ function LandingPage() {
       <Stats />
       <SuccessStories />
       <HireSection />
+      <Footer />
     </PageWrapper>
   )
 }
