@@ -159,7 +159,7 @@ export default function TalentsPage() {
     <PageWrapper>
       <Navbar />
 
-      <div className="pt-[100px] min-h-[80vh] max-w-6xl mx-auto px-6 lg:px-12">
+      <div className="pt-[100px] min-h-[80vh]">
         {/* Header */}
         <TalentHeader />
 
