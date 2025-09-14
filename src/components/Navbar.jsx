@@ -17,40 +17,40 @@ export default function Navbar() {
           <img
             src={logo}
             alt="Logo"
-            className="w-[142px] h-[23px] shrink-0 aspect-[142/23]"
+            className="w-[100px] h-[23px] shrink-0 aspect-[142/23]"
           />
         </Link>
 
         {/* Desktop Nav (lg and up) */}
-        <nav className="hidden lg:block">
-          <ul className="flex items-center space-x-8 xl:space-x-12 text-gray-700 font-medium">
-            <li>
-              <Link to="/hire" className="hover:text-teal-600 transition-colors">
-                Hire
-              </Link>
-            </li>
-            <li>
-              <Link to="/team" className="hover:text-teal-600 transition-colors">
-                Build a Team
-              </Link>
-            </li>
-            <li>
-              <Link to="/talents" className="hover:text-teal-600 transition-colors">
-                Talent
-              </Link>
-            </li>
-            <li>
-              <Link to="/community" className="hover:text-teal-600 transition-colors">
-                Community
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" className="hover:text-teal-600 transition-colors">
-                About
-              </Link>
-            </li>
-          </ul>
-        </nav>
+       <nav className="hidden lg:block">
+  <ul className="flex items-center space-x-8 xl:space-x-12 text-gray-700 font-medium">
+    <li>
+      <a href="#home" className="hover:text-teal-600 transition-colors">
+        Home
+      </a>
+    </li>
+    <li>
+      <a href="#howitworks" className="hover:text-teal-600 transition-colors">
+        How It Works
+      </a>
+    </li>
+    <li>
+      <Link to="/talents" className="hover:text-teal-600 transition-colors">
+        Talents
+      </Link>
+    </li>
+    <li>
+      <Link
+        to="/hire"
+        className="text-gray-400 cursor-not-allowed"
+        onClick={(e) => e.preventDefault()} // prevents navigation since it's not ready
+      >
+        Hire (Coming Soon)
+      </Link>
+    </li>
+  </ul>
+</nav>
+
 
         {/* Mobile & Tablet Hamburger (< lg) */}
         <button

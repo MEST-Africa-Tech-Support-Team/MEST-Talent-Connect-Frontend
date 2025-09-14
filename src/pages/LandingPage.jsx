@@ -3,7 +3,7 @@ import PageWrapper from '../components/PageWrapper';
 import Hero from '../components/HeroSection';
 import HowItWorks from '../components/HowitWorks';
 import WhoUsesPlatform from '../components/WhoUses';
-import PlatformFeatures from '../components/PlatfromFeatures';
+import WhyChooseMest from '../components/WhyChoose';
 import Talent from '../components/Talent';
 import Stats from '../components/Stats';
 import SuccessStories from '../components/SuccessStories';
@@ -19,7 +19,7 @@ function LandingPage() {
       <Hero />
       <HowItWorks />
       <WhoUsesPlatform />
-      <PlatformFeatures />
+      <WhyChooseMest />
       <Talent />
       <Stats />
       <SuccessStories />

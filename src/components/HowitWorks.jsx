@@ -4,21 +4,21 @@ const steps = [
   {
     id: 1,
     icon: <Search className="w-6 h-6 text-white" />,
-    bgColor: "bg-indigo-500",
+    bgColor: "bg-[var(--color-primary-100)]",
     title: "Browse Talents",
     description: "Explore our curated collection of top-tier professionals across various disciplines."
   },
   {
     id: 2,
     icon: <UserCheck className="w-6 h-6 text-white" />,
-    bgColor: "bg-orange-500",
+    bgColor: "bg-[#FF6221]",
     title: "Review Profiles",
     description: "Detailed portfolios, skills, and testimonials to help you make informed decisions."
   },
   {
     id: 3,
     icon: <Handshake className="w-6 h-6 text-white" />,
-    bgColor: "bg-green-500",
+    bgColor: "bg-[#B627A1]",
     title: "Connect & Hire",
     description: "Reach out directly and start collaborating with your chosen talent."
   }
@@ -31,7 +31,7 @@ export default function HowItWorks() {
         
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-primary-100)] mb-4">
             How It Works
           </h2>
           <p className="text-gray-600 text-base sm:text-lg">
