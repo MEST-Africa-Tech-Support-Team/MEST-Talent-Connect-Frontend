@@ -1,8 +1,8 @@
 export default function Stats() {
   const stats = [
-    { number: "500+", label: "Successful Placements" },
-    { number: "200+", label: "Startups Supported" },
-    { number: "15+", label: "Years of Tech Excellence" },
+    { number: "300+", label: "Learners Trained" },
+    { number: "292+", label: "Job-ready Professionals" },
+    { number: "60%", label: "Job Placement Rate" },
   ];
 
   return (

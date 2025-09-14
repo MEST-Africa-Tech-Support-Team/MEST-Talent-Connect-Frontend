@@ -55,14 +55,11 @@ export default function Hero() {
           {/* Left Content */}
           <div className="flex-1 text-center lg:text-left mb-12 lg:mb-0 lg:pr-12">
             <h1 className="text-4xl sm:text-4xl lg:text-4xl font-bold leading-tight text-black">
-              Connecting Africa's <br className="hidden sm:block" />
-              Brightest <span className="text-[var(--color-primary-100)]">Tech Talent with</span> <br className="hidden sm:block" />
-              Global Opportunities.
+              Hire <span className="text-[var(--color-primary-100)]">Job-Ready</span> Web <br className="hidden sm:block" /> Developers from Ghana
             </h1>
             
             <p className="mt-6 text-base sm:text-lg text-gray-700 max-w-xl mx-auto lg:mx-0">
-              Join the premier platform that bridges exceptional African tech
-              professionals with innovative companies worldwide.
+              Discover skilled, motivated developers trained to build and deliver real-world digital solutions.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -75,14 +72,20 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Image */}
-          <div className="flex-1 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-lg lg:max-w-2xl">
-              <img
-                src={hero1}
-                alt="Tech Professionals"
-                className="w-full h-auto object-cover rounded-lg"
-              />
+          {/* Right Image with Gradient */}
+<div className="flex-1 flex justify-center lg:justify-end">
+  <div className="relative w-full max-w-lg lg:max-w-2xl">
+    {/* Gradient background */}
+    {/* <div className="absolute inset-0 bg-gradient-to-r from-teal-100 via-white to-white rounded-lg w-[480px] h-[600px]"></div> */}
+
+    {/* Image */}
+    <img
+      src={hero1}
+      alt="Tech Professionals"
+      className="relative w-full h-auto object-cover rounded-lg"
+    />
+  
+
 
             </div>
           </div>

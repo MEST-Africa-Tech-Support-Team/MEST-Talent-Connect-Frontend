@@ -159,23 +159,24 @@ export default function TalentsPage() {
     <PageWrapper>
       <Navbar />
 
-      <div className="pt-[100px] min-h-[80vh] max-w-6xl mx-auto px-8 lg:px-12">
-        {/* Header */}
-        <TalentHeader />
+<div className="pt-[100px] min-h-[80vh] max-w-6xl mx-auto px-8 lg:px-12">
+  {/* Header */}
+  <TalentHeader />
 
-        {/* Cards */}
-        <TalentCards
-          talents={displayedTalents}
-          onViewProfile={(talent) => setSelectedTalent(talent)}
-        />
+  {/* Cards */}
+  <TalentCards
+    talents={displayedTalents}
+    onViewProfile={(talent) => setSelectedTalent(talent)}
+  />
 
-        {/* Pagination */}
-        <TalentPagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={(page) => setCurrentPage(page)}
-        />
-      </div>
+  {/* Pagination */}
+  <TalentPagination
+    currentPage={currentPage}
+    totalPages={totalPages}
+    onPageChange={(page) => setCurrentPage(page)}
+  />
+</div>
+
 
       <Footer />
 
