@@ -1,98 +1,232 @@
-import { useState } from "react";
+// import {useState} from "react";
+// import {Menu, X} from "lucide-react";
+// import logoTeal from "../assets/logo-teal.png";
+// import {Link} from "react-router-dom";
+//
+// export default function Navbar() {
+//     const [isOpen, setIsOpen] = useState(false);
+//
+//     const toggleMenu = () => setIsOpen(!isOpen);
+//
+//     return (
+//         <header className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
+//             <div className="max-w-[1280px] h-[72px] mx-auto px-6 lg:px-20 flex items-center justify-between">
+//
+//                 {/* Logo */}
+//                 <Link to="/" className="flex items-center">
+//                     <img
+//                         src={logoTeal}
+//                         alt="Logo"
+//                         className="w-[100px] h-[23px] shrink-0 aspect-[142/23]"
+//                     />
+//                 </Link>
+//
+//                 {/* Desktop Nav (lg and up) */}
+//                 <nav className="hidden lg:block">
+//                     <ul className="flex items-center space-x-8 xl:space-x-12 text-gray-700 font-medium">
+//                         <li>
+//                             <a href="#home" className="hover:text-teal-600 transition-colors">
+//                                 Home
+//                             </a>
+//                         </li>
+//                         <li>
+//                             <a href="#howitworks" className="hover:text-teal-600 transition-colors">
+//                                 How It Works
+//                             </a>
+//                         </li>
+//                         <li>
+//                             <Link to="/talents" className="hover:text-teal-600 transition-colors">
+//                                 Talents
+//                             </Link>
+//                         </li>
+//                         <li>
+//                             <Link
+//                                 to="/hire"
+//                                 className="text-gray-400 cursor-not-allowed"
+//                                 onClick={(e) => e.preventDefault()} // prevents navigation since it's not ready
+//                             >
+//                                 Hire (Coming Soon)
+//                             </Link>
+//                         </li>
+//                     </ul>
+//                 </nav>
+//
+//
+//                 {/* Mobile & Tablet Hamburger (< lg) */}
+//                 <button
+//                     onClick={toggleMenu}
+//                     className="lg:hidden text-gray-700 focus:outline-none"
+//                 >
+//                     {isOpen ? <X size={28}/> : <Menu size={28}/>}
+//                 </button>
+//             </div>
+//
+//             {/* Mobile & Tablet Dropdown */}
+//             {isOpen && (
+//                 <div className="lg:hidden bg-white shadow-lg border-t border-gray-100">
+//                     <ul className="flex flex-col px-6 py-4 space-y-4 text-gray-700 font-medium">
+//                         <li>
+//                             <Link to="/hire" onClick={toggleMenu} className="block">
+//                                 Hire
+//                             </Link>
+//                         </li>
+//                         <li>
+//                             <Link to="/team" onClick={toggleMenu} className="block">
+//                                 Build a Team
+//                             </Link>
+//                         </li>
+//                         <li>
+//                             <Link to="/talents" onClick={toggleMenu} className="block">
+//                                 Talent
+//                             </Link>
+//                         </li>
+//                         <li>
+//                             <Link to="/community" onClick={toggleMenu} className="block">
+//                                 Community
+//                             </Link>
+//                         </li>
+//                         <li>
+//                             <Link to="/about" onClick={toggleMenu} className="block">
+//                                 About
+//                             </Link>
+//                         </li>
+//                     </ul>
+//                 </div>
+//             )}
+//         </header>
+//     );
+// }
+
+
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 
+import logoWhite from "../assets/logo-white.png"; // add this white logo version
+import logoTeal from "../assets/logo-teal.png";   // already in your code
+
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+    const toggleMenu = () => setIsOpen(!isOpen);
 
-  return (
-    <header className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
-      <div className="max-w-[1280px] h-[72px] mx-auto px-6 lg:px-20 flex items-center justify-between">
-        
-        {/* Logo */}
-        <Link to="/" className="flex items-center">
-          <img
-            src={logo}
-            alt="Logo"
-            className="w-[100px] h-[23px] shrink-0 aspect-[142/23]"
-          />
-        </Link>
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 10);
+        };
+        window.addEventListener("scroll", handleScroll);
 
-        {/* Desktop Nav (lg and up) */}
-       <nav className="hidden lg:block">
-  <ul className="flex items-center space-x-8 xl:space-x-12 text-gray-700 font-medium">
-    <li>
-      <a href="#home" className="hover:text-teal-600 transition-colors">
-        Home
-      </a>
-    </li>
-    <li>
-      <a href="#howitworks" className="hover:text-teal-600 transition-colors">
-        How It Works
-      </a>
-    </li>
-    <li>
-      <Link to="/talents" className="hover:text-teal-600 transition-colors">
-        Talents
-      </Link>
-    </li>
-    <li>
-      <Link
-        to="/hire"
-        className="text-gray-400 cursor-not-allowed"
-        onClick={(e) => e.preventDefault()} // prevents navigation since it's not ready
-      >
-        Hire (Coming Soon)
-      </Link>
-    </li>
-  </ul>
-</nav>
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
-
-        {/* Mobile & Tablet Hamburger (< lg) */}
-        <button
-          onClick={toggleMenu}
-          className="lg:hidden text-gray-700 focus:outline-none"
+    return (
+        <header
+            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+                scrolled ? "bg-white shadow-md" : "bg-transparent"
+            }`}
         >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
+            <div className="max-w-[1280px] h-[72px] mx-auto px-6 lg:px-20 flex items-center justify-between">
 
-      {/* Mobile & Tablet Dropdown */}
-      {isOpen && (
-        <div className="lg:hidden bg-white shadow-lg border-t border-gray-100">
-          <ul className="flex flex-col px-6 py-4 space-y-4 text-gray-700 font-medium">
-            <li>
-              <Link to="/hire" onClick={toggleMenu} className="block">
-                Hire
-              </Link>
-            </li>
-            <li>
-              <Link to="/team" onClick={toggleMenu} className="block">
-                Build a Team
-              </Link>
-            </li>
-            <li>
-              <Link to="/talents" onClick={toggleMenu} className="block">
-                Talent
-              </Link>
-            </li>
-            <li>
-              <Link to="/community" onClick={toggleMenu} className="block">
-                Community
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" onClick={toggleMenu} className="block">
-                About
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
-    </header>
-  );
+                {/* Logo */}
+                <Link to="/" className="flex items-center">
+                    <img
+                        src={scrolled ? logoTeal : logoWhite}
+                        alt="Logo"
+                        className="w-[100px] h-[23px] shrink-0 aspect-[142/23] transition-all duration-300"
+                    />
+                </Link>
+
+                {/* Desktop Nav */}
+                <nav className="hidden lg:block">
+                    <ul
+                        className={`flex items-center space-x-8 xl:space-x-12 font-medium transition-colors duration-300 ${
+                            scrolled ? "text-gray-800" : "text-white"
+                        }`}
+                    >
+                        <li>
+                            <a href="#home" className="hover:text-teal-600 transition-colors">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#howitworks"
+                                className="hover:text-teal-600 transition-colors"
+                            >
+                                How It Works
+                            </a>
+                        </li>
+                        <li>
+                            <Link to="/talents" className="hover:text-teal-600 transition-colors">
+                                Talents
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to="/hire"
+                                className={`cursor-not-allowed ${
+                                    scrolled ? "text-gray-400" : "text-gray-300"
+                                }`}
+                                onClick={(e) => e.preventDefault()}
+                            >
+                                Hire (Coming Soon)
+                            </Link>
+                        </li>
+                    </ul>
+                </nav>
+
+                {/* Mobile Hamburger */}
+                <button
+                    onClick={toggleMenu}
+                    className={`lg:hidden focus:outline-none transition-colors duration-300 ${
+                        scrolled ? "text-gray-800" : "text-white"
+                    }`}
+                >
+                    {isOpen ? <X size={28} /> : <Menu size={28} />}
+                </button>
+            </div>
+
+            {/* Mobile Menu */}
+            {isOpen && (
+                <div
+                    className={`lg:hidden shadow-lg border-t ${
+                        scrolled ? "bg-white border-gray-100" : "bg-slate-800 border-slate-700"
+                    }`}
+                >
+                    <ul
+                        className={`flex flex-col px-6 py-4 space-y-4 font-medium ${
+                            scrolled ? "text-gray-800" : "text-white"
+                        }`}
+                    >
+                        <li>
+                            <Link to="/hire" onClick={toggleMenu} className="block">
+                                Hire
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/team" onClick={toggleMenu} className="block">
+                                Build a Team
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/talents" onClick={toggleMenu} className="block">
+                                Talent
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/community" onClick={toggleMenu} className="block">
+                                Community
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/about" onClick={toggleMenu} className="block">
+                                About
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+            )}
+        </header>
+    );
 }

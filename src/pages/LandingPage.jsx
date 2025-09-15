@@ -10,13 +10,16 @@ import SuccessStories from '../components/SuccessStories';
 import HireSection from '../components/Hire';
 import Navbar from '../components/Navbar';
 import Footer from "../components/Footer";
+import HeroAnimation from "../components/HeroAnimation.jsx";
 
 
 function LandingPage() {
   return (
     <PageWrapper>
-      <Navbar />
-      <Hero />
+
+      {/*<Navbar />*/}
+        <HeroAnimation/>
+      {/*<Hero />*/}
       <HowItWorks />
       <WhoUsesPlatform />
       <WhyChooseMest />
