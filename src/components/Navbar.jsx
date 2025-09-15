@@ -68,14 +68,14 @@ export default function Navbar({ isFixed = true, isTransparent = true }) {
                                 Home
                             </Link>
                         </li>
-                        <li>
-                            <Link
-                                to="/howitworks"
-                                className="hover:text-teal-600 transition-colors"
-                            >
-                                How It Works
-                            </Link>
-                        </li>
+                        {/*<li>*/}
+                        {/*    <Link*/}
+                        {/*        to="/howitworks"*/}
+                        {/*        className="hover:text-teal-600 transition-colors"*/}
+                        {/*    >*/}
+                        {/*        How It Works*/}
+                        {/*    </Link>*/}
+                        {/*</li>*/}
                         <li>
                             <Link
                                 to="/talents"
@@ -126,11 +126,11 @@ export default function Navbar({ isFixed = true, isTransparent = true }) {
                                 Home
                             </Link>
                         </li>
-                        <li>
-                            <Link to="/howitworks" onClick={toggleMenu}>
-                                How It Works
-                            </Link>
-                        </li>
+                        {/*<li>*/}
+                        {/*    <Link to="/howitworks" onClick={toggleMenu}>*/}
+                        {/*        How It Works*/}
+                        {/*    </Link>*/}
+                        {/*</li>*/}
                         <li>
                             <Link to="/talents" onClick={toggleMenu}>
                                 Talents
