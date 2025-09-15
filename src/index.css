@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-
-
-
 /*------GLOBAL CSS------*/
 @import "tailwindcss";
 /*@import "tw-animate-css";*/
@@ -278,8 +275,6 @@
 
 
 
-
-
 /* Dark background with moving teal glow */
 .bg-animated-dark {
     background: radial-gradient(circle at 20% 20%, #28BBBB33, transparent 50%),
@@ -355,7 +350,6 @@
     /* Fonts */
     --font-primary: 'Inter', sans-serif;
     --font-heading: 'Brown Pro', Calibri, Helvetica, Arial, sans-serif;
-    /* --enfold-font-family-body: 'brown-pro',  */
 
     /* Colors */
     --color-primary-100: #28BBBB;
