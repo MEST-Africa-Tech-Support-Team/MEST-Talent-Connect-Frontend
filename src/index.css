@@ -1,21 +1,6 @@
 @import "tailwindcss";
 
 
-@theme {
-  /* Fonts */
-  --font-primary: 'Inter', sans-serif;
-  --font-heading: 'Brown Pro', Calibri, Helvetica, Arial, sans-serif;
-  /* --enfold-font-family-body: 'brown-pro',  */
-
-  /* Colors */
-  --color-primary-100: #28BBBB;
-  --color-secondary: #333333;
-  --color-accent: #FF9900;
-
-  /* Others */
-  --border-radius: 12px;
-  --shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
 
 
 /*------GLOBAL CSS------*/
@@ -96,8 +81,8 @@
 }
 
 @theme inline {
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
+    /*--font-sans: var(--font-geist-sans);*/
+    /*--font-mono: var(--font-geist-mono);*/
     --color-background: var(--background);
     --color-foreground: var(--foreground);
     --color-card: var(--card);
@@ -364,3 +349,21 @@
 /*.animation-delay-2000 { animation-delay: 2s; }*/
 /*.animation-delay-3000 { animation-delay: 3s; }*/
 /*.animation-delay-4000 { animation-delay: 4s; }*/
+
+
+@theme {
+    /* Fonts */
+    --font-primary: 'Inter', sans-serif;
+    --font-heading: 'Brown Pro', Calibri, Helvetica, Arial, sans-serif;
+    /* --enfold-font-family-body: 'brown-pro',  */
+
+    /* Colors */
+    --color-primary-100: #28BBBB;
+    --color-secondary: #333333;
+    --color-accent: #FF9900;
+    --yellow-color: #FF6221;
+
+    /* Others */
+    --border-radius: 12px;
+    --shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}

@@ -67,16 +67,16 @@ export default function HeroAnimation() {
             </div>
 
             {/* Hero Content */}
-            <div className="relative z-10 flex flex-col items-center justify-center min-h-[100vh] px-6 text-center">
+            <div className="relative z-10 flex flex-col items-center justify-center min-h-[100vh] px-6 text-center font-[var(--font-heading)]">
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance">
                     <span className="text-[#28BBBB]">Hire Job-Ready</span>
                     <br/>
                     <span className="text-white">Web Developers</span>
                     <br/>
-                    <span className="text-[#FFBC45] text-3xl md:text-4xl lg:text-5xl">from Ghana</span>
+                    <span className="text-white text-3xl md:text-4xl lg:text-5xl">From Ghana</span>
                 </h1>
 
-                <p className="text-slate-200 text-lg md:text-xl mb-8 max-w-3xl text-pretty">
+                <p className="text-slate-200 text-lg md:text-xl mb-8 max-w-3xl text-pretty font-[var(--font-heading)]">
                     Discover skilled, motivated developers trained to build and deliver real-world digital solutions.
                     Our
                     graduates are equipped with MERN stack expertise and strong workplace competencies.
@@ -86,8 +86,12 @@ export default function HeroAnimation() {
                         className="px-6 py-3 bg-[var(--color-primary-100)] text-white font-medium rounded-md hover:bg-teal-600 transition-colors">
                         Hire Talent →
                     </button>
+                    {/*<button*/}
+                    {/*    className="px-6 py-3 bg-[var(--color-accent)] border-2 border-white text-white font-medium rounded-md hover:bg-gray-50 transition-colors">*/}
+                    {/*    View Talents*/}
+                    {/*</button>*/}
                     <button
-                        className="px-6 py-3 border-2 border-white text-white font-medium rounded-md hover:bg-gray-50 transition-colors">
+                        className="px-6 py-3 bg-[var(--color-accent)] text-white font-medium rounded-md hover:bg-gray-50 transition-colors">
                         View Talents
                     </button>
                 </div>
