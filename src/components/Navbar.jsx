@@ -102,131 +102,130 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import logoWhite from "../assets/logo-white.png"; // add this white logo version
-import logoTeal from "../assets/logo-teal.png";   // already in your code
+import logoWhite from "../assets/logo-white.png";
+import logoTeal from "../assets/logo-teal.png";
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-    const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => setIsOpen(!isOpen);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 10);
-        };
-        window.addEventListener("scroll", handleScroll);
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+  return (
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? "bg-white shadow-md" : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-[1280px] h-[72px] mx-auto px-6 lg:px-20 flex items-center justify-between">
+        
+        {/* Logo */}
+        <Link to="/" className="flex items-center">
+          <img
+            src={scrolled ? logoTeal : logoWhite}
+            alt="Logo"
+            className="w-[100px] h-[23px] shrink-0 aspect-[142/23] transition-all duration-300"
+          />
+        </Link>
 
-    return (
-        <header
-            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-                scrolled ? "bg-white shadow-md" : "bg-transparent"
+        {/* Desktop Nav */}
+        <nav className="hidden lg:block">
+          <ul
+            className={`flex items-center space-x-8 xl:space-x-12 font-medium transition-colors duration-300 ${
+              scrolled ? "text-gray-800" : "text-white"
             }`}
+          >
+            <li>
+              <Link to="/" className="hover:text-teal-600 transition-colors">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/howitworks"
+                className="hover:text-teal-600 transition-colors"
+              >
+                How It Works
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/talents"
+                className="hover:text-teal-600 transition-colors"
+              >
+                Talents
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/hire"
+                className={`cursor-not-allowed ${
+                  scrolled ? "text-gray-400" : "text-gray-300"
+                }`}
+                onClick={(e) => e.preventDefault()}
+              >
+                Hire (Coming Soon)
+              </Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* Mobile Hamburger */}
+        <button
+          onClick={toggleMenu}
+          className={`lg:hidden focus:outline-none transition-colors duration-300 ${
+            scrolled ? "text-gray-800" : "text-white"
+          }`}
         >
-            <div className="max-w-[1280px] h-[72px] mx-auto px-6 lg:px-20 flex items-center justify-between">
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
 
-                {/* Logo */}
-                <Link to="/" className="flex items-center">
-                    <img
-                        src={scrolled ? logoTeal : logoWhite}
-                        alt="Logo"
-                        className="w-[100px] h-[23px] shrink-0 aspect-[142/23] transition-all duration-300"
-                    />
-                </Link>
-
-                {/* Desktop Nav */}
-                <nav className="hidden lg:block">
-                    <ul
-                        className={`flex items-center space-x-8 xl:space-x-12 font-medium transition-colors duration-300 ${
-                            scrolled ? "text-gray-800" : "text-white"
-                        }`}
-                    >
-                        <li>
-                            <a href="#home" className="hover:text-teal-600 transition-colors">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#howitworks"
-                                className="hover:text-teal-600 transition-colors"
-                            >
-                                How It Works
-                            </a>
-                        </li>
-                        <li>
-                            <Link to="/talents" className="hover:text-teal-600 transition-colors">
-                                Talents
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to="/hire"
-                                className={`cursor-not-allowed ${
-                                    scrolled ? "text-gray-400" : "text-gray-300"
-                                }`}
-                                onClick={(e) => e.preventDefault()}
-                            >
-                                Hire (Coming Soon)
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
-
-                {/* Mobile Hamburger */}
-                <button
-                    onClick={toggleMenu}
-                    className={`lg:hidden focus:outline-none transition-colors duration-300 ${
-                        scrolled ? "text-gray-800" : "text-white"
-                    }`}
-                >
-                    {isOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
-            </div>
-
-            {/* Mobile Menu */}
-            {isOpen && (
-                <div
-                    className={`lg:hidden shadow-lg border-t ${
-                        scrolled ? "bg-white border-gray-100" : "bg-slate-800 border-slate-700"
-                    }`}
-                >
-                    <ul
-                        className={`flex flex-col px-6 py-4 space-y-4 font-medium ${
-                            scrolled ? "text-gray-800" : "text-white"
-                        }`}
-                    >
-                        <li>
-                            <Link to="/hire" onClick={toggleMenu} className="block">
-                                Hire
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/team" onClick={toggleMenu} className="block">
-                                Build a Team
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/talents" onClick={toggleMenu} className="block">
-                                Talent
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/community" onClick={toggleMenu} className="block">
-                                Community
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/about" onClick={toggleMenu} className="block">
-                                About
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
-            )}
-        </header>
-    );
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div
+          className={`lg:hidden shadow-lg border-t ${
+            scrolled ? "bg-white border-gray-100" : "bg-slate-800 border-slate-700"
+          }`}
+        >
+          <ul
+            className={`flex flex-col px-6 py-4 space-y-4 font-medium ${
+              scrolled ? "text-gray-800" : "text-white"
+            }`}
+          >
+            <li>
+              <Link to="/" onClick={toggleMenu}>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/howitworks" onClick={toggleMenu}>
+                How It Works
+              </Link>
+            </li>
+            <li>
+              <Link to="/talents" onClick={toggleMenu}>
+                Talents
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/hire"
+                className="cursor-not-allowed"
+                onClick={(e) => e.preventDefault()}
+              >
+                Hire (Coming Soon)
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
+    </header>
+  );
 }

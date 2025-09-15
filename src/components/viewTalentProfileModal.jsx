@@ -4,7 +4,8 @@ const sampleTalent = {
   name: "John Doe",
   role: "Frontend Developer",
   availability: "Available Now",
-  summary: "Experienced software engineer with 5+ years developing web applications. Proven track record of delivering high-quality solutions for startups and enterprise clients. Strong background in agile development and team leadership.",
+  summary:
+    "Experienced software engineer with 5+ years developing web applications. Proven track record of delivering high-quality solutions for startups and enterprise clients. Strong background in agile development and team leadership.",
   academicBg: [
     { program: "BSc Computer Science", school: "University of Ghana" },
     { program: "MSc Software Eng.", school: "KNUST" },
@@ -13,12 +14,12 @@ const sampleTalent = {
   techSkills: ["React", "Tailwind", "Node.js"],
   portfolio: "https://portfolio.com",
   cv: "/cv/john-doe.pdf",
-  image: "https://www.pexels.com/photo/close-up-shot-of-a-woman-looking-up-7644917/",
+  image:
+    "https://www.pexels.com/photo/close-up-shot-of-a-woman-looking-up-7644917/",
 };
 
 export default function ViewTalentProfileModal({ isOpen, onClose }) {
   if (!isOpen) return null;
-
   const talent = sampleTalent;
 
   return (
@@ -52,7 +53,9 @@ export default function ViewTalentProfileModal({ isOpen, onClose }) {
 
         {/* Summary */}
         <div className="mt-4">
-          <h3 className="text-base font-semibold text-gray-900">Brief Summary</h3>
+          <h3 className="text-base font-semibold text-gray-900">
+            Brief Summary
+          </h3>
           <p className="mt-1 text-sm text-gray-700 leading-relaxed">
             {talent.summary}
           </p>
@@ -69,7 +72,9 @@ export default function ViewTalentProfileModal({ isOpen, onClose }) {
                 key={idx}
                 className="border-l-4 border-teal-500 pl-3 py-1 bg-gray-50 rounded"
               >
-                <p className="text-sm font-medium text-gray-800">{edu.program}</p>
+                <p className="text-sm font-medium text-gray-800">
+                  {edu.program}
+                </p>
                 <p className="text-xs text-gray-600">{edu.school}</p>
               </div>
             ))}
@@ -90,7 +95,6 @@ export default function ViewTalentProfileModal({ isOpen, onClose }) {
             ))}
           </div>
         </div>
-
         {/* Technical Skills */}
         <div className="mt-4">
           <h3 className="text-base font-semibold text-gray-900">
@@ -134,6 +138,7 @@ export default function ViewTalentProfileModal({ isOpen, onClose }) {
           </button>
         </div>
       </div>
+      
     </div>
   );
 }
