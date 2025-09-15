@@ -8,7 +8,7 @@ export default function TalentCards({ talents, onViewProfile }) {
           key={talent.id}
           name={talent.name}
           role={talent.role}
-          image={talent.image}
+          image={talent.images && talent.images.length > 0 ? talent.images[0] : ''} // Correctly access the image
           onViewProfile={() => onViewProfile(talent)}
         />
       ))}
