@@ -1,190 +1,214 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PageWrapper from "../components/PageWrapper";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
 import TalentHeader from "../components/TalentHeader";
 import TalentCards from "../components/TalentCards";
 import TalentPagination from "../components/TalentPagination";
 import ViewTalentProfileModal from "../components/viewTalentProfileModal";
+import { apiClient } from "../../api/client";
+import FilterSidebar from "../components/FilterSidebar";
 
 export default function TalentsPage() {
-  // Mock data (replace with real API later)
-  const mockTalents = [
-  {
-    id: 1,
-    name: "John Doe",
-    role: "Senior Frontend Developer",
-    image: "https://via.placeholder.com/150",
-    academicBg: "BSc. Computer Science, MIT",
-    softSkills: "Teamwork, Communication, Problem Solving",
-    techSkills: "React, Tailwind, Node.js",
-    portfolio: "https://portfolio.example.com",
-    cv: "/cv/john-doe.pdf",
-  },
-  {
-    id: 2,
-    name: "Jane Smith",
-    role: "UI/UX Designer",
-    image: "https://via.placeholder.com/150",
-    academicBg: "BA. Design, Stanford",
-    softSkills: "Creativity, Collaboration, Adaptability",
-    techSkills: "Figma, Adobe XD, Framer Motion",
-    portfolio: "https://portfolio.example.com",
-    cv: "/cv/jane-smith.pdf",
-  },
-  {
-    id: 3,
-    name: "Michael Brown",
-    role: "Backend Developer",
-    image: "https://via.placeholder.com/150",
-    academicBg: "MSc. Software Engineering, Oxford",
-    softSkills: "Critical Thinking, Debugging, Communication",
-    techSkills: "Node.js, Express, MongoDB",
-    portfolio: "https://portfolio.example.com",
-    cv: "/cv/michael-brown.pdf",
-  },
-  {
-    id: 4,
-    name: "Sophia Lee",
-    role: "Fullstack Developer",
-    image: "https://via.placeholder.com/150",
-    academicBg: "BSc. Information Systems, Harvard",
-    softSkills: "Leadership, Problem Solving, Collaboration",
-    techSkills: "React, Node.js, GraphQL, AWS",
-    portfolio: "https://portfolio.example.com",
-    cv: "/cv/sophia-lee.pdf",
-  },
-  {
-    id: 5,
-    name: "Daniel Kim",
-    role: "Mobile App Developer",
-    image: "https://via.placeholder.com/150",
-    academicBg: "BSc. Computer Engineering, KAIST",
-    softSkills: "Adaptability, Communication, Creativity",
-    techSkills: "React Native, Swift, Kotlin",
-    portfolio: "https://portfolio.example.com",
-    cv: "/cv/daniel-kim.pdf",
-  },
-  {
-    id: 6,
-    name: "Emily Davis",
-    role: "Data Scientist",
-    image: "https://via.placeholder.com/150",
-    academicBg: "PhD. Data Science, Cambridge",
-    softSkills: "Analytical Thinking, Research, Collaboration",
-    techSkills: "Python, TensorFlow, SQL, R",
-    portfolio: "https://portfolio.example.com",
-    cv: "/cv/emily-davis.pdf",
-  },
-  {
-    id: 7,
-    name: "James Wilson",
-    role: "DevOps Engineer",
-    image: "https://via.placeholder.com/150",
-    academicBg: "BSc. IT, University of Toronto",
-    softSkills: "Problem Solving, Collaboration, Efficiency",
-    techSkills: "Docker, Kubernetes, AWS, CI/CD",
-    portfolio: "https://portfolio.example.com",
-    cv: "/cv/james-wilson.pdf",
-  },
-  {
-    id: 8,
-    name: "Olivia Martinez",
-    role: "Frontend Engineer",
-    image: "https://via.placeholder.com/150",
-    academicBg: "BSc. Computer Science, UC Berkeley",
-    softSkills: "Creativity, Teamwork, Communication",
-    techSkills: "React, Vue, Tailwind, TypeScript",
-    portfolio: "https://portfolio.example.com",
-    cv: "/cv/olivia-martinez.pdf",
-  },
-  {
-    id: 9,
-    name: "William Chen",
-    role: "Cloud Architect",
-    image: "https://via.placeholder.com/150",
-    academicBg: "MSc. Cloud Computing, Imperial College London",
-    softSkills: "Leadership, Critical Thinking, Planning",
-    techSkills: "AWS, Azure, GCP, Terraform",
-    portfolio: "https://portfolio.example.com",
-    cv: "/cv/william-chen.pdf",
-  },
-  {
-    id: 10,
-    name: "Ava Johnson",
-    role: "Cybersecurity Specialist",
-    image: "https://via.placeholder.com/150",
-    academicBg: "BSc. Cybersecurity, Georgia Tech",
-    softSkills: "Attention to Detail, Analytical Thinking, Integrity",
-    techSkills: "Penetration Testing, Firewalls, Encryption",
-    portfolio: "https://portfolio.example.com",
-    cv: "/cv/ava-johnson.pdf",
-  },
-  {
-    id: 11,
-    name: "Ethan Walker",
-    role: "AI Engineer",
-    image: "https://via.placeholder.com/150",
-    academicBg: "MSc. Artificial Intelligence, Stanford",
-    softSkills: "Problem Solving, Research, Collaboration",
-    techSkills: "Machine Learning, NLP, PyTorch",
-    portfolio: "https://portfolio.example.com",
-    cv: "/cv/ethan-walker.pdf",
-  },
-  {
-    id: 12,
-    name: "Mia Robinson",
-    role: "Product Manager",
-    image: "https://via.placeholder.com/150",
-    academicBg: "MBA, Wharton Business School",
-    softSkills: "Leadership, Communication, Strategy",
-    techSkills: "Agile, Scrum, Product Strategy",
-    portfolio: "https://portfolio.example.com",
-    cv: "/cv/mia-robinson.pdf",
-  },
-];
-
+  const [talents, setTalents] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [talentsPerPage] = useState(12);
+  const [totalPages, setTotalPages] = useState(0);
   const [selectedTalent, setSelectedTalent] = useState(null);
+  const [talentProfile, setTalentProfile] = useState(null);
+  const [isModalLoading, setIsModalLoading] = useState(false);
+  const [isFilterSidebarOpen, setIsFilterSidebarOpen] = useState(false);
 
-  const talentsPerPage = 6;
-  const totalPages = Math.ceil(mockTalents.length / talentsPerPage);
-  const displayedTalents = mockTalents.slice(
-    (currentPage - 1) * talentsPerPage,
-    currentPage * talentsPerPage
-  );
+
+  // Filters state with searchField added
+  const [filters, setFilters] = useState({
+    search: "",
+    searchField: "name", // default search type
+    skills: [],
+    roles: [],
+    availability: null,
+    cohort: null,
+  });
+
+ const fetchTalents = async () => {
+  setIsLoading(true);
+  setError(null);
+
+  const params = {};
+
+  // Dynamically add search parameter based on searchField
+  if (filters.search && filters.search.trim() !== "") {
+    const field = filters.searchField || "name";
+    params[field] = filters.search.trim();
+  }
+
+  // Map skills → skill
+  if (filters.skills.length > 0) {
+    // If multiple, you can either send the first one or join them
+    params.skill = filters.skills.join(",");
+  }
+
+  // Map roles → role
+  if (filters.roles.length > 0) {
+    params.role = filters.roles.join(",");
+  }
+
+  // Map cohort → cohort
+  if (filters.cohort) {
+    params.cohort = filters.cohort;
+  }
+
+  // Map availability → availability (if backend supports it)
+  if (filters.availability) {
+    params.availability = filters.availability;
+  }
+
+  const hasFilters = Object.keys(params).length > 0;
+  const url = hasFilters ? "/talent-query" : "/talents";
+
+  try {
+    const response = await apiClient.get(url, { params });
+
+    let talentsArray;
+    if (hasFilters) {
+      talentsArray = response.data;
+    } else {
+      talentsArray = response.data.portfolios;
+    }
+
+    if (Array.isArray(talentsArray)) {
+      setTalents(talentsArray);
+      setTotalPages(Math.ceil(talentsArray.length / talentsPerPage));
+    } else {
+      throw new Error("API response is not a valid array.");
+    }
+  } catch (err) {
+    console.error("Failed to fetch talents:", err);
+    setError("Failed to load talents. Please try again later.");
+    setTalents([]);
+  } finally {
+    setIsLoading(false);
+  }
+};
+
+
+  // Fetch talents when filters change
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      fetchTalents();
+    }, 500);
+    return () => clearTimeout(handler);
+  }, [filters]);
+
+  // Fetch full profile when a card is clicked
+  useEffect(() => {
+    if (selectedTalent) {
+      setIsModalLoading(true);
+      apiClient
+        .get(`/talent/${selectedTalent.id}`)
+        .then((response) => setTalentProfile(response.data.portfolio))
+        .catch((err) => {
+          console.error("Failed to fetch talent profile:", err);
+          setTalentProfile(null);
+        })
+        .finally(() => setIsModalLoading(false));
+    }
+  }, [selectedTalent]);
+
+  const indexOfLastTalent = currentPage * talentsPerPage;
+  const indexOfFirstTalent = indexOfLastTalent - talentsPerPage;
+  const displayedTalents = talents.slice(indexOfFirstTalent, indexOfLastTalent);
 
   return (
     <PageWrapper>
       <Navbar />
+      <div className="pt-[73.8px] min-h-[80vh] px-4">
+  {/* Centered search input, filter button and selector */}
+  <div className="my-4 flex justify-center">
+    <div className="flex flex-col md:flex-row gap-4 items-center">
+      {/* Search input */}
+      <input
+        type="text"
+        placeholder={`Search talents by ${filters.searchField}`}
+        value={filters.search}
+        onChange={(e) =>
+          setFilters((prev) => ({
+            ...prev,
+            search: e.target.value,
+          }))
+        }
+        className="border border-gray-300 rounded px-4 py-2 w-[280px] md:w-[320px]"
+      />
 
-<div className="pt-[73.8px] min-h-[80vh] ">
-  {/* Header */}
-  <TalentHeader />
+     
 
-  {/* Cards */}
-  <TalentCards
-    talents={displayedTalents}
-    onViewProfile={(talent) => setSelectedTalent(talent)}
+      {/* Search field type selector */}
+      <select
+        value={filters.searchField}
+        onChange={(e) =>
+          setFilters((prev) => ({
+            ...prev,
+            searchField: e.target.value,
+          }))
+        }
+        className="border border-gray-300 rounded px-3 py-2 w-[180px]"
+      >
+        <option value="name">Search by Name</option>
+        <option value="role">Search by Role</option>
+        <option value="skills">Search by Skill</option>
+      </select>
+
+       {/* Filter All button */}
+      <button
+        onClick={() => setIsFilterSidebarOpen(true)}
+        className="bg-[#28BBBB] text-white px-4 py-2 rounded hover:bg-[#229c9c] transition"
+      >
+        Filter All
+      </button>
+    </div>
+  </div>
+
+  {/* 👇 Place the FilterSidebar here so it overlays */}
+ {isFilterSidebarOpen && (
+  <FilterSidebar
+    filters={filters}
+    setFilters={setFilters}
+    onClose={() => setIsFilterSidebarOpen(false)}
   />
+)}
 
-  {/* Pagination */}
-  <TalentPagination
-    currentPage={currentPage}
-    totalPages={totalPages}
-    onPageChange={(page) => setCurrentPage(page)}
-  />
+
+  {isLoading ? (
+    <div className="text-center text-lg mt-10">Loading talents...</div>
+  ) : error ? (
+    <div className="text-center text-red-500 text-lg mt-10">{error}</div>
+  ) : (
+    <>
+      <TalentCards
+        talents={displayedTalents}
+        onViewProfile={(talent) => setSelectedTalent(talent)}
+      />
+      <TalentPagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
+      />
+    </>
+  )}
 </div>
 
 
       <Footer />
-
-      {/* View Profile Modal */}
       <ViewTalentProfileModal
         isOpen={!!selectedTalent}
-        onClose={() => setSelectedTalent(null)}
-        talent={selectedTalent}
+        onClose={() => {
+          setSelectedTalent(null);
+          setTalentProfile(null);
+        }}
+        talent={talentProfile}
+        isLoading={isModalLoading}
       />
     </PageWrapper>
   );

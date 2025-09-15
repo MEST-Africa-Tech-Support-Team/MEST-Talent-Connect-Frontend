@@ -1,91 +1,107 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Search } from "lucide-react";
+import FilterSidebar from "./FilterSidebar";
 
-export default function TalentHeader() {
-  const [activeFilters, setActiveFilters] = useState(["ReactJS", "Available"]);
+// TalentHeader now accepts filters and setFilters as props from its parent
+export default function TalentHeader({ filters, setFilters }) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const removeFilter = (filter) => {
-    setActiveFilters(activeFilters.filter((f) => f !== filter));
+  // We manage the search field type locally for the dropdown
+  const [searchField, setSearchField] = useState(filters.searchField || "name");
+
+  // This effect synchronizes the local searchField state with the parent's filters state
+  useEffect(() => {
+    setFilters(prev => ({ ...prev, searchField }));
+  }, [searchField, setFilters]);
+
+  // Handler for the main search input
+  const handleSearchChange = (e) => {
+    setFilters(prev => ({ ...prev, search: e.target.value }));
+  };
+
+  const activeFilterChips = Object.entries(filters).flatMap(([key, value]) => {
+    if (Array.isArray(value) && value.length > 0) {
+      return value.map(val => ({ key: key, value: val }));
+    }
+    // Check for a value that is not the search string or searchField
+    if (value && key !== "search" && key !== "searchField") {
+      return [{ key: key, value: value }];
+    }
+    return [];
+  });
+
+  const removeFilter = (filterKey, valueToRemove) => {
+    setFilters((prevFilters) => {
+      if (Array.isArray(prevFilters[filterKey])) {
+        return {
+          ...prevFilters,
+          [filterKey]: prevFilters[filterKey].filter((val) => val !== valueToRemove),
+        };
+      }
+      return {
+        ...prevFilters,
+        [filterKey]: null,
+      };
+    });
   };
 
   return (
-    <header className="w-full bg-[#28BBBB] py-16 px-6 mb-8 font-[var(--font-heading)]">
-      {/* Heading */}
-      <div className="max-w-4xl mx-auto text-center mb-10">
-        <h1 className="text-4xl md:text-5xl font-bold text-white font-[var(--font-heading)]">
-          Discover Africa&apos;s Brightest Tech Talent
-        </h1>
-        <p className="mt-4 text-lg text-white font-[var(--font-heading)]">
-          Connect with exceptional professionals ready to drive your next <br />
-          project
-        </p>
-      </div>
-
-      {/* White Filter Section */}
-      <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-md p-6">
-        {/* Row 1: Search + Selects */}
+    <header className="w-full bg-[#28BBBB] font-[var(--font-heading)]">
+      <div className=" bg-white rounded-xl shadow-md ">
         <div className="flex flex-wrap items-center gap-4">
-          {/* Search Input */}
           <div className="relative flex-1 min-w-[200px]">
-            <Search
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-              size={20}
-            />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
             <input
               type="text"
-              placeholder="Search talents..."
+              placeholder={`Search by ${searchField}...`}
               className="w-full pl-10 pr-4 py-3 text-gray-900 rounded-lg border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+              value={filters.search}
+              onChange={handleSearchChange}
             />
           </div>
-
-          {/* Skills Select */}
-          <select className="min-w-[160px] px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
-            <option>All Skills</option>
-            <option>Frontend</option>
-            <option>Backend</option>
-            <option>Fullstack</option>
-            <option>UI/UX</option>
-            <option>Data Science</option>
-            <option>DevOps</option>
-          </select>
-
-          {/* Roles Select */}
-          <select className="min-w-[160px] px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
-            <option>Roles</option>
-            <option>Developer</option>
-            <option>Designer</option>
-            <option>Project Manager</option>
-          </select>
-
-          {/* Availability Select */}
-          <select className="min-w-[160px] px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
-            <option>Availability</option>
-            <option>Full-time</option>
-            <option>Remote</option>
-            <option>Hybrid</option>
-          </select>
+          <button
+            onClick={() => setIsSidebarOpen(true)}
+            className="px-6 py-3 rounded-lg border border-gray-200 bg-gray-50 text-gray-700 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-teal-500"
+          >
+            All Filters
+          </button>
+          
+          <div className="relative">
+            <select
+              value={searchField}
+              onChange={(e) => setSearchField(e.target.value)}
+              className="border border-gray-300 rounded-lg px-6 py-3 bg-white text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+            >
+              <option value="name">Name</option>
+              <option value="role">Role</option>
+              <option value="skills">Skills</option>
+            </select>
+          </div>
         </div>
 
-        {/* Row 2: Active Filters */}
-        {activeFilters.length > 0 && (
-          <div className="flex flex-wrap gap-3 mt-6">
-            {activeFilters.map((filter, idx) => (
-              <span
-                key={idx}
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-teal-100 text-teal-700 rounded-full shadow-sm"
-              >
-                {filter}
-                <button
-                  onClick={() => removeFilter(filter)}
-                  className="text-gray-500 hover:text-red-500"
-                >
-                  ✕
-                </button>
-              </span>
-            ))}
-          </div>
-        )}
+        <div className="flex flex-wrap gap-3 mt-6">
+          {filters.search && (
+            <span className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-teal-100 text-teal-700 rounded-full shadow-sm">
+              Search by {filters.searchField}: "{filters.search}"
+              <button onClick={() => setFilters({ ...filters, search: "" })} className="text-gray-500 hover:text-red-500">✕</button>
+            </span>
+          )}
+          {activeFilterChips.map(({ key, value }, idx) => (
+            <span key={`${key}-${value}-${idx}`} className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-teal-100 text-teal-700 rounded-full shadow-sm">
+              {value}
+              <button onClick={() => removeFilter(key, value)} className="text-gray-500 hover:text-red-500">✕</button>
+            </span>
+          ))}
+        </div>
       </div>
+
+      {isSidebarOpen && (
+        <FilterSidebar
+          filters={filters}
+          setFilters={setFilters}
+          onClose={() => setIsSidebarOpen(false)}
+        />
+      )}
     </header>
   );
 }
