@@ -2,10 +2,11 @@ import { useState } from "react";
 import { X, Search } from "lucide-react";
 
 // Predefined lists for filter options
-const skillsList = ["ReactJS", "Frontend", "Backend", "UI/UX", "DevOps", "Data Science"];
-const rolesList = ["Developer", "Designer", "Product Manager", "Project Manager"];
-const availabilityList = ["Available", "Full-time", "Part-time", "Contract"];
-const cohortsList = ["2023", "2024", "2025"]; // Example cohorts
+const skillsList = ["ReactJS", "Node.js", "Css 3", "HTML5", "Tailwind", "Javascript"];
+const rolesList = ["Backend", "Frontend", "Fullstack"];
+// const availabilityList = ["Available", "Full-time", "Part-time", "Contract"];
+const availabilityList = ["Yes", "No"];
+const cohortsList = ["Cohort 4"]; // Example cohorts
 
 export default function FilterSidebar({ filters, setFilters, onClose }) {
   // Use a local state to manage changes before applying
@@ -37,22 +38,27 @@ export default function FilterSidebar({ filters, setFilters, onClose }) {
     onClose();
   };
 
-  // Reset all filters to their initial state
-  const handleClearAll = () => {
-    const defaultFilters = {
-      search: "",
-      skills: [],
-      roles: [],
-      availability: null,
-      cohort: null,
-    };
-    setLocalFilters(defaultFilters);
-    setFilters(defaultFilters); // Immediately clear the parent state
-    onClose();
+ 
+
+  // In FilterSidebar.jsx
+const handleClearAll = () => {
+  const defaultFilters = {
+    search: "",
+    searchField: "name", // 👈 Add this line to reset the search field
+    skills: [],
+    roles: [],           // 👈 Correct the key from 'role' to 'roles' to match the parent
+    availability: null,
+    cohort: null,
   };
+  setLocalFilters(defaultFilters);
+  setFilters(defaultFilters);
+  onClose();
+};
+
+
 
   return (
-    <div className="fixed inset-0 z-50 overflow-auto bg-gray-900 bg-opacity-50">
+    <div className="fixed inset-0 z-50 overflow-auto bg-black/30 backdrop-blur-sm bg-opacity-50">
       <div className="absolute right-0 top-0 h-full w-80 max-w-full bg-white p-6 shadow-lg transform transition-transform duration-300 ease-in-out translate-x-0">
         <div className="flex items-center justify-between pb-4 border-b border-gray-200">
           <h2 className="text-2xl font-bold">Filters</h2>
@@ -66,7 +72,7 @@ export default function FilterSidebar({ filters, setFilters, onClose }) {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
           <input
             type="text"
-            placeholder="Search talents..."
+            placeholder="Search talents by name..."
             className="w-full pl-10 pr-4 py-2 text-gray-900 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500"
             value={localFilters.search}
             onChange={(e) => setLocalFilters({ ...localFilters, search: e.target.value })}
