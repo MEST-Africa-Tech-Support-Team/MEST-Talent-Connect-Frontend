@@ -181,7 +181,7 @@ export default function TalentsPage() {
 
 
   {isLoading ? (
-    <div className="text-center text-lg mt-10">Loading talents....</div>
+    <div className="text-center text-lg mt-10">Loading talents.....</div>
   ) : error ? (
     <div className="text-center text-red-500 text-lg mt-10">{error}</div>
   ) : (
