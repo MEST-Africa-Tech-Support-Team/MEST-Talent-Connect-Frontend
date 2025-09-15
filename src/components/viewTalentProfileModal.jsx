@@ -107,13 +107,7 @@ export default function ViewTalentProfileModal({isOpen, onClose, talent, isLoadi
                             >
                                 <ExternalLink size={16}/> Portfolio
                             </a>
-                            {/*<a*/}
-                            {/*    href={talent.cv}*/}
-                            {/*    download*/}
-                            {/*    className="flex items-center gap-1 px-3 py-2 text-sm bg-gray-800 text-white rounded-lg hover:bg-gray-900"*/}
-                            {/*>*/}
-                            {/*    <FileDown size={16}/> View CV*/}
-                            {/*</a>*/}
+
                             <a
                                 href={talent.cv}
                                 target="_blank"

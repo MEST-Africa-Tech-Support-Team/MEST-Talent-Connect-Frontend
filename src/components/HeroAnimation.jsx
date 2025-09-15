@@ -2,6 +2,8 @@
 
 import Navbar from "./Navbar.jsx";
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 export default function HeroAnimation() {
     return (
@@ -95,11 +97,14 @@ export default function HeroAnimation() {
 
                     </button>
 
-                    <button
-                        className="px-6 py-3 bg-[var(--color-accent)] text-white font-medium rounded-md transition-colors hover:bg-white hover:text-[var(--color-accent)]  hover:border-[var(--color-accent)]"
+
+                    <Link
+                        to="/talents"
+                        className="px-6 py-3 bg-[var(--color-accent)] text-white font-medium rounded-md transition-colors hover:bg-white hover:text-[var(--color-accent)] hover:border-[var(--color-accent)]"
                     >
                         View Talents
-                    </button>
+                    </Link>
+
 
                 </div>
             </div>
