@@ -11,7 +11,6 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
       <div className="max-w-[1280px] h-[72px] mx-auto px-6 lg:px-20 flex items-center justify-between">
-        
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <img
@@ -22,35 +21,43 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav (lg and up) */}
-       <nav className="hidden lg:block">
-  <ul className="flex items-center space-x-8 xl:space-x-12 text-gray-700 font-medium">
-    <li>
-      <a href="#home" className="hover:text-teal-600 transition-colors">
-        Home
-      </a>
-    </li>
-    <li>
-      <a href="#howitworks" className="hover:text-teal-600 transition-colors">
-        How It Works
-      </a>
-    </li>
-    <li>
-      <Link to="/talents" className="hover:text-teal-600 transition-colors">
-        Talents
-      </Link>
-    </li>
-    <li>
-      <Link
-        to="/hire"
-        className="text-gray-400 cursor-not-allowed"
-        onClick={(e) => e.preventDefault()} // prevents navigation since it's not ready
-      >
-        Hire (Coming Soon)
-      </Link>
-    </li>
-  </ul>
-</nav>
-
+        <nav className="hidden lg:block">
+          <ul className="flex items-center space-x-8 xl:space-x-12 text-gray-700 font-medium">
+            <li>
+              <Link
+                to="/"
+                className="hover:text-teal-600 transition-colors"
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/howitworks"
+                className="hover:text-teal-600 transition-colors"
+              >
+                How It Works
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/talents"
+                className="hover:text-teal-600 transition-colors"
+              >
+                Talents
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/hire"
+                className="text-gray-400 cursor-not-allowed"
+                onClick={(e) => e.preventDefault()} // prevents navigation since it's not ready
+              >
+                Hire (Coming Soon)
+              </Link>
+            </li>
+          </ul>
+        </nav>
 
         {/* Mobile & Tablet Hamburger (< lg) */}
         <button
