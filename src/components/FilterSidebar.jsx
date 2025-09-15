@@ -38,19 +38,7 @@ export default function FilterSidebar({ filters, setFilters, onClose }) {
     onClose();
   };
 
-  // Reset all filters to their initial state
-  // const handleClearAll = () => {
-  //   const defaultFilters = {
-  //     search: "",
-  //     skills: [],
-  //     role: [],
-  //     availability: null,
-  //     cohort: null,
-  //   };
-  //   setLocalFilters(defaultFilters);
-  //   setFilters(defaultFilters); // Immediately clear the parent state
-  //   onClose();
-  // };
+ 
 
   // In FilterSidebar.jsx
 const handleClearAll = () => {
@@ -84,7 +72,7 @@ const handleClearAll = () => {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
           <input
             type="text"
-            placeholder="Search talents..."
+            placeholder="Search talents by name..."
             className="w-full pl-10 pr-4 py-2 text-gray-900 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500"
             value={localFilters.search}
             onChange={(e) => setLocalFilters({ ...localFilters, search: e.target.value })}
