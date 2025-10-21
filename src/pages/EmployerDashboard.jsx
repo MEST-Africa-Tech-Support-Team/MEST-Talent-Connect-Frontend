@@ -1,5 +1,4 @@
 import React from "react";
-import Sidebar from "../components/sidebar";
 import Header from "../components/Header";
 import StatCard from "../components/StatCard";
 import HiringPipelineChart from "../components/HiringPipelineChart";
@@ -10,7 +9,6 @@ import { FiUsers, FiCheckSquare, FiClock, FiStar } from "react-icons/fi";
 export default function Dashboard() {
   return (
     <>
-      <Sidebar />
       <div className="flex-1 flex flex-col">
         <Header />
 
@@ -54,6 +52,11 @@ export default function Dashboard() {
                   <div className="p-3 border border-gray-100 rounded-md">
                     <div className="font-medium">Tech Talent Showcase</div>
                     <div className="text-xs text-gray-400">March 15, 2024 • 2:00 PM GMT</div>
+                    <button className="text-sm text-teal-600 mt-2">Join Event</button>
+                  </div>
+                  <div className="p-3 border border-gray-100 rounded-md">
+                    <div className="font-medium">Hiring Best Practices</div>
+                    <div className="text-xs text-gray-400">March 22, 2024 • 3:00 PM GMT</div>
                     <button className="text-sm text-teal-600 mt-2">Join Event</button>
                   </div>
                   <div className="p-3 border border-gray-100 rounded-md">
