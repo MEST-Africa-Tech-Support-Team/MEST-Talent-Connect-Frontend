@@ -2,13 +2,11 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router";
-import LandingPage from "./pages/LandingPage";
-import TalentsPage from "./pages/TalentsPage";
-
+import EmployerDashboard from './pages/EmployerDashboard.jsx';
 
 const router = createBrowserRouter([
-  {path: '/', element: <LandingPage />},
-    {path: '/talents', element: <TalentsPage />}
+  {path: '/', element: <EmployerDashboard />},
+
 ]
 );
 
