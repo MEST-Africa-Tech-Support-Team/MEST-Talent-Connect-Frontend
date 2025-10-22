@@ -2,10 +2,10 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router";
-import EmployerDashboard from './pages/EmployerDashboard.jsx';
+import OpenPostion from "./pages/OpenPositions.jsx";
 
 const router = createBrowserRouter([
-  {path: '/', element: <EmployerDashboard />},
+  {path: '/open-positions', element: <OpenPostion />},
 
 ]
 );
