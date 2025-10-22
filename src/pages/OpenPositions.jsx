@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/Sidebar";
 import PositionCard from "../components/PositionCard";
 
 // Mock data for positions
@@ -103,44 +103,46 @@ function SearchAndFilters() {
   );
 }
 
-export default function OpenPostion() {
+export default function OpenPositions() {
   return (
-    <>
-      <div className="min-h-screen flex bg-white text-slate-800">
-        <Sidebar />
+    <div className="min-h-screen flex bg-white text-slate-800">
+      <Sidebar />
 
-        <main className="flex-1 p-8">
-          <div className="flex items-center justify-between mb-3">
-            <div>
-              <h1 className="text-2xl font-semibold">Open Positions</h1>
-              <p className="text-sm text-gray-500">Manage your current hiring roles and track candidate pipelines in one view.</p>
-            </div>
-
-            <button className="bg-teal-500 text-white px-4 py-2 rounded-lg">+ Post New Position</button>
+      <main className="flex-1 p-8">
+        <div className="flex items-center justify-between mb-3">
+          <div>
+            <h1 className="text-2xl font-semibold">Open Positions</h1>
+            <p className="text-sm text-gray-500">
+              Manage your current hiring roles and track candidate pipelines in one view.
+            </p>
           </div>
 
-          <hr className="mb-6"/>
+          <button className="bg-teal-500 text-white px-4 py-2 rounded-lg">
+            + Post New Position
+          </button>
+        </div>
 
-          <section className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-            <TopSummaryCard title="Total Open Roles" value={12} />
-            <TopSummaryCard title="Active Candidates" value={47} />
-            <TopSummaryCard title="Positions Filled" value={8} />
-            <TopSummaryCard title="Pending Reviews" value={15} />
-          </section>
+        <hr className="mb-6" />
 
-          <section className="mb-6">
-            <SearchAndFilters />
-          </section>
+        <section className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+          <TopSummaryCard title="Total Open Roles" value={12} />
+          <TopSummaryCard title="Active Candidates" value={47} />
+          <TopSummaryCard title="Positions Filled" value={8} />
+          <TopSummaryCard title="Pending Reviews" value={15} />
+        </section>
 
-          <section>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {positions.map((p) => (
-                <PositionCard key={p.id} p={p} />
-              ))}
-            </div>
-          </section>
-        </main>
-      </div>
-    </>
+        <section className="mb-6">
+          <SearchAndFilters />
+        </section>
+
+        <section>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {positions.map((p) => (
+              <PositionCard key={p.id} p={p} />
+            ))}
+          </div>
+        </section>
+      </main>
+    </div>
   );
 }
