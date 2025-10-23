@@ -1,6 +1,8 @@
 import React from "react";
-import Sidebar from "../components/Sidebar";
 import PositionCard from "../components/PositionCard";
+import { FiClock } from "react-icons/fi";
+import { FaFolderOpen, FaRegCircleCheck } from "react-icons/fa6";
+import { FaUserCheck } from "react-icons/fa";
 
 // Mock data for positions
 const positions = [
@@ -66,15 +68,15 @@ const positions = [
   },
 ];
 
-function TopSummaryCard({ title, value, icon }) {
+function TopSummaryCard({ title, value, Icon, bgClass = "bg-sky-100", iconClass = "text-[#FFFFFF]" }) {
   return (
     <div className="bg-white rounded-lg shadow-sm p-4 flex items-center justify-between">
       <div>
         <div className="text-sm text-gray-500">{title}</div>
         <div className="text-2xl font-semibold">{value}</div>
       </div>
-      <div className="w-12 h-12 rounded-lg bg-sky-100 flex items-center justify-center">
-        {icon}
+      <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${bgClass}`}>
+        <Icon className={`w-6 h-6 ${iconClass}`} />
       </div>
     </div>
   );
@@ -84,18 +86,18 @@ function SearchAndFilters() {
   return (
     <div className="flex flex-col md:flex-row md:items-center md:space-x-4 space-y-3 md:space-y-0 bg-white border rounded-lg p-4 shadow-sm">
       <input
-        className="flex-1 bg-white border rounded-lg p-2 shadow-sm"
+        className="flex-1 bg-white border rounded-lg p-2 shadow-sm w-full"
         placeholder="Search job titles..."
       />
 
-      <div className="flex gap-2">
-        <select className="border rounded-lg p-2 bg-white">
+      <div className="flex flex-wrap gap-2 w-full md:w-auto">
+        <select className="border rounded-lg p-2 bg-white flex-1 md:flex-none w-full md:w-auto">
           <option>All Status</option>
         </select>
-        <select className="border rounded-lg p-2 bg-white">
+        <select className="border rounded-lg p-2 bg-white flex-1 md:flex-none w-full md:w-auto">
           <option>All Types</option>
         </select>
-        <select className="border rounded-lg p-2 bg-white">
+        <select className="border rounded-lg p-2 bg-white flex-1 md:flex-none w-full md:w-auto">
           <option>All Departments</option>
         </select>
       </div>
@@ -105,10 +107,9 @@ function SearchAndFilters() {
 
 export default function OpenPositions() {
   return (
-    <div className="min-h-screen flex bg-white text-slate-800">
-      <Sidebar />
+    <div className="min-h-screen flex-1 flex flex-col bg-white text-slate-800">
 
-      <main className="flex-1 p-8">
+      <main className="p-8">
         <div className="flex items-center justify-between mb-3">
           <div>
             <h1 className="text-2xl font-semibold">Open Positions</h1>
@@ -117,7 +118,7 @@ export default function OpenPositions() {
             </p>
           </div>
 
-          <button className="bg-teal-500 text-white px-4 py-2 rounded-lg">
+          <button className="bg-[#28BBBB] text-white px-4 py-2 rounded-lg">
             + Post New Position
           </button>
         </div>
@@ -125,10 +126,10 @@ export default function OpenPositions() {
         <hr className="mb-6" />
 
         <section className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-          <TopSummaryCard title="Total Open Roles" value={12} />
-          <TopSummaryCard title="Active Candidates" value={47} />
-          <TopSummaryCard title="Positions Filled" value={8} />
-          <TopSummaryCard title="Pending Reviews" value={15} />
+          <TopSummaryCard title="Total Open Roles" value={12} Icon={FaFolderOpen} bgClass="bg-[#B627A1]" />
+          <TopSummaryCard title="Active Candidates" value={47} Icon={FaUserCheck} bgClass="bg-[#FF6221]" />
+          <TopSummaryCard title="Positions Filled" value={8} Icon={FaRegCircleCheck} bgClass="bg-[#f59e0b]" />
+          <TopSummaryCard title="Pending Reviews" value={15} Icon={FiClock} bgClass="bg-[#16a34a]" />
         </section>
 
         <section className="mb-6">
