@@ -23,7 +23,7 @@ export default function Sidebar({ collapsed = false }) {
                 <img src={logoteal} alt="MEST Talent Connect" className="w-35 h- 12" />
             </div>
 
-            <nav className="flex flex-col gap-1 flex-1">
+            <nav className="flex flex-col gap-1 flex-1 overflow-y-auto">
                 {nav.map((item) => (
                     <NavLink key={item.label} to={item.to} className={linkClasses}>
                         <div className="text-lg">{item.icon}</div>

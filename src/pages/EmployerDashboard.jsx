@@ -6,6 +6,7 @@ import SmallLineChart from "../components/SmallLineChart";
 import GaugeChart from "../components/GaugeChart";
 import { FiUsers, FiCheckSquare, FiClock, FiStar } from "react-icons/fi";
 
+
 export default function Dashboard() {
   return (
     <>
@@ -21,7 +22,7 @@ export default function Dashboard() {
 
           {/* stat row */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-            <StatCard title="Active Candidates" value="24" sub="+12% from last month" icon={<FiUsers />} accent="var(--mest-teal)" />
+            <StatCard title="Active Candidates" value="24" sub="+12% from last month" icon={<FiUsers />} accent="#C084FC"  />
             <StatCard title="Successful Placements" value="8" sub="+3 this quarter" icon={<FiCheckSquare />} accent="#FF7A45" />
             <StatCard title="Pending Feedback" value="3" sub="Action needed" icon={<FiClock />} accent="#C084FC" />
             <StatCard title="New Talent Added" value="12" sub="This week" icon={<FiStar />} accent="#FFB020" />
