@@ -1,6 +1,6 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { AuthProvider } from "./Context/AuthContext.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
 import Layout from "./components/Layout.jsx";
 import Register from "./pages/auth/Register.jsx";
 import Login from "./pages/auth/Login.jsx";
