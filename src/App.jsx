@@ -12,12 +12,14 @@ import CommunityEvents from "./pages/CommunityEvents.jsx";
 import OpenPositions from "./pages/OpenPositions.jsx";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 
+import Home from "./pages/Home.jsx";
+
 const router = createBrowserRouter([
   {
     element: <ProtectedRoute />, // Protect everything inside Layout
     children: [
       {
-        path: "/",
+        path: "/app",
         element: <Layout />,
         children: [
           { index: true, element: <EmployerDashboard /> },
@@ -30,6 +32,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  { path: "/", element: <Home /> },
   { path: "/register", element: <Register /> },
   { path: "/login", element: <Login /> },
   { path: "*", element: <Login /> },
