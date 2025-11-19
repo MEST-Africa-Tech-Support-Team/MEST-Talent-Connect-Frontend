@@ -1,3 +1,10 @@
+import { LiaHandshake } from "react-icons/lia";
+import { Globe, Clock4, Check } from 'lucide-react';
+
+
+
+
+
 export default function FlexibleEngagementModels() {
   return (
     <section className="w-full flex flex-col items-center px-4 md:px-10 lg:px-20 py-20">
@@ -11,7 +18,7 @@ export default function FlexibleEngagementModels() {
         {/* Card 1 */}
         <div className="relative bg-white rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.15)] p-8">
           <div className="w-14 h-14 rounded-full bg-teal-200 flex items-center justify-center mb-6">
-            <span className="text-2xl">🤝</span>
+            <LiaHandshake className="text-2xl" />
           </div>
 
           <h3 className="text-xl font-semibold text-gray-800 mb-2">
@@ -24,13 +31,13 @@ export default function FlexibleEngagementModels() {
 
           <ul className="space-y-2 text-gray-700">
             <li className="flex items-start gap-2">
-              <span className="text-teal-600">✔</span> 3–6 month trial period
+              <span className="text-teal-600"><Check /></span> 3–6 month trial period
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-teal-600">✔</span> Conversion option
+              <span className="text-teal-600"><Check /></span> Conversion option
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-teal-600">✔</span> Risk mitigation
+              <span className="text-teal-600"><Check /></span> Risk mitigation
             </li>
           </ul>
         </div>
@@ -43,7 +50,7 @@ export default function FlexibleEngagementModels() {
           </div>
 
           <div className="w-14 h-14 rounded-full bg-teal-200 flex items-center justify-center mb-6">
-            <span className="text-2xl">🌐</span>
+            <Globe className="text-2xl" />
           </div>
 
           <h3 className="text-xl font-semibold text-gray-800 mb-2">
@@ -56,13 +63,13 @@ export default function FlexibleEngagementModels() {
 
           <ul className="space-y-2 text-gray-700">
             <li className="flex items-start gap-2">
-              <span className="text-teal-600">✔</span> 100% dedicated resource
+              <span className="text-teal-600"><Check /></span> 100% dedicated resource
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-teal-600">✔</span> Global talent access
+              <span className="text-teal-600"><Check /></span> Global talent access
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-teal-600">✔</span> Long-term commitment
+              <span className="text-teal-600"><Check /></span> Long-term commitment
             </li>
           </ul>
         </div>
@@ -70,7 +77,7 @@ export default function FlexibleEngagementModels() {
         {/* Card 3 */}
         <div className="relative bg-white rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.15)] p-8">
           <div className="w-14 h-14 rounded-full bg-teal-200 flex items-center justify-center mb-6">
-            <span className="text-2xl">⏱️</span>
+            <Clock4 className="text-2xl" />
           </div>
 
           <h3 className="text-xl font-semibold text-gray-800 mb-2">
@@ -83,13 +90,13 @@ export default function FlexibleEngagementModels() {
 
           <ul className="space-y-2 text-gray-700">
             <li className="flex items-start gap-2">
-              <span className="text-teal-600">✔</span> Flexible hours
+              <span className="text-teal-600"><Check /></span> Flexible hours
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-teal-600">✔</span> Cost-effective
+              <span className="text-teal-600"><Check /></span> Cost-effective
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-teal-600">✔</span> Expert-level skills
+              <span className="text-teal-600"><Check /></span> Expert-level skills
             </li>
           </ul>
         </div>

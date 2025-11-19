@@ -1,6 +1,6 @@
 export default function ReadyToTransform() {
   return (
-    <section className="w-full bg-[#1BB7B6] py-24">
+    <section className="w-full bg-[#1BB7B6] py-15 px-4">
       <h2 className="text-center text-4xl font-semibold text-white mb-12">
         Ready to transform your hiring?
       </h2>
@@ -13,12 +13,12 @@ export default function ReadyToTransform() {
             Ready to hire?
           </h3>
 
-          <p className="text-white/90 text-base leading-relaxed mb-8 max-w-[320px] mx-auto">
+          <p className="text-white/90 text-base leading-relaxed mb-15 max-w-[320px] mx-auto">
             Access pre-vetted African tech talent and build diverse,
             high-performing teams.
           </p>
 
-          <button className="bg-white text-[#1BB7B6] font-medium w-full max-w-xs py-3 rounded-md mx-auto block text-lg">
+          <button className="bg-white  text-[#1BB7B6] font-medium w-full max-w-xs py-3 rounded-md mx-auto block text-lg">
             Book a Demo
           </button>
         </div>

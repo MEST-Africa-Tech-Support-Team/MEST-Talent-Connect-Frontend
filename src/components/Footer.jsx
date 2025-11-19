@@ -1,4 +1,9 @@
 import logoteal from "../assets/logoteal.png";
+import linkedin from "../assets/images/linkedin.png";
+import twitter from "../assets/images/twitter.png";
+import github from "../assets/images/github.png";
+
+
 
 
 
@@ -6,19 +11,19 @@ export default function Footer() {
   return (
     <footer className="w-full bg-[#2F2F2F] text-gray-300 py-16">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
-        
+
         {/* Logo + Description */}
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <img 
+            <img
               src={logoteal}
-              alt="Mest Logo" 
+              alt="Mest Logo"
               className="w-30 h-5"
             />
           </div>
 
           <p className="text-gray-400 leading-relaxed max-w-xs">
-            Connecting African tech talent  
+            Connecting African tech talent
             <br />with global opportunities.
           </p>
         </div>
@@ -53,12 +58,19 @@ export default function Footer() {
 
           {/* Social Icons */}
           <div className="flex items-center gap-4 mt-6">
-            <img src="/linkedin.svg" alt="LinkedIn" className="w-5 opacity-70 hover:opacity-100 cursor-pointer" />
-            <img src="/twitter.svg" alt="Twitter" className="w-5 opacity-70 hover:opacity-100 cursor-pointer" />
-            <img src="/github.svg" alt="GitHub" className="w-5 opacity-70 hover:opacity-100 cursor-pointer" />
+            <a href="https://gh.linkedin.com/school/mestafrica/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <img src={linkedin} alt="LinkedIn" className="w-5 opacity-70 hover:opacity-100 cursor-pointer" />
+            </a>
+
+            <a href="https://x.com/mestafrica?s=11&t=qynb_6x_ZzNoLO4kcIJxlw" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <img src={twitter} alt="Twitter" className="w-5 opacity-70 hover:opacity-100 cursor-pointer" />
+            </a>
+
+            <a href="https://github.com/AfriTalent" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <img src={github} alt="GitHub" className="w-5 opacity-70 hover:opacity-100 cursor-pointer" />
+            </a>
           </div>
         </div>
-
       </div>
 
       <div className="text-center text-gray-500 text-sm mt-12">

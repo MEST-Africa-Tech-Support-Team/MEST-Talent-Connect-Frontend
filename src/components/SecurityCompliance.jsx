@@ -1,22 +1,27 @@
+import shield from "../assets/images/shield.png";
+import lock from "../assets/images/lock.png";
+import checked from "../assets/images/checked.png";
+import anon from "../assets/images/anon.png";
+
 export default function SecurityCompliance() {
   const items = [
     {
-      icon: "/security/gdpr.png",
+      icon: shield,
       title: "GDPR Compliance",
       desc: "Full compliance with European data protection regulations",
     },
     {
-      icon: "/security/encryption.png",
+      icon: lock,
       title: "Data Encryption",
       desc: "End-to-end encryption for all sensitive data",
     },
     {
-      icon: "/security/consent.png",
+      icon: checked,
       title: "Consent Workflows",
       desc: "Automated consent management system",
     },
     {
-      icon: "/security/anon.png",
+      icon: anon,
       title: "Anonymized Profiles",
       desc: "Protected user identity management.",
     },
@@ -39,6 +44,7 @@ export default function SecurityCompliance() {
                 src={item.icon}
                 alt={item.title}
                 className="w-14 h-14 mb-1"
+                loading="lazy"
               />
 
               <h3 className="font-semibold text-lg text-gray-800">

@@ -1,4 +1,7 @@
-import { Play } from "lucide-react";
+import { Play, CircleQuestionMark, Heart, Globe,  } from "lucide-react";
+import sample1 from "../assets/images/sample1.jpg";
+import sample2 from "../assets/images/sample2.jpg"
+
 
 export default function ProvenResults() {
   return (
@@ -20,7 +23,7 @@ export default function ProvenResults() {
           {/* Item */}
           <div className="flex flex-col items-center">
             <div className="w-12 h-12 flex items-center justify-center rounded-full bg-teal-100 text-teal-600 mb-3">
-              <span className="text-2xl">❇️</span>
+              <CircleQuestionMark className="text-2xl" />
             </div>
             <h3 className="text-3xl font-bold text-[#0f172a]">95%</h3>
             <p className="text-teal-600 font-semibold uppercase text-sm mt-1">
@@ -33,7 +36,7 @@ export default function ProvenResults() {
 
           <div className="flex flex-col items-center">
             <div className="w-12 h-12 flex items-center justify-center rounded-full bg-teal-100 text-teal-600 mb-3">
-              <span className="text-2xl">💙</span>
+              <Heart className="text-2xl" />
             </div>
             <h3 className="text-3xl font-bold text-[#0f172a]">89%</h3>
             <p className="text-teal-600 font-semibold uppercase text-sm mt-1">
@@ -44,7 +47,7 @@ export default function ProvenResults() {
 
           <div className="flex flex-col items-center">
             <div className="w-12 h-12 flex items-center justify-center rounded-full bg-teal-100 text-teal-600 mb-3">
-              <span className="text-2xl">🌍</span>
+              <Globe className="text-2xl" />
             </div>
             <h3 className="text-3xl font-bold text-[#0f172a]">65%</h3>
             <p className="text-teal-600 font-semibold uppercase text-sm mt-1">
@@ -74,7 +77,7 @@ export default function ProvenResults() {
           <div className="rounded-xl overflow-hidden shadow">
             <div className="relative">
               <img
-                src="/images/testimonial1.jpg"
+                src={sample1}
                 alt="testimonial"
                 className="w-full"
               />
@@ -85,7 +88,7 @@ export default function ProvenResults() {
               </button>
 
               <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md shadow px-4 py-2 rounded-lg">
-                <p className="font-semibold text-sm">Michael Chen</p>
+                <p className="font-semibold text-sm">Michaela Adom Poku</p>
                 <p className="text-xs text-gray-500">CEO, TechFlow Solutions</p>
               </div>
             </div>
@@ -100,7 +103,7 @@ export default function ProvenResults() {
           <div className="rounded-xl overflow-hidden shadow">
             <div className="relative">
               <img
-                src="/images/testimonial2.jpg"
+                src={sample2}
                 alt="testimonial"
                 className="w-full"
               />
