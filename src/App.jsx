@@ -13,6 +13,9 @@ import OpenPositions from "./pages/OpenPositions.jsx";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 
 import Home from "./pages/Home.jsx";
+import Overview from "./pages/admin-dashboard/Overview.jsx";
+import EventManagement from "./pages/admin-dashboard/EventManagement.jsx";
+import TalentManaagement from "./pages/admin-dashboard/TalentManagement.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +39,10 @@ const router = createBrowserRouter([
   { path: "/register", element: <Register /> },
   { path: "/login", element: <Login /> },
   { path: "*", element: <Login /> },
+
+  { path: "/admin-dashboard", element: <Overview /> },
+  { path: "/admin-event-management", element: <EventManagement /> },
+  { path: "/admin-talent-management", element: <TalentManaagement /> },
 ]);
 
 export default function AppRoutes() {
