@@ -1,3 +1,9 @@
+import { Globe } from "lucide-react"
+import { MdGroups2 } from "react-icons/md";
+import { FaMedal } from "react-icons/fa";
+
+
+
 export default function SkillsShowcase() {
   return (
     <section className="w-full flex flex-col items-center text-center px-4 py-20">
@@ -16,7 +22,7 @@ export default function SkillsShowcase() {
       <div className="flex flex-col md:flex-row gap-12 md:gap-20 mb-14">
         {/* Item 1 */}
         <div className="flex flex-col items-center gap-3">
-          <div className="text-teal-500 text-4xl">🌐</div>
+          <div className="text-teal-500 text-4xl"><Globe /></div>
           <h4 className="font-semibold text-gray-800">Global Opportunities</h4>
           <p className="text-gray-500 text-sm max-w-[180px]">
             Work with companies worldwide
@@ -25,7 +31,7 @@ export default function SkillsShowcase() {
 
         {/* Item 2 */}
         <div className="flex flex-col items-center gap-3">
-          <div className="text-teal-500 text-4xl">👥</div>
+          <div className="text-teal-500 text-4xl"><MdGroups2 /></div>
           <h4 className="font-semibold text-gray-800">MEST Community</h4>
           <p className="text-gray-500 text-sm max-w-[180px]">
             Join a network of entrepreneurs
@@ -34,7 +40,7 @@ export default function SkillsShowcase() {
 
         {/* Item 3 */}
         <div className="flex flex-col items-center gap-3">
-          <div className="text-teal-500 text-4xl">🏅</div>
+          <div className="text-teal-500 text-4xl"><FaMedal /></div>
           <h4 className="font-semibold text-gray-800">Skill Verification</h4>
           <p className="text-gray-500 text-sm max-w-[180px]">
             Get recognized for your expertise

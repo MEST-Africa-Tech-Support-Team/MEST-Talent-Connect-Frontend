@@ -15,16 +15,13 @@ export default function HeroSection() {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         
         {/* LEFT CONTENT */}
-        <div>
-          <h1 className="text-4xl md:text-6xl font-bold text-[#1A1A1A] leading-tight mb-6">
-            World-class African tech
-            <br />
+        <div >
+          <h1 className=" text-4xl pb-5 md:text-6xl font-bold text-[#1A1A1A] leading-tight mb-6">
+            <span className=" text-6xl" >World-class African tech </span>
             talent.{" "}
             <span className="text-teal-500">Vetted.</span>
             <br />
-            Entrepreneurial. Global-
-            <br />
-            ready.
+            Entrepreneurial. Global-ready.
           </h1>
 
           <p className="text-gray-500 max-w-lg text-lg leading-relaxed mb-10">
@@ -81,7 +78,7 @@ export default function HeroSection() {
 
         {/* RIGHT IMAGE GRID */}
         <div className="grid grid-cols-2 gap-6 relative">
-            <div>
+            <div className=" ">
                 <img src={hero2} alt="Hero Image 2" className="rounded-3xl object-cover w-full h-full" />
             </div>
             <div className="mt-12">
