@@ -1,4 +1,3 @@
-// src/components/AdminDashboardHeader.jsx
 import React from "react";
 import { Bell } from "lucide-react";
 import { Link } from "react-router-dom";

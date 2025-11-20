@@ -1,12 +1,8 @@
-// src/pages/EventManagement.jsx
 import React, { useMemo, useState } from "react";
 import AdminSidebar from "../../components/AdminSidebar";
 import AdminDashboardHeader from "../../components/AdminDashboardHeader";
 import EventManagementCard from "../../components/EventManagementCard"; 
 import { BiSearch } from "react-icons/bi";
-
-// Local uploaded image from container
-const EVENT_IMAGE = "/mnt/data/Screenshot 2025-11-18 163348.png";
 
 const SAMPLE_EVENTS = [
   {
@@ -18,7 +14,7 @@ const SAMPLE_EVENTS = [
     endTime: "17:00",
     venue: "AICC",
     status: "Upcoming",
-    image: EVENT_IMAGE,
+    image: "",
   },
   {
     id: 2,
@@ -29,7 +25,7 @@ const SAMPLE_EVENTS = [
     endTime: "15:00",
     venue: "Buro",
     status: "Past",
-    image: EVENT_IMAGE,
+    image: "",
   },
   {
     id: 3,
@@ -40,7 +36,7 @@ const SAMPLE_EVENTS = [
     endTime: "16:00",
     venue: "Mest, Buro",
     status: "Upcoming",
-    image: EVENT_IMAGE,
+    image: "",
   },
   {
     id: 4,
@@ -51,7 +47,7 @@ const SAMPLE_EVENTS = [
     endTime: "21:00",
     venue: "National Theatre",
     status: "Past",
-    image: EVENT_IMAGE,
+    image: "",
   },
   {
     id: 5,
@@ -62,7 +58,7 @@ const SAMPLE_EVENTS = [
     endTime: "13:00",
     venue: "Takoradi",
     status: "Past",
-    image: EVENT_IMAGE,
+    image: "",
   },
   {
     id: 6,
@@ -73,7 +69,7 @@ const SAMPLE_EVENTS = [
     endTime: "17:00",
     venue: "Takoradi",
     status: "Past",
-    image: EVENT_IMAGE,
+    image: "",
   },
 ];
 

@@ -1,4 +1,3 @@
-// src/components/AdminSidebar.jsx
 import React from "react";
 import { NavLink } from "react-router-dom";
 import {
@@ -23,12 +22,12 @@ export default function AdminSidebar() {
 
   const items = [
     { id: "dashboard", label: "Dashboard", icon: <FaTachometerAlt />, path: "/admin-dashboard" },
-    { id: "employers", label: "Employers Management", icon: <FaUserTie />, path: "/employers" },
+    { id: "employers", label: "Employers Management", icon: <FaUserTie />, path: "/admin-employer-management" },
     { id: "talents", label: "Talents Management", icon: <FaUsers />, path: "/admin-talent-management" },
     { id: "events", label: "Event Management", icon: <FaCalendarPlus />, path: "/admin-event-management" },
-    { id: "feedback", label: "Feedback", icon: <FaCommentDots />, path: "/f" },
-    { id: "analytics", label: "Analytics", icon: <FaChartBar />, path: "/a" },
-    { id: "settings", label: "Settings", icon: <FaCog />, path: "/s" },
+    { id: "feedback", label: "Feedback", icon: <FaCommentDots />, path: "/admin-feedback" },
+    { id: "analytics", label: "Analytics", icon: <FaChartBar />, path: "/admin-analytics" },
+    { id: "settings", label: "Settings", icon: <FaCog />, path: "/admin-settings" },
   ];
 
   return (
