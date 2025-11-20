@@ -93,9 +93,9 @@ export default function ProvenResults() {
               </div>
             </div>
             <p className="text-gray-600 text-sm p-4">
-              “TalentBridge didn’t just fill positions—they helped us build a
-              world-class engineering culture. The quality of candidates and
-              speed of delivery exceeded all expectations.”
+              “Partnering with MestAfrica has revolutionized our hiring
+              process. Their rigorous vetting and understanding of our culture
+              meant we onboarded top-tier talent who hit the ground running.”
             </p>
           </div>
 
@@ -114,16 +114,16 @@ export default function ProvenResults() {
               </button>
 
               <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md shadow px-4 py-2 rounded-lg">
-                <p className="font-semibold text-sm">Sarah Rodriguez</p>
+                <p className="font-semibold text-sm">Sarah Aning</p>
                 <p className="text-xs text-gray-500">
                   CHRO, HealthFirst Group
                 </p>
               </div>
             </div>
             <p className="text-gray-600 text-sm p-4">
-              “The transformation in our diversity metrics has been remarkable.
-              TalentBridge brought us not just diverse candidates, but leaders
-              who are driving real change.”
+              “The talent we sourced through MestAfrica has been instrumental
+              in driving our innovation forward. Their candidates are not only
+              skilled but also align perfectly with our company values.”
             </p>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { FaExclamationTriangle, FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom"
 
 const mockPendingCheckins = [
   {
@@ -72,6 +73,10 @@ const mockTalentHistory = [
 ];
 
 export default function Feedback() {
+  const navigate = useNavigate();
+
+
+
   return (
     <div className="flex-1 bg-gray-50 min-h-screen p-6 md:p-10">
       {/* Header */}
@@ -114,7 +119,7 @@ export default function Feedback() {
               <p className="text-sm text-gray-600 mt-1">
                 {person.checkinType}
               </p>
-              <button className="mt-4 w-full bg-teal-500 hover:bg-teal-600 text-white py-2 rounded-lg text-sm font-medium">
+              <button onClick={() => navigate ('/feedback-form')} className="mt-4 w-full bg-teal-500 hover:bg-teal-600 text-white py-2 rounded-lg text-sm font-medium">
                 Submit Feedback
               </button>
             </div>
