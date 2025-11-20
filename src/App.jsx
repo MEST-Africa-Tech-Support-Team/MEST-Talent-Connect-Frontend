@@ -16,6 +16,13 @@ import FeedbackForm from "./pages/FeedbackForm.jsx";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 
 import Home from "./pages/Home.jsx";
+import Overview from "./pages/admin-dashboard/Overview.jsx";
+import EventManagement from "./pages/admin-dashboard/EventManagement.jsx";
+import TalentManaagement from "./pages/admin-dashboard/TalentManagement.jsx";
+import Analytics from "./pages/admin-dashboard/Analytics.jsx";
+import DashboardFeedback from "./pages/admin-dashboard/DashboardFeedback.jsx";
+import DashboardSettings from "./pages/admin-dashboard/DashboardSettings.jsx";
+import EmployersManagement from "./pages/admin-dashboard/EmployersManagement.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +48,15 @@ const router = createBrowserRouter([
   { path: "/register", element: <Register /> },
   { path: "/login", element: <Login /> },
   { path: "*", element: <Home /> },
+  { path: "*", element: <Login /> },
+
+  { path: "/admin-dashboard", element: <Overview /> },
+  { path: "/admin-employer-management", element: <EmployersManagement /> },
+  { path: "/admin-talent-management", element: <TalentManaagement /> },
+  { path: "/admin-event-management", element: <EventManagement /> },
+  { path: "/admin-feedback", element: <DashboardFeedback /> },
+  { path: "/admin-analytics", element: <Analytics /> },
+  { path: "/admin-settings", element: <DashboardSettings /> },
 ]);
 
 export default function AppRoutes() {
