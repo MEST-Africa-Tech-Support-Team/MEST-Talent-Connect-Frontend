@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext.jsx";
+
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export default function Login() {
@@ -11,6 +14,7 @@ export default function Login() {
     password: "",
   });
   const [message, setMessage] = useState("");
+  const { login } = useContext(AuthContext);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -26,9 +30,9 @@ export default function Login() {
       const token = res.data.token; 
 
       if (token) {
-        localStorage.setItem("token", token); // save token in browser
+        login(token, res.data.user); // save token in browser
         setMessage("Login successful!");
-        navigate("/"); // redirect to dashboard
+        navigate("/app"); // redirect to dashboard
       } else {
         setMessage("Login succeeded but no token found.");
       }

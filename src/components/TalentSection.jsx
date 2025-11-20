@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { BadgeCheck } from "lucide-react";
-import img from "../assets/images/img.png";
+import eli from "../assets/images/eli.jpg";
 
 const filters = ["All", "AI/ML", "Full-stack", "Data", "Product", "DevOps"];
 
@@ -48,14 +48,14 @@ export default function TalentsSection() {
               {/* PROFILE HEADER */}
               <div className="flex items-center gap-4 mb-4">
                 <img
-                  src={img}
+                  src={eli}
                   alt="profile"
                   className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover flex-shrink-0"
                 />
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
                     <h3 className="font-semibold text-base sm:text-lg truncate">
-                      Amara Boateng
+                      Christopher Boateng
                     </h3>
                     <BadgeCheck className="text-teal-500 text-base sm:text-xl" />
                   </div>

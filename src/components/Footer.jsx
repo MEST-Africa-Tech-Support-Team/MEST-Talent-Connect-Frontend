@@ -74,7 +74,7 @@ export default function Footer() {
       </div>
 
       <div className="text-center text-gray-500 text-sm mt-12">
-        © 2024 AfriTalent. All rights reserved.
+        © 2025 MestAfrica. All rights reserved.
       </div>
     </footer>
   );

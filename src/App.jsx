@@ -10,6 +10,9 @@ import BrowserTalent from "./pages/BrowserTalent.jsx";
 import HiringAnalytics from "./pages/HiringAnalytics.jsx";
 import CommunityEvents from "./pages/CommunityEvents.jsx";
 import OpenPositions from "./pages/OpenPositions.jsx";
+import PostRequirementForm from "./pages/PostRequirementForm.jsx";
+import FeedbackForm from "./pages/FeedbackForm.jsx";
+
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 
 import Home from "./pages/Home.jsx";
@@ -26,7 +29,7 @@ const router = createBrowserRouter([
     element: <ProtectedRoute />, // Protect everything inside Layout
     children: [
       {
-        path: "/app",
+        path: "/",
         element: <Layout />,
         children: [
           { index: true, element: <EmployerDashboard /> },
@@ -35,13 +38,16 @@ const router = createBrowserRouter([
           { path: "analytics", element: <HiringAnalytics /> },
           { path: "community-events", element: <CommunityEvents /> },
           { path: "open-positions", element: <OpenPositions /> },
+          { path: "post-requirement", element: <PostRequirementForm /> },
+          { path: "feedback-form", element: <FeedbackForm /> }
         ],
       },
     ],
   },
-  { path: "/", element: <Home /> },
+  // { path: "/", element: <Home /> },
   { path: "/register", element: <Register /> },
   { path: "/login", element: <Login /> },
+  { path: "*", element: <Home /> },
   { path: "*", element: <Login /> },
 
   { path: "/admin-dashboard", element: <Overview /> },

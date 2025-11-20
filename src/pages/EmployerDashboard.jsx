@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
-import StatCard from "../components/StatCard";
-import HiringPipelineChart from "../components/HiringPipelineChart";
-import SmallLineChart from "../components/SmallLineChart";
-import GaugeChart from "../components/GaugeChart";
+import Header from "../components/Header.jsx";
+import StatCard from "../components/StatCard.jsx";
+import HiringPipelineChart from "../components/HiringPipelineChart.jsx";
+import SmallLineChart from "../components/SmallLineChart.jsx";
+import GaugeChart from "../components/GaugeChart.jsx";
 import { FiUsers, FiCheckSquare, FiClock, FiStar } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import {
@@ -14,6 +14,10 @@ import {
   fetchActiveCandidates,
   fetchNewTalent,
 } from "../../api/client";
+import PostRequirementForm from "./PostRequirementForm.jsx";
+
+
+
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -30,6 +34,7 @@ export default function Dashboard() {
     greetingMessage: "",
   });
   const [loading, setLoading] = useState(true);
+  const [showPostForm, setShowPostForm] = useState(false);
 
   // Redirect if no token
   useEffect(() => {
@@ -195,7 +200,7 @@ export default function Dashboard() {
               <button className="w-full bg-teal-600 text-white py-3 rounded-lg mb-3">
                 🔍 Browse Talent
               </button>
-              <button className="w-full border border-teal-600 text-teal-600 py-3 rounded-lg">
+              <button onClick={() => navigate('/post-requirement')} className="w-full border border-teal-600 text-teal-600 py-3 rounded-lg hover:bg-teal-200">
                 + New Post
               </button>
             </div>
