@@ -1,8 +1,8 @@
-// src/pages/Overview.jsx
 import React, { useMemo, useState } from "react";
 import AdminSidebar from "../../components/AdminSidebar";
 import AdminDashboardHeader from "../../components/AdminDashboardHeader";
-import { FaCalendarAlt, FaUsers, FaClipboardList, FaBuilding,FaCheck, FaFolderOpen } from "react-icons/fa";
+import { FaCalendar, FaUsers, FaFileAlt, FaBook, FaCheck, FaFile } from "react-icons/fa";
+import { FaDollarSign } from "react-icons/fa6";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
@@ -59,7 +59,6 @@ const initialEmployers = [
     status: "Completed",
     submitted: "May 10, 2025",
   },
-  // add more rows to test pagination/scroll
   {
     id: 6,
     name: "Anna Bell",
@@ -143,7 +142,7 @@ export default function Overview() {
   const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
   const paged = filtered.slice((page - 1) * pageSize, page * pageSize);
 
-  // small helper to reset page if filtered content shrinks
+  // Reset page if filtered content shrinks
   React.useEffect(() => {
     if (page > totalPages) setPage(1);
   }, [totalPages, page]);
@@ -162,8 +161,8 @@ export default function Overview() {
               <p className="text-xl font-semibold">1,205</p>
               <p className="text-xs text-green-500 mt-1">+12% from last month</p>
             </div>
-            <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-indigo-50">
-              <FaUsers className="text-indigo-600 text-lg" />
+            <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-[#B627A1]">
+              <FaUsers className="text-white text-lg" />
             </div>
           </div>
 
@@ -174,8 +173,8 @@ export default function Overview() {
               <p className="text-xl font-semibold">342</p>
               <p className="text-xs text-orange-500 mt-1">This month</p>
             </div>
-            <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-orange-50">
-              <FaClipboardList className="text-orange-600 text-lg" />
+            <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-[#FF6221]">
+              <FaFileAlt className="text-white text-lg" />
             </div>
           </div>
 
@@ -186,8 +185,8 @@ export default function Overview() {
               <p className="text-xl font-semibold">Tech Bootcamp</p>
               <p className="text-xs text-teal-500 mt-1">Nov 14, 2024</p>
             </div>
-            <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-teal-50">
-              <FaCalendarAlt className="text-teal-600 text-lg" />
+            <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-[#28BBBB]">
+              <FaCalendar className="text-white text-lg" />
             </div>
           </div>
 
@@ -198,8 +197,8 @@ export default function Overview() {
               <p className="text-xl font-semibold">4</p>
               <p className="text-xs text-green-500 mt-1">2 starting soon</p>
             </div>
-            <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-yellow-50">
-              <FaBuilding className="text-yellow-600 text-lg" />
+            <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-[#FFBC45]">
+              <FaBook className="text-white text-lg" />
             </div>
           </div>
         </div>
@@ -220,21 +219,23 @@ export default function Overview() {
               <h4 className="text-md font-medium mb-3">Recent Activities</h4>
               <ul className="space-y-3 text-sm text-gray-700">
                 <li className="flex items-start gap-3">
-                  <span className="inline-block w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center"><FaCheck /></span>
+                  <span className="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center"><FaCheck /></span>
                   <div>
                     <div className="font-medium">New applicant joined MEST Fellowship 2025</div>
                     <div className="text-xs text-gray-500">Kwame Mensah • 2 hours ago</div>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="inline-block w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center"><FaFolderOpen /></span>
+                  <span className="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center"><FaFile /></span>
                   <div>
                     <div className="font-medium">Techpreneur 2024 applications closed</div>
                     <div className="text-xs text-gray-500">System • 5 hours ago</div>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="inline-block w-8 h-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center">$</span>
+                  <span className="w-8 h-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center">
+                    <FaDollarSign />
+                  </span>
                   <div>
                     <div className="font-medium">$5,000 funding disbursed to AgriLink</div>
                     <div className="text-xs text-gray-500">Finance Team • 1 day ago</div>
@@ -372,7 +373,7 @@ export default function Overview() {
   );
 }
 
-// small component: StatusBadge
+// Component: StatusBadge
 function StatusBadge({ status }) {
   const map = {
     "Pending": "bg-yellow-50 text-yellow-700",

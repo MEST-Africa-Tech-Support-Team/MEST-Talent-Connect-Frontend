@@ -1,4 +1,3 @@
-// src/pages/TalentManagement.jsx
 import React, { useMemo, useState, useEffect } from "react";
 import AdminSidebar from "../../components/AdminSidebar";
 import AdminDashboardHeader from "../../components/AdminDashboardHeader.jsx";
@@ -10,10 +9,6 @@ import {
   FaEllipsisV,
 } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
-
-// Use the uploaded screenshot as a logo placeholder per instructions:
-// (tooling will convert this local path to a usable URL).
-const UPLOADED_LOGO = "/mnt/data/Screenshot 2025-11-18 163844.png";
 
 const SAMPLE_TALENTS = [
   {
@@ -66,28 +61,27 @@ const SAMPLE_TALENTS = [
     employment: "Available",
     lastActive: "7 hours ago",
   },
-  // add more rows while testing if desired
 ];
 
 export default function TalentManagement() {
-  // filters & search
+  // Filters & search
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState(""); // "", "Active", "Onboarding"
   const [programFilter, setProgramFilter] = useState("");
-  // pagination
+  // Pagination
   const [page, setPage] = useState(1);
   const PAGE_SIZE = 5;
 
-  // data (would usually come from API)
+  // Data (would usually come from API)
   const [talents] = useState(SAMPLE_TALENTS);
 
-  // derive programs for filter options
+  // Derive programs for filter options
   const programOptions = useMemo(() => {
     const unique = Array.from(new Set(talents.map((t) => t.program))).sort();
     return unique;
   }, [talents]);
 
-  // filter & search logic
+  // Filter & search logic
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
     return talents.filter((t) => {
@@ -101,15 +95,14 @@ export default function TalentManagement() {
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const paged = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
-  // reset page if filters reduce results
+  // Reset page if filters reduce results
   useEffect(() => {
     if (page > totalPages) setPage(1);
   }, [totalPages, page]);
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
-      {/* Sidebar - pass logo path */}
-      <AdminSidebar logoImagePath={UPLOADED_LOGO} />
+      <AdminSidebar />
 
       <main className="ml-16 md:ml-64 flex-1 bg-gray-50 min-h-screen overflow-x-hidden">
         <AdminDashboardHeader
@@ -126,8 +119,7 @@ export default function TalentManagement() {
             value="1,247"
             meta="+12% this month"
             icon={<FaUsers className="text-white text-lg" />}
-            iconBg="bg-purple-600"
-            iconWrap="bg-purple-100"
+            iconBg="bg-[#B627A1]"
           />
 
           <StatCard
@@ -135,8 +127,7 @@ export default function TalentManagement() {
             value="892"
             meta="71.5% verified"
             icon={<FaUserCheck className="text-white text-lg" />}
-            iconBg="bg-yellow-500"
-            iconWrap="bg-yellow-50"
+            iconBg="bg-[#FFBC45]"
           />
 
           <StatCard
@@ -144,8 +135,7 @@ export default function TalentManagement() {
             value="456"
             meta="36.6% placement rate"
             icon={<FaBriefcase className="text-white text-lg" />}
-            iconBg="bg-teal-600"
-            iconWrap="bg-teal-50"
+            iconBg="bg-[#28BBBB]"
           />
 
           <StatCard
@@ -153,8 +143,7 @@ export default function TalentManagement() {
             value="67"
             meta="Needs attention"
             icon={<FaClock className="text-white text-lg" />}
-            iconBg="bg-orange-500"
-            iconWrap="bg-orange-50"
+            iconBg="bg-[#FF6221]"
           />
         </div>
 
@@ -354,7 +343,7 @@ export default function TalentManagement() {
   );
 }
 
-/* ---------- small helper components ---------- */
+/* ---------- Small components ---------- */
 
 function StatCard({ title, value, meta, icon, iconBg = "bg-teal-600", iconWrap = "bg-teal-50" }) {
   return (
@@ -365,9 +354,7 @@ function StatCard({ title, value, meta, icon, iconBg = "bg-teal-600", iconWrap =
         <p className="text-xs text-green-500 mt-1">{meta}</p>
       </div>
 
-      <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${iconWrap}`}>
-        <div className={`${iconBg} w-9 h-9 rounded-md flex items-center justify-center`}>{icon}</div>
-      </div>
+      <div className={`${iconBg} w-12 h-12 rounded-lg flex items-center justify-center`}>{icon}</div>
     </div>
   );
 }
