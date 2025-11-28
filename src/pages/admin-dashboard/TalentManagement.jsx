@@ -108,7 +108,6 @@ export default function TalentManagement() {
         <AdminDashboardHeader
           title="Talent Management"
           subtitle="Oversee all MEST talent users and maintain quality standards"
-          showAddButton={true}
           user={{ fullName: "John Admin" }}
         />
 

@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import AdminSidebar from "../../components/AdminSidebar";
 import AdminDashboardHeader from "../../components/AdminDashboardHeader";
-import { FaCalendar, FaUsers, FaFileAlt, FaBook, FaCheck, FaFile } from "react-icons/fa";
+import { FaCalendar, FaUsers, FaFileAlt, FaBook, FaCheck, FaFile, FaPlus, FaUserPlus, FaSearch } from "react-icons/fa";
 import { FaDollarSign } from "react-icons/fa6";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { Bar } from "react-chartjs-2";
@@ -97,9 +97,9 @@ export default function Overview() {
         {
           label: "Applications",
           data: [150, 220, 180, 250, 280, 320],
-          backgroundColor: "#0d9488",   // teal-600
+          backgroundColor: "#28BBBB",   // teal-600
           borderColor: "#0f766e",
-          borderRadius: 6,
+          borderRadius: 2,
           maxBarThickness: 40,
         },
       ],
@@ -153,7 +153,7 @@ export default function Overview() {
       {/* Main content area */}
       <div className="ml-16 md:ml-64 flex-1 bg-gray-50 min-h-screen overflow-x-hidden">
         <AdminDashboardHeader />
-        <div className="mt-6 grid grid-cols-1 lg:grid-cols-4 gap-4 p-4">
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
           {/* Card 1 */}
           <div className="bg-white rounded-lg shadow-sm p-4 flex items-center justify-between">
             <div>
@@ -247,10 +247,10 @@ export default function Overview() {
             <div className="bg-white rounded-lg shadow-sm p-4">
               <h4 className="text-md font-medium mb-3">Quick Actions</h4>
               <div className="flex flex-col gap-3">
-                <button className="w-full text-left px-4 py-3 rounded-lg border border-teal-300 bg-teal-50 text-teal-700 font-medium">Approve Employer</button>
-                <button className="w-full text-left px-4 py-3 rounded-lg border border-gray-200">+ New Event</button>
-                <button className="w-full text-left px-4 py-3 rounded-lg border border-gray-200">Review Apps</button>
-                <button className="w-full text-left px-4 py-3 rounded-lg border border-gray-200">Send Alert</button>
+                <button className="w-full text-left px-4 py-3 rounded-lg text-[#28BBBB] border-2 border-[#28BBBB] hover:bg-[#28BBBB] hover:text-white font-medium  flex gap-2 items-center"><FaUserPlus /> Approve Employer</button>
+                <button className="w-full text-left px-4 py-3 rounded-lg text-[#28BBBB] border-2 border-[#28BBBB] hover:bg-[#28BBBB] hover:text-white font-medium flex gap-2 items-center"><FaPlus /> New Event</button>
+                <button className="w-full text-left px-4 py-3 rounded-lg text-[#28BBBB] border-2 border-[#28BBBB] hover:bg-[#28BBBB] hover:text-white font-medium  flex gap-2 items-center"><FaSearch /> Review Apps</button>
+                <button className="w-full text-left px-4 py-3 rounded-lg text-[#28BBBB] border-2 border-[#28BBBB] hover:bg-[#28BBBB] hover:text-white font-medium  flex gap-2 items-center">Send Alert</button>
               </div>
             </div>
           </div>

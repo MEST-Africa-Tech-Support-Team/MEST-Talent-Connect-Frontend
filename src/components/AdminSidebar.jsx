@@ -16,13 +16,13 @@ export default function AdminSidebar() {
   const linkClass = ({ isActive }) =>
     `flex items-center justify-center md:justify-start px-2 md:px-5 py-3 rounded-md transition text-sm ${
       isActive
-        ? "bg-teal-600 text-white"
+        ? "bg-[#28BBBB] text-white"
         : "text-gray-600 hover:bg-teal-50 hover:text-teal-700"
     }`;
 
   const items = [
     { id: "dashboard", label: "Dashboard", icon: <FaTachometerAlt />, path: "/admin-dashboard" },
-    { id: "employers", label: "Employers Management", icon: <FaUserTie />, path: "/admin-employer-management" },
+    { id: "employers", label: "Employers Management", icon: <FaUserTie />, path: "/admin-employers-management" },
     { id: "talents", label: "Talents Management", icon: <FaUsers />, path: "/admin-talent-management" },
     { id: "events", label: "Event Management", icon: <FaCalendarPlus />, path: "/admin-event-management" },
     { id: "feedback", label: "Feedback", icon: <FaCommentDots />, path: "/admin-feedback" },
