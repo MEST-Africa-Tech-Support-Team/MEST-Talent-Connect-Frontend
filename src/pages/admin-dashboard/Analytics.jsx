@@ -118,7 +118,6 @@ export default function Analytics() {
           title="Analytics"
           subtitle="Overview of hiring, pipeline, and requested skills"
           user={{ fullName: "John Admin" }}
-          showAddButton={false}
         />
 
         {/* Top stat cards */}

@@ -18,18 +18,20 @@ import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 import Home from "./pages/Home.jsx";
 import Overview from "./pages/admin-dashboard/Overview.jsx";
 import EventManagement from "./pages/admin-dashboard/EventManagement.jsx";
+import EmployersManagement from "./pages/admin-dashboard/EmployersManagement.jsx";
+import EmployerProfile from "./pages/admin-dashboard/EmployerProfile.jsx";
 import TalentManaagement from "./pages/admin-dashboard/TalentManagement.jsx";
 import Analytics from "./pages/admin-dashboard/Analytics.jsx";
 import DashboardFeedback from "./pages/admin-dashboard/DashboardFeedback.jsx";
 import DashboardSettings from "./pages/admin-dashboard/DashboardSettings.jsx";
-import EmployersManagement from "./pages/admin-dashboard/EmployersManagement.jsx";
+import MoreEmployersManagement from "./pages/admin-dashboard/MoreEmployersManagement.jsx";
 
 const router = createBrowserRouter([
   {
     element: <ProtectedRoute />, // Protect everything inside Layout
     children: [
       {
-        path: "/",
+        path: "/app",
         element: <Layout />,
         children: [
           { index: true, element: <EmployerDashboard /> },
@@ -44,14 +46,14 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // { path: "/", element: <Home /> },
+  { path: "/", element: <Home /> },
   { path: "/register", element: <Register /> },
   { path: "/login", element: <Login /> },
-  { path: "*", element: <Home /> },
-  { path: "*", element: <Login /> },
 
   { path: "/admin-dashboard", element: <Overview /> },
-  { path: "/admin-employer-management", element: <EmployersManagement /> },
+  { path: "/admin-employers-management", element: <EmployersManagement /> },
+  { path: "/admin-employer-profile", element: <EmployerProfile /> },
+  { path: "/admin-more-employers-management", element: <MoreEmployersManagement /> },
   { path: "/admin-talent-management", element: <TalentManaagement /> },
   { path: "/admin-event-management", element: <EventManagement /> },
   { path: "/admin-feedback", element: <DashboardFeedback /> },
