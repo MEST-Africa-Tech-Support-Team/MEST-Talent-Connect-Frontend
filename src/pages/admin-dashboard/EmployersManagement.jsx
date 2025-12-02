@@ -77,9 +77,9 @@ export default function EmployersManagement() {
                   <FaEye size={16} /> View More
                 </Link>
 
-                <button className="px-4 py-2 bg-[#28BBBB] border border-[#28BBBB] text-white rounded-md text-sm flex items-center gap-2">
+                <Link to={"/admin-add-employer"} className="px-4 py-2 bg-[#28BBBB] border border-[#28BBBB] text-white rounded-md text-sm flex items-center gap-2">
                   <FaPlus size={16} /> Add Employer
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -137,8 +137,8 @@ export default function EmployersManagement() {
                         <td>
                           <span
                             className={`px-3 py-1 rounded-full text-sm text-white ${item.status === "Verified"
-                                ? "bg-[#28BBBB]"
-                                : "bg-[#FF6221]"
+                              ? "bg-[#28BBBB]"
+                              : "bg-[#FF6221]"
                               }`}
                           >
                             {item.status}

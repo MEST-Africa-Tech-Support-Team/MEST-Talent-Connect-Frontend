@@ -7,8 +7,10 @@ import {
   FaBriefcase,
   FaClock,
   FaEllipsisV,
+  FaEye,
 } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
+import { Link } from "react-router";
 
 const SAMPLE_TALENTS = [
   {
@@ -69,8 +71,8 @@ export default function TalentManagement() {
   const [statusFilter, setStatusFilter] = useState(""); // "", "Active", "Onboarding"
   const [programFilter, setProgramFilter] = useState("");
   // Pagination
-  const [page, setPage] = useState(1);
-  const PAGE_SIZE = 5;
+  // const [page, setPage] = useState(1);
+  // const PAGE_SIZE = 5;
 
   // Data (would usually come from API)
   const [talents] = useState(SAMPLE_TALENTS);
@@ -92,13 +94,13 @@ export default function TalentManagement() {
     });
   }, [talents, search, statusFilter, programFilter]);
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
-  const paged = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  // const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  // const paged = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   // Reset page if filters reduce results
-  useEffect(() => {
-    if (page > totalPages) setPage(1);
-  }, [totalPages, page]);
+  // useEffect(() => {
+  //   if (page > totalPages) setPage(1);
+  // }, [totalPages, page]);
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
@@ -149,58 +151,7 @@ export default function TalentManagement() {
         {/* Filters & Search */}
         <div className="mt-6 bg-white rounded-lg shadow-sm p-4 m-4">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4">
-            <div className="flex items-center gap-3">
-              <div className="inline-flex items-center gap-2 text-sm text-gray-700">
-                <svg
-                  className="w-4 h-4 text-gray-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M3 4a1 1 0 011-1h2a1 1 0 011 1v0a1 1 0 001 1h8a1 1 0 001-1v0a1 1 0 011-1h2a1 1 0 011 1v16a1 1 0 01-1 1h-2a1 1 0-01-1-1v0a1 1 0-001-1H8a1 1 0-00-1 1v0a1 1 0-01-1 1H3z"
-                  />
-                </svg>
-                <span className="font-medium">Filters:</span>
-              </div>
-
-              {/* Status filter */}
-              <select
-                className="border rounded-md px-3 py-2 text-sm"
-                value={statusFilter}
-                onChange={(e) => {
-                  setStatusFilter(e.target.value);
-                  setPage(1);
-                }}
-              >
-                <option value="">All Status</option>
-                <option value="Active">Active</option>
-                <option value="Onboarding">Onboarding</option>
-              </select>
-
-              {/* Program filter */}
-              <select
-                className="border rounded-md px-3 py-2 text-sm"
-                value={programFilter}
-                onChange={(e) => {
-                  setProgramFilter(e.target.value);
-                  setPage(1);
-                }}
-              >
-                <option value="">All Programs</option>
-                {programOptions.map((p) => (
-                  <option key={p} value={p}>
-                    {p}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Search and Add talent button */}
-            <div className="ml-auto w-full md:w-1/3 flex items-center gap-3">
+            <div className="flex items-center gap-3 flex-col md:flex-row">
               <div className="relative flex-1">
                 <BiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                 <input
@@ -209,15 +160,54 @@ export default function TalentManagement() {
                   value={search}
                   onChange={(e) => {
                     setSearch(e.target.value);
-                    setPage(1);
+                    // setPage(1);
                   }}
                   className="w-full pl-10 pr-3 py-2 border rounded-md text-sm"
                 />
               </div>
 
-              <button className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-md text-sm">
+              <div className="flex gap-3">
+                {/* Status filter */}
+                <select
+                  className="border rounded-md px-3 py-2 text-sm"
+                  value={statusFilter}
+                  onChange={(e) => {
+                    setStatusFilter(e.target.value);
+                    // setPage(1);
+                  }}
+                >
+                  <option value="">All Status</option>
+                  <option value="Active">Active</option>
+                  <option value="Onboarding">Onboarding</option>
+                </select>
+                {/* Program filter */}
+                <select
+                  className="border rounded-md px-3 py-2 text-sm"
+                  value={programFilter}
+                  onChange={(e) => {
+                    setProgramFilter(e.target.value);
+                    setPage(1);
+                  }}
+                >
+                  <option value="">All Programs</option>
+                  {programOptions.map((p) => (
+                    <option key={p} value={p}>
+                      {p}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            {/* Add talent button */}
+            <div className="ml-auto w-full md:w-1/4 flex items-center gap-3">
+              <Link to={"/admin-more-talent-management"} className="px-4 py-2 border border-[#28BBBB] hover:bg-[#28BBBB] hover:text-white transition rounded-md text-sm font-medium text-[#28BBBB] flex items-center gap-2 whitespace-nowrap">
+                <FaEye size={16} /> View More
+              </Link>
+
+              <Link to={"/admin-add-talent"} className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-md text-sm whitespace-nowrap">
                 + Add Talent
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -228,9 +218,6 @@ export default function TalentManagement() {
             <table className="min-w-[900px] w-full text-left">
               <thead className="text-sm text-gray-500">
                 <tr>
-                  <th className="py-3 pr-6 w-8">
-                    <input type="checkbox" />
-                  </th>
                   <th className="py-3 pr-6">Talent</th>
                   <th className="py-3 pr-6">Program</th>
                   <th className="py-3 pr-6">Status</th>
@@ -242,11 +229,8 @@ export default function TalentManagement() {
               </thead>
 
               <tbody className="text-sm">
-                {paged.map((t) => (
+                {filtered.map((t) => (
                   <tr key={t.id} className="border-t">
-                    <td className="py-4 pr-6 align-top">
-                      <input type="checkbox" />
-                    </td>
 
                     <td className="py-4 pr-6 align-top">
                       <div className="flex items-center gap-3">
@@ -285,19 +269,19 @@ export default function TalentManagement() {
                   </tr>
                 ))}
 
-                {paged.length === 0 && (
+                {/* {paged.length === 0 && (
                   <tr>
                     <td colSpan="8" className="py-8 text-center text-gray-500">
                       No results
                     </td>
                   </tr>
-                )}
+                )} */}
               </tbody>
             </table>
           </div>
 
           {/* Pagination & summary */}
-          <div className="mt-4 flex items-center justify-between border-t p-3">
+          {/* <div className="mt-4 flex items-center justify-between border-t p-3">
             <div className="text-sm text-gray-500">
               Showing {filtered.length === 0 ? 0 : (page - 1) * PAGE_SIZE + 1} to{" "}
               {Math.min(page * PAGE_SIZE, filtered.length)} of {filtered.length} results
@@ -335,7 +319,7 @@ export default function TalentManagement() {
                 Next
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </main>
     </div>
