@@ -145,10 +145,16 @@ export default function MoreEmployersManagement() {
             <div className="flex-1 min-w-0">
 
               {/* Back nav */}
-              <div className="mb-4">
+              <div className="mb-4 flex justify-between align-top">
                 <Link to={"/admin-employers-management"} className="flex items-center text-teal-600 text-sm font-medium hover:underline">
                   <FaArrowLeft size={12} className="mr-2" />
                   Back to Employer Management
+                </Link>
+
+                <Link to={"/admin-add-employer"}
+                  className="flex items-center gap-2 bg-teal-600 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap"
+                >
+                  <FiPlus /> Add Employer
                 </Link>
               </div>
 
@@ -222,12 +228,7 @@ export default function MoreEmployersManagement() {
                   <div className="md:flex md:gap-4">
                     {/* right side: Add Employer / sort */}
                     <div className="ml-auto flex items-center gap-3">
-                      <button
-                        className="flex items-center gap-2 bg-teal-600 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap"
-                        onClick={() => alert("Open Add Employer modal (stub)")}
-                      >
-                        <FiPlus /> Add Employer
-                      </button>
+
                       <select
                         className="text-sm border rounded-lg px-3 py-2 bg-white"
                         value={sortBy}
@@ -368,7 +369,7 @@ export default function MoreEmployersManagement() {
 
             {/* 2. RIGHT SIDE (Action Center): Full width on mobile, fixed width (320px) and sticky on desktop. */}
             <div className="w-full lg:w-[320px]">
-              <aside className="lg:sticky lg:top-24">
+              <aside className="lg:sticky lg:top-8">
                 <div className="bg-white rounded-lg shadow-sm p-4 w-full">
                   <h3 className="font-semibold mb-3">Action Center</h3>
 
