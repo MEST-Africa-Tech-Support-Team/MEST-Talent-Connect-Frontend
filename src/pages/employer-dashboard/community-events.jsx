@@ -1,8 +1,6 @@
 import React from "react";
 import { FiCalendar, FiUsers, FiClock, FiFileText, FiArrowRight } from "react-icons/fi";
 
-// Reference screenshot (available in the workspace):
-// /mnt/data/Events and communities 1.png
 
 export default function EventsDashboard() {
   return (

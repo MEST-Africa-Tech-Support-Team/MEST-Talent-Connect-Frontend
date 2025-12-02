@@ -4,12 +4,12 @@ import { NavLink } from "react-router-dom";
 import logoteal from '../assets/logoteal.png';
 
 const nav = [
-    { to: "/", label: "Dashboard", icon: <HiHome /> },
-    { to: "/browse-talent", label: "Browse Talent", icon: <HiUserGroup /> },
-    { to: "/open-positions", label: "Open Positions", icon: <HiClipboardList /> },
-    { to: "/feedback", label: "Feedback", icon: <HiChatAlt2 /> },
-    { to: "/analytics", label: "Hiring Analytics", icon: <HiChartBar /> },
-    { to: "/community-events", label: "Community & Events", icon: <HiCalendar /> },
+    { label: "Dashboard", to: "/employer/dashboard", icon: <HiHome /> },
+    { label: "Browse Talent", to: "/employer/browse-talent", icon: <HiUserGroup /> },
+    { label: "Open Positions", to: "/employer/open-positions", icon: <HiClipboardList /> },
+    { label: "Feedback", to: "/employer/feedback", icon: <HiChatAlt2 /> },
+    { label: "Hiring Analytics", to: "/employer/hiring-analytics", icon: <HiChartBar /> },
+    { label: "Community & Events", to: "/employer/community-events", icon: <HiCalendar /> },
 ];
 
 export default function Sidebar({ collapsed = false }) {

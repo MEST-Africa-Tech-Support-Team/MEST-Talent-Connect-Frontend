@@ -39,13 +39,13 @@ export default function Navbar() {
                 {/* Buttons */}
                 <div className="hidden md:flex items-center gap-4">
                     <Link
-                        to="/login"
+                        to="/app"
                         className="px-6 py-2 border border-teal-500 text-teal-600 rounded-md font-semibold hover:bg-teal-50 transition"
                     >
                         Login
                     </Link>
                     <Link
-                        to="/register" 
+                        to="#" 
                     className="px-6 py-2 bg-teal-500 text-white rounded-md font-semibold hover:bg-teal-600 transition">
                         Get Started
                     </Link>
@@ -100,14 +100,14 @@ export default function Navbar() {
 
                     <div className="pt-2 border-t border-gray-100 flex flex-col gap-3">
                         <Link
-                            to="/login"
+                            to="/app"
                             onClick={() => setOpen(false)}
                             className="px-4 py-2 border border-teal-500 text-teal-600 rounded-md font-semibold text-center"
                         >
                             Login
                         </Link>
                         <Link
-                            to="/register"
+                            to="#"
                             onClick={() => setOpen(false)}
                             className="px-4 py-2 bg-teal-500 text-white rounded-md font-semibold hover:bg-teal-600 transition"
                         >

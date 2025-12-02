@@ -1,8 +1,10 @@
 import React from "react";
-import PositionCard from "../components/PositionCard";
+import PositionCard from "../../components/PositionCard.jsx";
 import { FiClock } from "react-icons/fi";
 import { FaFolderOpen, FaRegCircleCheck } from "react-icons/fa6";
 import { FaUserCheck } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import PostRequirementForm from "./post-requirement.jsx";
 
 // Mock data for positions
 const positions = [
@@ -118,9 +120,10 @@ export default function OpenPositions() {
             </p>
           </div>
 
-          <button className="bg-[#28BBBB] text-white px-4 py-2 rounded-lg">
+          <button onClick={() => navigate('/employer/post-requirement')} className="bg-[#28BBBB] text-white px-4 py-2 rounded-lg hover:bg-[#20a1a1]">
             + Post New Position
           </button>
+          
         </div>
 
         <hr className="mb-6" />
@@ -147,3 +150,6 @@ export default function OpenPositions() {
     </div>
   );
 }
+
+
+

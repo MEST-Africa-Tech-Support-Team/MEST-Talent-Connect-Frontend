@@ -119,7 +119,7 @@ export default function Feedback() {
               <p className="text-sm text-gray-600 mt-1">
                 {person.checkinType}
               </p>
-              <button onClick={() => navigate ('/feedback-form')} className="mt-4 w-full bg-teal-500 hover:bg-teal-600 text-white py-2 rounded-lg text-sm font-medium">
+              <button onClick={() => navigate ('/employer/feedback-form')} className="mt-4 w-full bg-teal-500 hover:bg-teal-600 text-white py-2 rounded-lg text-sm font-medium">
                 Submit Feedback
               </button>
             </div>

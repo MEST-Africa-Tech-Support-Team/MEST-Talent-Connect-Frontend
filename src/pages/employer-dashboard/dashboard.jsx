@@ -1,20 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header.jsx";
-import StatCard from "../components/StatCard.jsx";
-import HiringPipelineChart from "../components/HiringPipelineChart.jsx";
-import SmallLineChart from "../components/SmallLineChart.jsx";
-import GaugeChart from "../components/GaugeChart.jsx";
+// import Header from "../../components/Header.jsx";
+import StatCard from "../../components/StatCard.jsx";
+import HiringPipelineChart from "../../components/HiringPipelineChart.jsx";
+import SmallLineChart from "../../components/SmallLineChart.jsx";
+import GaugeChart from "../../components/GaugeChart.jsx";
 import { FiUsers, FiCheckSquare, FiClock, FiStar } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import {
-  apiClient,
-  fetchHiringPipeline,
-  fetchHiringStatistics,
-  fetchTotalHired,
-  fetchActiveCandidates,
-  fetchNewTalent,
-} from "../../api/client";
-import PostRequirementForm from "./PostRequirementForm.jsx";
+import { fetchHiringPipeline, fetchHiringStatistics, fetchTotalHired, fetchActiveCandidates, fetchNewTalent } from "../../../api/client.js";
+import PostRequirementForm from "./post-requirement.jsx";
 
 
 
@@ -140,11 +133,11 @@ export default function Dashboard() {
 
   return (
     <div className="flex-1 flex flex-col">
-      <Header profile={profile} />
+      {/* <Header profile={profile} /> */}
 
       <main className="p-6 md:p-8 lg:p-10">
         {/*  Welcome Banner */}
-        <div className="bg-gradient-to-r from-teal-500 to-teal-400 text-white rounded-xl p-6 md:p-8 mb-6 shadow-sm">
+        <div className="bg-linear-to-r from-teal-500 to-teal-400 text-white rounded-xl p-6 md:p-8 mb-6 shadow-sm">
           <h2 className="text-2xl md:text-3xl font-semibold">
             {profile.greetingMessage}
           </h2>
@@ -197,10 +190,10 @@ export default function Dashboard() {
           <aside className="space-y-6">
             <div className="bg-white rounded-lg p-6 border border-gray-100 shadow-sm">
               <h4 className="font-semibold mb-4">Quick Actions</h4>
-              <button className="w-full bg-teal-600 text-white py-3 rounded-lg mb-3">
+              <button onClick={() => navigate('/employer/browse-talent')} className="w-full bg-teal-600 text-white py-3 rounded-lg mb-3  hover:bg-teal-200">
                 🔍 Browse Talent
               </button>
-              <button onClick={() => navigate('/post-requirement')} className="w-full border border-teal-600 text-teal-600 py-3 rounded-lg hover:bg-teal-200">
+              <button onClick={() => navigate('/employer/post-requirement')} className="w-full border border-teal-600 text-teal-600 py-3 rounded-lg hover:bg-teal-200">
                 + New Post
               </button>
             </div>

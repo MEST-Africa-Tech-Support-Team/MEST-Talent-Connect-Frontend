@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar.jsx";
+import Header from "./Header.jsx";
 
 export default function Layout() {
   return (
@@ -12,6 +13,7 @@ export default function Layout() {
 
       {/* Right content area */}
       <div className="flex-1 ml-60 overflow-y-auto">
+        <Header />
         <Outlet />
       </div>
     </div>

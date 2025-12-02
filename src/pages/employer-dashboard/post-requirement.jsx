@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiBriefcase, FiMapPin, FiDollarSign } from "react-icons/fi";
-import { MdOutlineWorkOutline } from "react-icons/md";
+// import { MdOutlineWorkOutline } from "react-icons/md";
 
 export default function PostRequirementForm() {
   const [form, setForm] = useState({

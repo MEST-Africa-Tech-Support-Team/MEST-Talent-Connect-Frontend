@@ -38,7 +38,7 @@ export default function Header({ profile }) {
 
         {/* Profile Display */}
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-orange-300 to-orange-500 flex items-center justify-center text-white font-medium">
+          <div className="w-9 h-9 rounded-full bg-linear-to-br from-orange-300 to-orange-500 flex items-center justify-center text-white font-medium">
             {initials}
           </div>
           <div className="text-sm">
