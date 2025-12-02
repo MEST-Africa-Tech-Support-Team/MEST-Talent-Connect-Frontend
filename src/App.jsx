@@ -1,21 +1,23 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext.jsx";
+
+// Layout
 import Layout from "./components/Layout.jsx";
-import Register from "./pages/auth/Register.jsx";
-import Login from "./pages/auth/Login.jsx";
-import EmployerDashboard from "./pages/EmployerDashboard.jsx";
-import Feedback from "./pages/Feedback.jsx";
-import BrowserTalent from "./pages/BrowserTalent.jsx";
-import HiringAnalytics from "./pages/HiringAnalytics.jsx";
-import CommunityEvents from "./pages/CommunityEvents.jsx";
-import OpenPositions from "./pages/OpenPositions.jsx";
-import PostRequirementForm from "./pages/PostRequirementForm.jsx";
-import FeedbackForm from "./pages/FeedbackForm.jsx";
 
-import ProtectedRoute from "./routes/ProtectedRoute.jsx";
+// Employer Dashboard Pages
+import EmployerDashboard from "./pages/employer-dashboard/dashboard.jsx";
+import Feedback from "./pages/employer-dashboard/feedback.jsx";
+import BrowserTalent from "./pages/employer-dashboard/browse-talent.jsx";
+import HiringAnalytics from "./pages/employer-dashboard/hiring-analytics.jsx";
+import CommunityEvents from "./pages/employer-dashboard/community-events.jsx";
+import OpenPositions from "./pages/employer-dashboard/open-positions.jsx";
+import PostRequirementForm from "./pages/employer-dashboard/post-requirement.jsx";
+import FeedbackForm from "./pages/employer-dashboard/feedback-form.jsx";
 
+// General Pages
 import Home from "./pages/Home.jsx";
+
+// Admin Dashboard Pages
 import Overview from "./pages/admin-dashboard/Overview.jsx";
 import EventManagement from "./pages/admin-dashboard/EventManagement.jsx";
 import EmployersManagement from "./pages/admin-dashboard/EmployersManagement.jsx";
@@ -29,30 +31,38 @@ import MoreTalentManagement from "./pages/admin-dashboard/MoreTalentManagement.j
 import AddNewEmployer from "./pages/admin-dashboard/AddNewEmployer.jsx";
 import AddNewTalent from "./pages/admin-dashboard/AddNewTalent.jsx";
 
+// ------------------------------------------------------
+// CLEAN ROUTER
+// ------------------------------------------------------
+
 const router = createBrowserRouter([
+  // ============================
+  // EMPLOYER ROUTES
+  // ============================
   {
-    element: <ProtectedRoute />, // Protect everything inside Layout
+    path: "/employer",
+    element: <Layout />,
     children: [
-      {
-        path: "/app",
-        element: <Layout />,
-        children: [
-          { index: true, element: <EmployerDashboard /> },
-          { path: "feedback", element: <Feedback /> },
-          { path: "browse-talent", element: <BrowserTalent /> },
-          { path: "analytics", element: <HiringAnalytics /> },
-          { path: "community-events", element: <CommunityEvents /> },
-          { path: "open-positions", element: <OpenPositions /> },
-          { path: "post-requirement", element: <PostRequirementForm /> },
-          { path: "feedback-form", element: <FeedbackForm /> }
-        ],
-      },
+      { path: "dashboard", element: <EmployerDashboard /> },
+      { path: "feedback", element: <Feedback /> },
+      { path: "browse-talent", element: <BrowserTalent /> },
+      { path: "hiring-analytics", element: <HiringAnalytics /> },
+      { path: "community-events", element: <CommunityEvents /> },
+      { path: "open-positions", element: <OpenPositions /> },
+      { path: "post-requirement", element: <PostRequirementForm /> },
+      { path: "feedback-form", element: <FeedbackForm /> }
     ],
   },
-  { path: "/", element: <Home /> },
-  { path: "/register", element: <Register /> },
-  { path: "/login", element: <Login /> },
 
+  // ============================
+  // PUBLIC ROUTES
+  // ============================
+  { path: "/", element: <Home /> },
+  { path: "*", element: <Home /> },
+
+  // ============================
+  // ADMIN ROUTES
+  // ============================
   { path: "/admin-dashboard", element: <Overview /> },
   { path: "/admin-employers-management", element: <EmployersManagement /> },
   { path: "/admin-employer-profile", element: <EmployerProfile /> },
@@ -67,10 +77,12 @@ const router = createBrowserRouter([
   { path: "/admin-add-talent", element: <AddNewTalent /> },
 ]);
 
+// ------------------------------------------------------
+// EXPORT APP ROUTES
+// ------------------------------------------------------
+
 export default function AppRoutes() {
   return (
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <RouterProvider router={router} />
   );
 }
