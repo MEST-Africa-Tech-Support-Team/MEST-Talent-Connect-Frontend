@@ -108,6 +108,9 @@ function SearchAndFilters() {
 }
 
 export default function OpenPositions() {
+
+  const navigate = useNavigate();
+  
   return (
     <div className="min-h-screen flex-1 flex flex-col bg-white text-slate-800">
 

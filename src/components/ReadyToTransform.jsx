@@ -1,3 +1,10 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+
+
+
+
 export default function ReadyToTransform() {
   return (
     <section className="w-full bg-[#1BB7B6] py-15 px-4">
@@ -18,9 +25,12 @@ export default function ReadyToTransform() {
             high-performing teams.
           </p>
 
-          <button className="bg-white  text-[#1BB7B6] font-medium w-full max-w-xs py-3 rounded-md mx-auto block text-lg">
+          {/* <button className="bg-white  text-[#1BB7B6] font-medium w-full max-w-xs py-3 rounded-md mx-auto block text-lg">
             Book a Demo
-          </button>
+          </button> */}
+          <Link to="/talent-request" className="bg-white  text-[#1BB7B6] font-medium w-full max-w-xs py-3 rounded-md mx-auto block text-lg text-center">
+            Book a Demo
+          </Link>
         </div>
 
         {/* Card 2 */}

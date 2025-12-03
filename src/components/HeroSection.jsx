@@ -4,6 +4,7 @@ import { FaAmazon } from "react-icons/fa";
 import { FaDropbox } from "react-icons/fa";
 import hero2 from "../assets/images/hero2.png";
 import hero3 from "../assets/images/hero3.png";
+import { Link } from "react-router-dom";
 
 
 
@@ -32,9 +33,12 @@ export default function HeroSection() {
 
           {/* BUTTONS */}
           <div className="flex items-center gap-4 mb-12">
-            <button className="px-6 py-3 bg-teal-500 text-white rounded-lg font-semibold hover:bg-teal-600 transition">
+            {/* <button className="px-6 py-3 bg-teal-500 text-white rounded-lg font-semibold hover:bg-teal-600 transition">
               Hire Talent
-            </button>
+            </button> */}
+            <Link to="/talent-request" className="px-6 py-3 bg-teal-500 text-white rounded-lg font-semibold hover:bg-teal-600 transition">
+              Hire Talent
+            </Link>
 
             <button className="px-6 py-3 border border-teal-500 text-teal-600 rounded-lg font-semibold hover:bg-teal-50 transition">
               Join as Talent
