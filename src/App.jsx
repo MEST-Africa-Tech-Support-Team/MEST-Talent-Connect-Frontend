@@ -14,10 +14,13 @@ import OpenPositions from "./pages/employer-dashboard/open-positions.jsx";
 import PostRequirementForm from "./pages/employer-dashboard/post-requirement.jsx";
 import FeedbackForm from "./pages/employer-dashboard/feedback-form.jsx";
 import PlacementProfile from "./pages/employer-dashboard/talent-profile.jsx";
+import ProfileDetails from "./pages/employer-dashboard/profile-detail.jsx";
 
 // General Pages
 import Home from "./pages/Home.jsx";
 import TalentRequestForm from "./pages/TalentRequest.jsx";
+import Login from "./pages/auth/Login.jsx";
+import Register from "./pages/auth/Register.jsx";
 
 // Admin Dashboard Pages
 import Overview from "./pages/admin-dashboard/Overview.jsx";
@@ -46,6 +49,7 @@ const router = createBrowserRouter([
     path: "/employer",
     element: <Layout />,
     children: [
+      { index: true, element: <EmployerDashboard /> },
       { path: "dashboard", element: <EmployerDashboard /> },
       { path: "feedback", element: <Feedback /> },
       { path: "browse-talent", element: <BrowserTalent /> },
@@ -54,7 +58,8 @@ const router = createBrowserRouter([
       { path: "open-positions", element: <OpenPositions /> },
       { path: "post-requirement", element: <PostRequirementForm /> },
       { path: "feedback-form", element: <FeedbackForm /> },
-      { path: "talent-profile/:id", element: <PlacementProfile />  }
+      { path: "talent-profile/:id", element: <PlacementProfile />  },
+      { path: "profile-detail", element: <ProfileDetails />  }
     ],
   },
 
@@ -63,6 +68,8 @@ const router = createBrowserRouter([
   // ============================
   { path: "/", element: <Home /> },
   { path: "/talent-request", element: <TalentRequestForm /> },
+  { path: "/login", element: <Login /> },
+  { path: "/register", element: <Register /> },
   { path: "*", element: <Home /> },
 
   // ============================

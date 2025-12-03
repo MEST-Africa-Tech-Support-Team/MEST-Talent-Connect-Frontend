@@ -1,3 +1,4 @@
+
 export function StatsCard({ title, value, icon, accent }) {
     return (
         <div className="bg-white rounded-lg shadow-sm p-6 flex-1 min-w-[220px] border border-gray-100 relative overflow-hidden">

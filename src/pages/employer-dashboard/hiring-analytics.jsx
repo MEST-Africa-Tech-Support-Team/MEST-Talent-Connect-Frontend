@@ -93,7 +93,7 @@ export default function HiredTalentHistory() {
           <p className="text-gray-500 mt-1">Track and manage all talent placements across companies</p>
         </header>
 
-        <div className="flex gap-6 mb-6">
+        <div className="flex gap-6 mb-6 flex-col sm:flex-row ">
           <StatsCard title="Total Placements" value={127} icon={<FiUsers />} accent="bg-emerald-400" />
           <StatsCard title="Ongoing Contracts" value={89} icon={<FiClock />} accent="bg-orange-400" />
           <StatsCard title="Completed Projects" value={38} icon={<FiBriefcase />} accent="bg-green-300" />

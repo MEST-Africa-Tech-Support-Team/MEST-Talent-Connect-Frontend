@@ -1,4 +1,3 @@
-// ...existing code...
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import logoteal from "../assets/logoteal.png";
@@ -39,7 +38,7 @@ export default function Navbar() {
                 {/* Buttons */}
                 <div className="hidden md:flex items-center gap-4">
                     <Link
-                        to="/app"
+                        to="/login"
                         className="px-6 py-2 border border-teal-500 text-teal-600 rounded-md font-semibold hover:bg-teal-50 transition"
                     >
                         Login
