@@ -30,6 +30,7 @@ import MoreEmployersManagement from "./pages/admin-dashboard/MoreEmployersManage
 import MoreTalentManagement from "./pages/admin-dashboard/MoreTalentManagement.jsx";
 import AddNewEmployer from "./pages/admin-dashboard/AddNewEmployer.jsx";
 import AddNewTalent from "./pages/admin-dashboard/AddNewTalent.jsx";
+import MatchingTalent from "./pages/admin-dashboard/MatchingTalent.jsx";
 
 // ------------------------------------------------------
 // CLEAN ROUTER
@@ -75,6 +76,7 @@ const router = createBrowserRouter([
   { path: "/admin-settings", element: <DashboardSettings /> },
   { path: "/admin-add-employer", element: <AddNewEmployer /> },
   { path: "/admin-add-talent", element: <AddNewTalent /> },
+  { path: "/matching-talent", element: <MatchingTalent /> },
 ]);
 
 // ------------------------------------------------------
