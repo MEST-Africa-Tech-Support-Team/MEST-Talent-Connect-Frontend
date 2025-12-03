@@ -33,9 +33,9 @@ import MoreTalentManagement from "./pages/admin-dashboard/MoreTalentManagement.j
 import AddNewEmployer from "./pages/admin-dashboard/AddNewEmployer.jsx";
 import AddNewTalent from "./pages/admin-dashboard/AddNewTalent.jsx";
 
-// ------------------------------------------------------
+// -----------------------------------------------------
 // CLEAN ROUTER
-// ------------------------------------------------------
+// -----------------------------------------------------
 
 const router = createBrowserRouter([
   // ============================
