@@ -32,7 +32,7 @@
 //       if (token) {
 //         login(token, res.data.user); // save token in browser
 //         setMessage("Login successful!");
-//         navigate("/app"); // redirect to dashboard
+//         navigate("/employer"); // redirect to dashboard
 //       } else {
 //         setMessage("Login succeeded but no token found.");
 //       }

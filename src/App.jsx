@@ -13,9 +13,11 @@ import CommunityEvents from "./pages/employer-dashboard/community-events.jsx";
 import OpenPositions from "./pages/employer-dashboard/open-positions.jsx";
 import PostRequirementForm from "./pages/employer-dashboard/post-requirement.jsx";
 import FeedbackForm from "./pages/employer-dashboard/feedback-form.jsx";
+import PlacementProfile from "./pages/employer-dashboard/talent-profile.jsx";
 
 // General Pages
 import Home from "./pages/Home.jsx";
+import TalentRequestForm from "./pages/TalentRequest.jsx";
 
 // Admin Dashboard Pages
 import Overview from "./pages/admin-dashboard/Overview.jsx";
@@ -32,9 +34,9 @@ import AddNewEmployer from "./pages/admin-dashboard/AddNewEmployer.jsx";
 import AddNewTalent from "./pages/admin-dashboard/AddNewTalent.jsx";
 import MatchingTalent from "./pages/admin-dashboard/MatchingTalent.jsx";
 
-// ------------------------------------------------------
+// -----------------------------------------------------
 // CLEAN ROUTER
-// ------------------------------------------------------
+// -----------------------------------------------------
 
 const router = createBrowserRouter([
   // ============================
@@ -51,7 +53,8 @@ const router = createBrowserRouter([
       { path: "community-events", element: <CommunityEvents /> },
       { path: "open-positions", element: <OpenPositions /> },
       { path: "post-requirement", element: <PostRequirementForm /> },
-      { path: "feedback-form", element: <FeedbackForm /> }
+      { path: "feedback-form", element: <FeedbackForm /> },
+      { path: "talent-profile/:id", element: <PlacementProfile />  }
     ],
   },
 
@@ -59,6 +62,7 @@ const router = createBrowserRouter([
   // PUBLIC ROUTES
   // ============================
   { path: "/", element: <Home /> },
+  { path: "/talent-request", element: <TalentRequestForm /> },
   { path: "*", element: <Home /> },
 
   // ============================
