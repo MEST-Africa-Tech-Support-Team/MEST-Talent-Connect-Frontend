@@ -45,7 +45,7 @@ export default function EventManagementCard({ event }) {
           <FaClock className="w-4 h-4 text-teal-600" /> {event.startTime} - {event.endTime}
         </div>
         <div className="flex items-center gap-2 text-xs text-gray-500 mt-1">
-          <FaLocationDot className="w-4 h-4 text-teal-600" /> {event.location} Location
+          <FaLocationDot className="w-4 h-4 text-teal-600" /> {event.venue}
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import AdminSidebar from "../../components/AdminSidebar";
 import AdminDashboardHeader from "../../components/AdminDashboardHeader";
 import AdminSecondStatsGrid from "../../components/AdminSecondStatsGrid";
 import { FiSearch, FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { FaRegCommentDots, FaClipboardList, FaUsers, FaExclamationTriangle } from "react-icons/fa";
+import { FaComments, FaBuilding, FaUser, FaExclamationTriangle } from "react-icons/fa";
 
 const MOCK_FEEDBACK = [
   {
@@ -58,10 +58,10 @@ export default function FeedbackManagement() {
 
   // Stats cards data (use AdminSecondStatsGrid)
   const stats = [
-    { icon: <FaRegCommentDots />, value: "2,847", label: "Total Feedback Entries", tag: "+124 this month", color: "#13C296" },
-    { icon: <FaClipboardList />, value: "96", label: "Avg. Employer Satisfaction", tag: "", color: "#06B6D4" },
-    { icon: <FaUsers />, value: "99", label: "Avg. Talent Performance", tag: "", color: "#8B5CF6" },
-    { icon: <FaExclamationTriangle />, value: "18", label: "Negative Feedback Alerts", tag: "Requires immediate attention", color: "#FB923C" },
+    { icon: <FaComments />, value: "2,847", label: "Total Feedback Entries", tag: "+124 this month", color: "#28BBBB" },
+    { icon: <FaBuilding />, value: "96", label: "Avg. Employer Satisfaction", tag: "", color: "#00CA9B" },
+    { icon: <FaUser />, value: "99", label: "Avg. Talent Performance", tag: "", color: "#B627A1" },
+    { icon: <FaExclamationTriangle />, value: "18", label: "Negative Feedback Alerts", tag: "Requires immediate attention", color: "#FF6221" },
   ];
 
   // filter + search
