@@ -5,18 +5,18 @@ export default function AdminSecondStatsGrid({ stats }) {
       {stats.map((card, idx) => (
         <div
           key={idx}
-          className="bg-white p-4 rounded-xl shadow flex flex-col gap-3"
+          className="bg-white p-4 rounded-xl shadow flex flex-col"
         >
           <div
-            className="w-10 h-10 flex items-center justify-center rounded-lg text-white"
+            className="w-10 h-10 flex items-center justify-center rounded-lg text-white  mb-2"
             style={{ backgroundColor: card.color }}
           >
             {card.icon}
           </div>
 
-          <h3 className="text-2xl font-semibold">{card.value}</h3>
-          <p className="text-sm text-gray-500">{card.label}</p>
-          <p className="text-xs text-gray-500">{card.tag}</p>
+          <h3 className="text-2xl font-semibold  mb-2">{card.value}</h3>
+          <p className="text-sm text-gray-500 mb-1">{card.label}</p>
+          <p className="text-xs text-[#FF6221]">{card.tag}</p>
         </div>
       ))}
     </div>

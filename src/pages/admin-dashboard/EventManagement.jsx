@@ -4,6 +4,7 @@ import AdminDashboardHeader from "../../components/AdminDashboardHeader";
 import EventManagementCard from "../../components/EventManagementCard"; 
 import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router";
+import SmapleEvent from "../../assets/images/sample-event-image.jpg"
 
 const SAMPLE_EVENTS = [
   {
@@ -15,7 +16,7 @@ const SAMPLE_EVENTS = [
     endTime: "17:00",
     venue: "AICC",
     status: "Upcoming",
-    image: "",
+    image: SmapleEvent,
   },
   {
     id: 2,
@@ -26,7 +27,7 @@ const SAMPLE_EVENTS = [
     endTime: "15:00",
     venue: "Buro",
     status: "Past",
-    image: "",
+    image: SmapleEvent,
   },
   {
     id: 3,
@@ -37,7 +38,7 @@ const SAMPLE_EVENTS = [
     endTime: "16:00",
     venue: "Mest, Buro",
     status: "Upcoming",
-    image: "",
+    image: SmapleEvent,
   },
   {
     id: 4,
@@ -48,7 +49,7 @@ const SAMPLE_EVENTS = [
     endTime: "21:00",
     venue: "National Theatre",
     status: "Past",
-    image: "",
+    image: SmapleEvent,
   },
   {
     id: 5,
@@ -59,7 +60,7 @@ const SAMPLE_EVENTS = [
     endTime: "13:00",
     venue: "Takoradi",
     status: "Past",
-    image: "",
+    image: SmapleEvent,
   },
   {
     id: 6,
@@ -70,7 +71,7 @@ const SAMPLE_EVENTS = [
     endTime: "17:00",
     venue: "Takoradi",
     status: "Past",
-    image: "",
+    image: SmapleEvent,
   },
 ];
 
