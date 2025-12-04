@@ -261,7 +261,7 @@ export default function MoreEmployersManagement() {
               {/* Table container */}
               <div className="mt-6">
                 <div className="bg-white rounded-lg shadow-sm p-4 overflow-x-auto">
-                  <table className="min-w-[950px] w-full text-left">
+                  <table className="w-full text-center">
                     <thead>
                       <tr className="text-sm text-gray-500 border-b">
                         <th className="py-3">Employer Info</th>
@@ -274,58 +274,70 @@ export default function MoreEmployersManagement() {
                     </thead>
 
                     <tbody>
-                      {/* ... Table rows mapping (unchanged) ... */}
                       {paged.map((r) => (
                         <tr key={r.id} className="border-b hover:bg-gray-50">
-                          {/* ... Content for table row ... */}
                           <td className="py-4">
                             <div className="flex items-center gap-3 min-w-0">
                               <div className="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center text-teal-600 flex-shrink-0">
                                 <FaBuilding />
                               </div>
+
                               <div className="min-w-0">
-                                <div className="font-medium text-sm">{r.company}</div>
-                                <div className="text-xs text-gray-500 flex items-center gap-2 mt-1">
+                                <div className="font-medium text-gray-700 text-sm">{r.company}</div>
+                                <div className="text-xs text-gray-500 gap-2 mt-1 grid align-text-center">
                                   <span className="px-2 py-1 bg-gray-100 rounded text-xs">{r.industry}</span>
-                                  <span className="flex items-center gap-1"><FaMapMarkerAlt className="text-gray-400" /> {r.city}</span>
+                                  <span className="flex items-center gap-1 px-2">
+                                    <FaMapMarkerAlt className="text-gray-400" /> {r.city}
+                                  </span>
                                 </div>
                               </div>
                             </div>
                           </td>
+
                           <td>
-                            <div className="text-sm font-medium">{r.contactName}</div>
+                            <div className="text-sm font-medium text-gray-700">{r.contactName}</div>
                             <div className="text-xs text-gray-500">{r.contactRole}</div>
                           </td>
-                          <td className="text-sm text-gray-600">{r.email}</td>
+
+                          <td className="text-xs text-gray-600">{r.email}</td>
+
                           <td>
                             <span
-                              className={`px-3 py-1 rounded-full text-xs font-medium ${r.status === "Verified" ? "bg-green-100 text-green-700" : "bg-orange-100 text-orange-700"
+                              className={`px-3 py-1 rounded-full text-xs font-medium ${r.status === "Verified"
+                                  ? "bg-green-100 text-green-700"
+                                  : "bg-orange-100 text-orange-700"
                                 }`}
                             >
                               {r.status}
                             </span>
                           </td>
-                          <td className="text-sm font-medium">{r.openPositions}</td>
+
+                          <td className="text-sm font-medium text-gray-700">{r.openPositions}</td>
+
                           <td>
                             <div className="flex items-center gap-2">
-                              <button className="px-3 py-1 border rounded-md text-sm">Profile</button>
-                              <button className="px-3 py-1 border rounded-md text-sm">Jobs</button>
+                              <button className="px-3 py-1 border rounded-md text-sm">
+                                <Link to={""} className="text-[#28BBBB] font-semibold">
+                                  View
+                                </Link>
+                              </button>
                             </div>
                           </td>
                         </tr>
                       ))}
-                      {/* ... No results (unchanged) ... */}
+
                       {paged.length === 0 && (
                         <tr>
-                          <td colSpan={6} className="py-8 text-center text-sm text-gray-500">No results found</td>
+                          <td colSpan={6} className="py-8 text-center text-sm text-gray-500">
+                            No results found
+                          </td>
                         </tr>
                       )}
                     </tbody>
                   </table>
 
-                  {/* pagination (unchanged) */}
+                  {/* Pagination */}
                   <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                    {/* ... Pagination content ... */}
                     <div className="text-sm text-gray-600">
                       Showing {(page - 1) * pageSize + 1} to {Math.min(page * pageSize, total)} of {total} employers
                     </div>
@@ -335,7 +347,6 @@ export default function MoreEmployersManagement() {
                         className="p-2 border rounded disabled:opacity-50"
                         onClick={() => setPage((p) => Math.max(1, p - 1))}
                         disabled={page === 1}
-                        aria-label="Previous"
                       >
                         <FiChevronLeft />
                       </button>
@@ -345,7 +356,8 @@ export default function MoreEmployersManagement() {
                           <button
                             key={i}
                             onClick={() => setPage(i + 1)}
-                            className={`px-3 py-1 rounded ${page === i + 1 ? "bg-teal-600 text-white" : "border text-sm"}`}
+                            className={`px-3 py-1 rounded ${page === i + 1 ? "bg-teal-600 text-white" : "border text-sm"
+                              }`}
                           >
                             {i + 1}
                           </button>
@@ -357,18 +369,18 @@ export default function MoreEmployersManagement() {
                         className="p-2 border rounded disabled:opacity-50"
                         onClick={() => setPage((p) => Math.min(pageCount, p + 1))}
                         disabled={page === pageCount}
-                        aria-label="Next"
                       >
                         <FiChevronRight />
                       </button>
                     </div>
                   </div>
                 </div>
+
               </div>
             </div> {/* END LEFT SIDE */}
 
             {/* 2. RIGHT SIDE (Action Center): Full width on mobile, fixed width (320px) and sticky on desktop. */}
-            <div className="w-full lg:w-[320px]">
+            <div className="w-full lg:w-[250px]">
               <aside className="lg:sticky lg:top-8">
                 <div className="bg-white rounded-lg shadow-sm p-4 w-full">
                   <h3 className="font-semibold mb-3">Action Center</h3>

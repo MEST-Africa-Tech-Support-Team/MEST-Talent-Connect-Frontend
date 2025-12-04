@@ -1,6 +1,6 @@
 import React from "react";
 import { Bell } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 export default function AdminDashboardHeader({
   title = "Dashboard Overview",
@@ -18,7 +18,7 @@ export default function AdminDashboardHeader({
     .slice(0, 2);
 
   return (
-    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 p-4 border-b border-gray-200 bg-white shadow-b">
+    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 p-4 z-10 sticky top-0 border-b border-gray-200 bg-white shadow-b shadow-sm">
       {/* Left: Title + Subtitle */}
       <div>
         <h2 className="text-lg font-semibold text-gray-900">{title}</h2>

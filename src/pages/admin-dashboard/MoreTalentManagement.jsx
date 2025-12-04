@@ -108,7 +108,7 @@ export default function MoreTalentManagement() {
           <div className="mb-4">
             <Link to={"/admin-talent-management"} className="flex items-center text-teal-600 text-sm font-medium hover:underline">
               <FaArrowLeft size={12} className="mr-2" />
-              Back to Employer Management
+              Back to Talent Management
             </Link>
           </div>
 

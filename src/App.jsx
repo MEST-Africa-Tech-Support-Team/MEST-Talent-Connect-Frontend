@@ -29,13 +29,14 @@ import EmployersManagement from "./pages/admin-dashboard/EmployersManagement.jsx
 import EmployerProfile from "./pages/admin-dashboard/EmployerProfile.jsx";
 import TalentManagement from "./pages/admin-dashboard/TalentManagement.jsx";
 import Analytics from "./pages/admin-dashboard/Analytics.jsx";
-import DashboardFeedback from "./pages/admin-dashboard/DashboardFeedback.jsx";
+import FeedbackManagement from "./pages/admin-dashboard/FeedbackManagement.jsx";
 import DashboardSettings from "./pages/admin-dashboard/DashboardSettings.jsx";
 import MoreEmployersManagement from "./pages/admin-dashboard/MoreEmployersManagement.jsx";
 import MoreTalentManagement from "./pages/admin-dashboard/MoreTalentManagement.jsx";
 import AddNewEmployer from "./pages/admin-dashboard/AddNewEmployer.jsx";
 import AddNewTalent from "./pages/admin-dashboard/AddNewTalent.jsx";
 import MatchingTalent from "./pages/admin-dashboard/MatchingTalent.jsx";
+import CreateEvent from "./pages/admin-dashboard/CreateEvent.jsx";
 
 // -----------------------------------------------------
 // CLEAN ROUTER
@@ -82,12 +83,13 @@ const router = createBrowserRouter([
   { path: "/admin-talent-management", element: <TalentManagement /> },
   { path: "/admin-more-talent-management", element: <MoreTalentManagement /> },
   { path: "/admin-event-management", element: <EventManagement /> },
-  { path: "/admin-feedback", element: <DashboardFeedback /> },
+  { path: "/admin-feedback", element: <FeedbackManagement /> },
   { path: "/admin-analytics", element: <Analytics /> },
   { path: "/admin-settings", element: <DashboardSettings /> },
   { path: "/admin-add-employer", element: <AddNewEmployer /> },
   { path: "/admin-add-talent", element: <AddNewTalent /> },
   { path: "/matching-talent", element: <MatchingTalent /> },
+  { path: "/create-event", element: <CreateEvent /> },
 ]);
 
 // ------------------------------------------------------

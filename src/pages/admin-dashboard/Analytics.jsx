@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import AdminSidebar from "../../components/AdminSidebar";
 import AdminDashboardHeader from "../../components/AdminDashboardHeader";
+import AdminFirstStatsGrid from "../../components/AdminFirstStatsGrid";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -17,36 +18,31 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 export default function Analytics() {
   // Sample stats for the top 4 cards
-  const stats = [
+  const AnalyticsStats = [
     {
-      id: "employers",
-      title: "1,247",
-      subtitle: "Total Employers",
+      title: "Total Employers",
+      value: "1,247",
       meta: "+12.5%",
       icon: <FaBuilding className="text-white" />,
-      iconWrap: "bg-purple-100",
       iconBg: "bg-[#B627A1]",
     },
     {
-      id: "talents",
-      title: "345",
-      subtitle: "Talents Added within the week",
+      title: "Talents Added within the week",
+      value: "345",
       meta: "+8.3%",
       icon: <FaUsers className="text-white" />,
       iconBg: "bg-[#FF6221]",
     },
     {
-      id: "open",
-      title: "789",
-      subtitle: "Total Open Positions",
+      title: "Total Open Positions",
+      value: "789",
       meta: "+15.7%",
       icon: <FaHandshake className="text-white" />,
       iconBg: "bg-[#FFBC45]",
     },
     {
-      id: "calls",
-      title: "74.5%",
-      subtitle: "Calls requested per day",
+      title: "Calls requested per day",
+      value: "74.5%",
       meta: "+2.1%",
       icon: <FaPercent className="text-white" />,
       iconBg: "bg-[#28BBBB]",
@@ -113,104 +109,93 @@ export default function Analytics() {
     <div className="min-h-screen bg-gray-50 flex">
       <AdminSidebar />
 
-      <main className="ml-16 md:ml-64 flex-1 bg-gray-50 min-h-screen overflow-x-hidden">
+      <div className="ml-16 md:ml-64 flex-1 bg-gray-50 min-h-screen">
         <AdminDashboardHeader
           title="Analytics"
           subtitle="Overview of hiring, pipeline, and requested skills"
           user={{ fullName: "John Admin" }}
         />
 
-        {/* Top stat cards */}
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
-          {stats.map((s) => (
-            <div key={s.id} className="bg-white rounded-lg shadow-sm p-4 flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-500">{s.subtitle}</p>
-                <p className="text-2xl font-semibold mt-1">{s.title}</p>
-                <p className="text-xs text-green-500 mt-2">{s.meta}</p>
+        <main className="overflow-x-hidden">
+
+          {/* Top stat cards */}
+          <div className="">
+            <AdminFirstStatsGrid stats={AnalyticsStats} />
+          </div>
+          {/* Main grid: Hiring Pipeline (left) and right panels */}
+          <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6 p-4">
+            {/* Left: Chart area spans 2 columns on large screens */}
+            <div className="lg:col-span-2 bg-white rounded-lg shadow-sm p-6">
+              <div className="flex items-start justify-between">
+                <h3 className="text-lg font-medium text-gray-800">Hiring Pipeline</h3>
+                <div>
+                  <select className="border rounded-md px-3 py-2 text-sm">
+                    <option>All Positions</option>
+                    <option>Frontend</option>
+                    <option>Backend</option>
+                  </select>
+                </div>
               </div>
-              <div className={`${s.iconBg} w-12 h-12 rounded-lg flex items-center justify-center`}>{s.icon}</div>
+              <div className="mt-6">
+                <div className="h-64 md:h-72">
+                  <Bar data={chartData} options={chartOptions} />
+                </div>
+                {/* Summary counts under chart */}
+                <div className="mt-6 grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+                  <SummaryBox label="Shortlisted" value="24" accent="text-teal-600" />
+                  <SummaryBox label="Screening" value="18" accent="text-indigo-600" />
+                  <SummaryBox label="Interview" value="12" accent="text-yellow-600" />
+                  <SummaryBox label="Offer" value="6" accent="text-pink-600" />
+                  <SummaryBox label="Placed" value="4" accent="text-green-600" />
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
-
-        {/* Main grid: Hiring Pipeline (left) and right panels */}
-        <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6 p-4">
-          {/* Left: Chart area spans 2 columns on large screens */}
-          <div className="lg:col-span-2 bg-white rounded-lg shadow-sm p-6">
-            <div className="flex items-start justify-between">
-              <h3 className="text-lg font-medium text-gray-800">Hiring Pipeline</h3>
-              <div>
-                <select className="border rounded-md px-3 py-2 text-sm">
-                  <option>All Positions</option>
-                  <option>Frontend</option>
-                  <option>Backend</option>
-                </select>
+            {/* Right column: Skills + Industries */}
+            <div className="space-y-6">
+              {/* Top Requested Skills */}
+              <div className="bg-white rounded-lg shadow-sm p-4">
+                <h4 className="text-md font-medium mb-3">Top Requested Skills</h4>
+                <div className="space-y-3">
+                  {skills.map((s) => (
+                    <div key={s.name}>
+                      <div className="flex justify-between items-center mb-2">
+                        <div className="text-sm text-gray-700">{s.name}</div>
+                        <div className="text-sm text-gray-500">{s.pct}%</div>
+                      </div>
+                      <div className="w-full bg-gray-100 rounded-full h-2">
+                        <div
+                          className="h-2 rounded-full"
+                          style={{ width: `${s.pct}%`, background: "#14B8A6" }} /* teal */
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-
-            <div className="mt-6">
-              <div className="h-64 md:h-72">
-                <Bar data={chartData} options={chartOptions} />
-              </div>
-
-              {/* Summary counts under chart */}
-              <div className="mt-6 grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
-                <SummaryBox label="Shortlisted" value="24" accent="text-teal-600" />
-                <SummaryBox label="Screening" value="18" accent="text-indigo-600" />
-                <SummaryBox label="Interview" value="12" accent="text-yellow-600" />
-                <SummaryBox label="Offer" value="6" accent="text-pink-600" />
-                <SummaryBox label="Placed" value="4" accent="text-green-600" />
+              {/* Top Hiring Industries */}
+              <div className="bg-white rounded-lg shadow-sm p-4">
+                <h4 className="text-md font-medium mb-3">Top Hiring Industries</h4>
+                <div className="space-y-3">
+                  {industries.map((ind) => (
+                    <div key={ind.name} className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-md bg-indigo-50 flex items-center justify-center">
+                          <FaBuilding className="text-indigo-600" />
+                        </div>
+                        <div>
+                          <div className="text-sm font-medium">{ind.name}</div>
+                          <div className="text-xs text-gray-500">{ind.hires} hires</div>
+                        </div>
+                      </div>
+                      <div className="text-sm text-teal-600">{ind.pct}%</div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-
-          {/* Right column: Skills + Industries */}
-          <div className="space-y-6">
-            {/* Top Requested Skills */}
-            <div className="bg-white rounded-lg shadow-sm p-4">
-              <h4 className="text-md font-medium mb-3">Top Requested Skills</h4>
-              <div className="space-y-3">
-                {skills.map((s) => (
-                  <div key={s.name}>
-                    <div className="flex justify-between items-center mb-2">
-                      <div className="text-sm text-gray-700">{s.name}</div>
-                      <div className="text-sm text-gray-500">{s.pct}%</div>
-                    </div>
-                    <div className="w-full bg-gray-100 rounded-full h-2">
-                      <div
-                        className="h-2 rounded-full"
-                        style={{ width: `${s.pct}%`, background: "#14B8A6" }} /* teal */
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Top Hiring Industries */}
-            <div className="bg-white rounded-lg shadow-sm p-4">
-              <h4 className="text-md font-medium mb-3">Top Hiring Industries</h4>
-              <div className="space-y-3">
-                {industries.map((ind) => (
-                  <div key={ind.name} className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-md bg-indigo-50 flex items-center justify-center">
-                        <FaBuilding className="text-indigo-600" />
-                      </div>
-                      <div>
-                        <div className="text-sm font-medium">{ind.name}</div>
-                        <div className="text-xs text-gray-500">{ind.hires} hires</div>
-                      </div>
-                    </div>
-                    <div className="text-sm text-teal-600">{ind.pct}%</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
   );
 }
