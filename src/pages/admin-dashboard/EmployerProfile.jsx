@@ -50,10 +50,10 @@ export default function EmployerProfile() {
             </div>
 
             {/* Main Layout (Left Cards + Right Table Section) */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-8 gap-6">
 
               {/* LEFT COLUMN (Cards) */}
-              <div className="lg:col-span-1 space-y-6">
+              <div className="lg:col-span-2 space-y-6">
 
                 {/* Company Overview */}
                 <div className="bg-white rounded-xl shadow p-5">
@@ -136,13 +136,13 @@ export default function EmployerProfile() {
               </div>
 
               {/* RIGHT COLUMN (Open Positions Table + Activity Box) */}
-              <div className="lg:col-span-2 space-y-6">
+              <div className="lg:col-span-6 space-y-6">
 
                 {/* Open Positions Table */}
                 <div className="bg-white rounded-xl shadow p-5 overflow-x-auto">
                   <h3 className="font-semibold text-lg mb-4 text-gray-700">Open Positions</h3>
 
-                  <table className="w-full text-left">
+                  <table className="w-full text-center">
                     <thead>
                       <tr className="border-b text-sm text-gray-500">
                         <th className="py-2">Job Title</th>
@@ -206,7 +206,7 @@ export default function EmployerProfile() {
                             </span>
                           </td>
                           <td>
-                            <button className="text-xs text-teal-600 font-medium flex items-center gap-1 align-items-center"><span><FaEye /></span>View</button>
+                            <Link to={"/matching-talent"} className="text-xs text-teal-600 font-medium flex items-center gap-1 align-items-center"><span><FaEye /></span>View</Link>
                           </td>
                         </tr>
                       ))}

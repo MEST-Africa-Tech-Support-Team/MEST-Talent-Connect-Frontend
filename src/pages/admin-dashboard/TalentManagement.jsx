@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useEffect } from "react";
 import AdminSidebar from "../../components/AdminSidebar";
 import AdminDashboardHeader from "../../components/AdminDashboardHeader.jsx";
+import AdminFirstStatsGrid from "../../components/AdminFirstStatsGrid.jsx";
 import {
   FaUsers,
   FaUserCheck,
@@ -11,6 +12,37 @@ import {
 } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router";
+
+const talentStats = [
+  {
+    title: "Total Talent",
+    value: "1,247",
+    meta: "+12% this month",
+    icon: <FaUsers className="text-white text-lg" />,
+    iconBg: "bg-[#B627A1]",
+  },
+  {
+    title: "Verified Profiles",
+    value: "892",
+    meta: "71.5% verified",
+    icon: <FaUserCheck className="text-white text-lg" />,
+    iconBg: "bg-[#FFBC45]",
+  },
+  {
+    title: "Employed",
+    value: "456",
+    meta: "36.6% placement rate",
+    icon: <FaBriefcase className="text-white text-lg" />,
+    iconBg: "bg-[#28BBBB]",
+  },
+  {
+    title: "Pending Review",
+    value: "67",
+    meta: "Needs attention",
+    icon: <FaClock className="text-white text-lg" />,
+    iconBg: "bg-[#FF6221]",
+  },
+];
 
 const SAMPLE_TALENTS = [
   {
@@ -106,241 +138,182 @@ export default function TalentManagement() {
     <div className="min-h-screen bg-gray-50 flex">
       <AdminSidebar />
 
-      <main className="ml-16 md:ml-64 flex-1 bg-gray-50 min-h-screen overflow-x-hidden">
+      <div className="ml-16 md:ml-64 flex-1 bg-gray-50 min-h-screen">
         <AdminDashboardHeader
           title="Talent Management"
           subtitle="Oversee all MEST talent users and maintain quality standards"
           user={{ fullName: "John Admin" }}
         />
 
-        {/* Four cards */}
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
-          <StatCard
-            title="Total Talent"
-            value="1,247"
-            meta="+12% this month"
-            icon={<FaUsers className="text-white text-lg" />}
-            iconBg="bg-[#B627A1]"
-          />
-
-          <StatCard
-            title="Verified Profiles"
-            value="892"
-            meta="71.5% verified"
-            icon={<FaUserCheck className="text-white text-lg" />}
-            iconBg="bg-[#FFBC45]"
-          />
-
-          <StatCard
-            title="Employed"
-            value="456"
-            meta="36.6% placement rate"
-            icon={<FaBriefcase className="text-white text-lg" />}
-            iconBg="bg-[#28BBBB]"
-          />
-
-          <StatCard
-            title="Pending Review"
-            value="67"
-            meta="Needs attention"
-            icon={<FaClock className="text-white text-lg" />}
-            iconBg="bg-[#FF6221]"
-          />
-        </div>
-
-        {/* Filters & Search */}
-        <div className="mt-6 bg-white rounded-lg shadow-sm p-4 m-4">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4">
-            <div className="flex items-center gap-3 flex-col md:flex-row">
-              <div className="relative flex-1">
-                <BiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                <input
-                  type="search"
-                  placeholder="Search talent..."
-                  value={search}
-                  onChange={(e) => {
-                    setSearch(e.target.value);
-                    // setPage(1);
-                  }}
-                  className="w-full pl-10 pr-3 py-2 border rounded-md text-sm"
-                />
+        <div className="overflow-x-hidden">
+          {/* Four cards */}
+          <div className="">
+            <AdminFirstStatsGrid stats={talentStats} />
+          </div>
+          
+          {/* Filters & Search */}
+          <div className="mt-6 bg-white rounded-lg shadow-sm p-4 m-4">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4">
+              <div className="flex items-center gap-3 flex-col md:flex-row">
+                <div className="relative flex-1">
+                  <BiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                  <input
+                    type="search"
+                    placeholder="Search talent..."
+                    value={search}
+                    onChange={(e) => {
+                      setSearch(e.target.value);
+                      // setPage(1);
+                    }}
+                    className="w-full pl-10 pr-3 py-2 border rounded-md text-sm"
+                  />
+                </div>
+                <div className="flex gap-3">
+                  {/* Status filter */}
+                  <select
+                    className="border rounded-md px-3 py-2 text-sm"
+                    value={statusFilter}
+                    onChange={(e) => {
+                      setStatusFilter(e.target.value);
+                      // setPage(1);
+                    }}
+                  >
+                    <option value="">All Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Onboarding">Onboarding</option>
+                  </select>
+                  {/* Program filter */}
+                  <select
+                    className="border rounded-md px-3 py-2 text-sm"
+                    value={programFilter}
+                    onChange={(e) => {
+                      setProgramFilter(e.target.value);
+                      setPage(1);
+                    }}
+                  >
+                    <option value="">All Programs</option>
+                    {programOptions.map((p) => (
+                      <option key={p} value={p}>
+                        {p}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
-
-              <div className="flex gap-3">
-                {/* Status filter */}
-                <select
-                  className="border rounded-md px-3 py-2 text-sm"
-                  value={statusFilter}
-                  onChange={(e) => {
-                    setStatusFilter(e.target.value);
-                    // setPage(1);
-                  }}
-                >
-                  <option value="">All Status</option>
-                  <option value="Active">Active</option>
-                  <option value="Onboarding">Onboarding</option>
-                </select>
-                {/* Program filter */}
-                <select
-                  className="border rounded-md px-3 py-2 text-sm"
-                  value={programFilter}
-                  onChange={(e) => {
-                    setProgramFilter(e.target.value);
-                    setPage(1);
-                  }}
-                >
-                  <option value="">All Programs</option>
-                  {programOptions.map((p) => (
-                    <option key={p} value={p}>
-                      {p}
-                    </option>
-                  ))}
-                </select>
+              {/* Add talent button */}
+              <div className="ml-auto w-full md:w-1/4 flex items-center gap-3">
+                <Link to={"/admin-more-talent-management"} className="px-4 py-2 border border-[#28BBBB] hover:bg-[#28BBBB] hover:text-white transition rounded-md text-sm font-medium text-[#28BBBB] flex items-center gap-2 whitespace-nowrap">
+                  <FaEye size={16} /> View More
+                </Link>
+                <Link to={"/admin-add-talent"} className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-md text-sm whitespace-nowrap">
+                  + Add Talent
+                </Link>
               </div>
-            </div>
-
-            {/* Add talent button */}
-            <div className="ml-auto w-full md:w-1/4 flex items-center gap-3">
-              <Link to={"/admin-more-talent-management"} className="px-4 py-2 border border-[#28BBBB] hover:bg-[#28BBBB] hover:text-white transition rounded-md text-sm font-medium text-[#28BBBB] flex items-center gap-2 whitespace-nowrap">
-                <FaEye size={16} /> View More
-              </Link>
-
-              <Link to={"/admin-add-talent"} className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-md text-sm whitespace-nowrap">
-                + Add Talent
-              </Link>
             </div>
           </div>
-        </div>
-
-        {/* Table */}
-        <div className="mt-6 bg-white rounded-lg shadow-sm p-4 m-4">
-          <div className="overflow-x-auto">
-            <table className="min-w-[900px] w-full text-left">
-              <thead className="text-sm text-gray-500">
-                <tr>
-                  <th className="py-3 pr-6">Talent</th>
-                  <th className="py-3 pr-6">Program</th>
-                  <th className="py-3 pr-6">Status</th>
-                  <th className="py-3 pr-6">Verification</th>
-                  <th className="py-3 pr-6">Employment</th>
-                  <th className="py-3 pr-6">Last Active</th>
-                  <th className="py-3 pr-6">Actions</th>
-                </tr>
-              </thead>
-
-              <tbody className="text-sm">
-                {filtered.map((t) => (
-                  <tr key={t.id} className="border-t">
-
-                    <td className="py-4 pr-6 align-top">
-                      <div className="flex items-center gap-3">
-                        <Avatar name={t.name} />
-                        <div>
-                          <div className="font-medium text-gray-800">{t.name}</div>
-                          <div className="text-xs text-gray-500">{t.email}</div>
-                        </div>
-                      </div>
-                    </td>
-
-                    <td className="py-4 pr-6 align-top text-gray-700">{t.program}</td>
-
-                    <td className="py-4 pr-6 align-top">
-                      <StatusBadge status={t.status} />
-                    </td>
-
-                    <td className="py-4 pr-6 align-top">
-                      <VerificationBadge verification={t.verification} />
-                    </td>
-
-                    <td className="py-4 pr-6 align-top">{t.employment}</td>
-
-                    <td className="py-4 pr-6 align-top text-gray-500">{t.lastActive}</td>
-
-                    <td className="py-4 pr-6 align-top">
-                      <div className="flex items-center gap-3">
-                        <a className="text-teal-600 text-sm font-medium" href="#">
-                          View
-                        </a>
-                        <button className="text-gray-400">
-                          <FaEllipsisV />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-
-                {/* {paged.length === 0 && (
+          {/* Table */}
+          <div className="mt-6 bg-white rounded-lg shadow-sm p-4 m-4">
+            <div className="overflow-x-auto">
+              <table className="min-w-[900px] w-full text-left">
+                <thead className="text-sm text-gray-500">
                   <tr>
-                    <td colSpan="8" className="py-8 text-center text-gray-500">
-                      No results
-                    </td>
+                    <th className="py-3 pr-6">Talent</th>
+                    <th className="py-3 pr-6">Program</th>
+                    <th className="py-3 pr-6">Status</th>
+                    <th className="py-3 pr-6">Verification</th>
+                    <th className="py-3 pr-6">Employment</th>
+                    <th className="py-3 pr-6">Last Active</th>
+                    <th className="py-3 pr-6">Actions</th>
                   </tr>
-                )} */}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Pagination & summary */}
-          {/* <div className="mt-4 flex items-center justify-between border-t p-3">
-            <div className="text-sm text-gray-500">
-              Showing {filtered.length === 0 ? 0 : (page - 1) * PAGE_SIZE + 1} to{" "}
-              {Math.min(page * PAGE_SIZE, filtered.length)} of {filtered.length} results
+                </thead>
+                <tbody className="text-sm">
+                  {filtered.map((t) => (
+                    <tr key={t.id} className="border-t">
+                      <td className="py-4 pr-6 align-top">
+                        <div className="flex items-center gap-3">
+                          <Avatar name={t.name} />
+                          <div>
+                            <div className="font-medium text-gray-800">{t.name}</div>
+                            <div className="text-xs text-gray-500">{t.email}</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="py-4 pr-6 align-top text-gray-700">{t.program}</td>
+                      <td className="py-4 pr-6 align-top">
+                        <StatusBadge status={t.status} />
+                      </td>
+                      <td className="py-4 pr-6 align-top">
+                        <VerificationBadge verification={t.verification} />
+                      </td>
+                      <td className="py-4 pr-6 align-top">{t.employment}</td>
+                      <td className="py-4 pr-6 align-top text-gray-500">{t.lastActive}</td>
+                      <td className="py-4 pr-6 align-top">
+                        <div className="flex items-center gap-3">
+                          <a className="text-teal-600 text-sm font-medium" href="#">
+                            View
+                          </a>
+                          <button className="text-gray-400">
+                            <FaEllipsisV />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                  {/* {paged.length === 0 && (
+                    <tr>
+                      <td colSpan="8" className="py-8 text-center text-gray-500">
+                        No results
+                      </td>
+                    </tr>
+                  )} */}
+                </tbody>
+              </table>
             </div>
-
-            <div className="flex items-center gap-2">
-              <button
-                className="px-3 py-1 rounded border disabled:opacity-50"
-                onClick={() => setPage((p) => Math.max(1, p - 1))}
-                disabled={page === 1}
-              >
-                Previous
-              </button>
-
-              <div className="flex items-center gap-1">
-                {Array.from({ length: totalPages }).map((_, i) => {
-                  const p = i + 1;
-                  return (
-                    <button
-                      key={p}
-                      onClick={() => setPage(p)}
-                      className={`px-3 py-1 rounded ${p === page ? "bg-teal-600 text-white" : "border"}`}
-                    >
-                      {p}
-                    </button>
-                  );
-                })}
+            {/* Pagination & summary */}
+            {/* <div className="mt-4 flex items-center justify-between border-t p-3">
+              <div className="text-sm text-gray-500">
+                Showing {filtered.length === 0 ? 0 : (page - 1) * PAGE_SIZE + 1} to{" "}
+                {Math.min(page * PAGE_SIZE, filtered.length)} of {filtered.length} results
               </div>
-
-              <button
-                className="px-3 py-1 rounded border disabled:opacity-50"
-                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-                disabled={page === totalPages}
-              >
-                Next
-              </button>
-            </div>
-          </div> */}
+              <div className="flex items-center gap-2">
+                <button
+                  className="px-3 py-1 rounded border disabled:opacity-50"
+                  onClick={() => setPage((p) => Math.max(1, p - 1))}
+                  disabled={page === 1}
+                >
+                  Previous
+                </button>
+                <div className="flex items-center gap-1">
+                  {Array.from({ length: totalPages }).map((_, i) => {
+                    const p = i + 1;
+                    return (
+                      <button
+                        key={p}
+                        onClick={() => setPage(p)}
+                        className={`px-3 py-1 rounded ${p === page ? "bg-teal-600 text-white" : "border"}`}
+                      >
+                        {p}
+                      </button>
+                    );
+                  })}
+                </div>
+                <button
+                  className="px-3 py-1 rounded border disabled:opacity-50"
+                  onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={page === totalPages}
+                >
+                  Next
+                </button>
+              </div>
+            </div> */}
+          </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
 
 /* ---------- Small components ---------- */
-
-function StatCard({ title, value, meta, icon, iconBg = "bg-teal-600", iconWrap = "bg-teal-50" }) {
-  return (
-    <div className="bg-white rounded-lg shadow-sm p-4 flex items-center justify-between">
-      <div>
-        <p className="text-sm text-gray-500">{title}</p>
-        <p className="text-2xl font-semibold">{value}</p>
-        <p className="text-xs text-green-500 mt-1">{meta}</p>
-      </div>
-
-      <div className={`${iconBg} w-12 h-12 rounded-lg flex items-center justify-center`}>{icon}</div>
-    </div>
-  );
-}
 
 function Avatar({ name }) {
   const initials = name

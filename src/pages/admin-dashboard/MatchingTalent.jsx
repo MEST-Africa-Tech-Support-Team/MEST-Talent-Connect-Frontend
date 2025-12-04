@@ -96,14 +96,14 @@ export default function MatchingTalent() {
                 </h2>
 
                 <div className="overflow-x-auto">
-                  <table className="w-full text-left">
+                  <table className="w-full text-center">
                     <thead className="text-gray-500 text-sm border-b">
                       <tr>
                         <th className="py-3">Talent Name</th>
-                        <th>Key Skills</th>
+                        <th className="mx-auto">Key Skills</th>
                         <th>Experience</th>
-                        <th>Expected Salary</th>
-                        <th>Match Score</th>
+                        <th>Expected <br/> Salary</th>
+                        <th>Match <br/> Score</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
@@ -113,41 +113,42 @@ export default function MatchingTalent() {
                       {matchingTalents.map((t) => (
                         <tr key={t.id} className="border-t">
                           {/* Name + Role */}
-                          <td className="py-4 flex items-center gap-3">
+                          <td className="py-4 flex items-center gap-2 min-w-[150px]">
                             <img
                               src={t.avatar}
                               alt={t.name}
                               className="w-10 h-10 rounded-full object-cover"
                             />
                             <div>
-                              <p className="font-semibold">{t.name}</p>
+                              <p className="font-semibold text-gray-700">{t.name}</p>
                               <p className="text-gray-500 text-xs">{t.role}</p>
                             </div>
                           </td>
 
                           {/* Skills */}
-                          <td className="space-x-2">
-                            {t.skills.slice(0, 3).map((skill, i) => (
-                              <span
-                                key={i}
-                                className="inline-block bg-teal-50 text-teal-700 px-2 py-1 rounded text-xs"
-                              >
-                                {skill}
-                              </span>
-                            ))}
+                          <td className="w-[130px]">
+                            <div className="flex flex-wrap gap-2">
+                              {t.skills.slice(0, 3).map((skill, i) => (
+                                <span
+                                  key={i}
+                                  className="bg-teal-50 text-teal-700 px-2 py-1 rounded text-xs"
+                                >
+                                  {skill}
+                                </span>
+                              ))}
+                            </div>
                           </td>
 
-                          <td>{t.experience}</td>
-                          <td>{t.salary}</td>
-                          <td className="font-semibold">{t.score}</td>
+                          <td className="text-gray-700 px-4">{t.experience}</td>
+                          <td className="text-gray-700 px-4">{t.salary}</td>
+                          <td className="font-semibold px-4">{t.score}</td>
 
-                          <td>
+                          <td className="px-4">
                             <span
-                              className={`px-2 py-1 rounded text-xs ${
-                                t.status === "Available"
+                              className={`px-2 py-1 rounded text-xs ${t.status === "Available"
                                   ? "bg-green-50 text-green-600"
                                   : "bg-yellow-50 text-yellow-700"
-                              }`}
+                                }`}
                             >
                               {t.status}
                             </span>
@@ -157,7 +158,7 @@ export default function MatchingTalent() {
                           <td>
                             <button
                               onClick={() => handleMatchTalent(t)}
-                              className="px-3 py-1 bg-teal-500 text-white text-xs rounded hover:bg-teal-600 whitespace-nowrap"
+                              className="px-2 py-1 bg-teal-500 text-white text-xs rounded hover:bg-teal-600 whitespace-nowrap"
                             >
                               Match Talent
                             </button>
@@ -200,11 +201,11 @@ export default function MatchingTalent() {
               {/* MATCHED TALENTS TABLE */}
               <div className="bg-white rounded-lg shadow-sm p-4 mt-6 border">
                 <h2 className="font-semibold mb-3 text-gray-700">
-                  Matched Talents ({matchedTalents.length})
+                  <span></span>Matched Talents ({matchedTalents.length})
                 </h2>
 
                 <div className="overflow-x-auto">
-                  <table className="w-full text-left">
+                  <table className="w-full text-center">
                     <thead className="text-gray-500 text-sm border-b">
                       <tr>
                         <th className="py-3">Talent</th>
@@ -349,10 +350,10 @@ export default function MatchingTalent() {
 
                   <div className="mt-4 text-sm text-gray-600">
                     <p className="flex justify-between">
-                      <span>Location:</span><span className="font-bold">Remote</span> 
+                      <span>Location:</span><span className="font-bold">Remote</span>
                     </p>
                     <p className="flex justify-between">
-                      <span>Posted:</span><span className="font-bold">Nov 15, 2024</span> 
+                      <span>Posted:</span><span className="font-bold">Nov 15, 2024</span>
                     </p>
                   </div>
                 </div>
