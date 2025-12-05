@@ -5,6 +5,7 @@ import AdminDashboardHeader from "../../components/AdminDashboardHeader";
 import AdminSecondStatsGrid from "../../components/AdminSecondStatsGrid";
 import { FiSearch, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { FaComments, FaBuilding, FaUser, FaExclamationTriangle } from "react-icons/fa";
+import { Link } from "react-router";
 
 const MOCK_FEEDBACK = [
   {
@@ -217,7 +218,7 @@ export default function FeedbackManagement() {
                       </td>
 
                       <td className="py-4">
-                        <button className="text-teal-600 text-sm font-medium">View</button>
+                        <Link to={"/view-feedback"} className="text-teal-600 text-sm font-medium">View</Link>
                       </td>
                     </tr>
                   );
