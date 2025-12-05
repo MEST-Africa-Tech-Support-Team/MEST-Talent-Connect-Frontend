@@ -37,6 +37,7 @@ import AddNewEmployer from "./pages/admin-dashboard/AddNewEmployer.jsx";
 import AddNewTalent from "./pages/admin-dashboard/AddNewTalent.jsx";
 import MatchingTalent from "./pages/admin-dashboard/MatchingTalent.jsx";
 import CreateEvent from "./pages/admin-dashboard/CreateEvent.jsx";
+import ViewFeedback from "./pages/admin-dashboard/ViewFeedback.jsx";
 
 // -----------------------------------------------------
 // CLEAN ROUTER
@@ -90,6 +91,7 @@ const router = createBrowserRouter([
   { path: "/admin-add-talent", element: <AddNewTalent /> },
   { path: "/matching-talent", element: <MatchingTalent /> },
   { path: "/create-event", element: <CreateEvent /> },
+  { path: "/view-feedback", element: <ViewFeedback /> },
 ]);
 
 // ------------------------------------------------------
