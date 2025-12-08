@@ -30,10 +30,10 @@ export default function Dashboard() {
   const [showPostForm, setShowPostForm] = useState(false);
 
   // Redirect if no token
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) navigate("/login");
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) navigate("/login");
+  // }, [navigate]);
 
   // Load employer profile
   useEffect(() => {
