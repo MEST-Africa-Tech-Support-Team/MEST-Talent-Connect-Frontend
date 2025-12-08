@@ -29,7 +29,7 @@ export default function Login() {
     // Add your API login logic here
     console.log("Login data:", form);
 
-    navigate("/dashboard");
+    navigate("/app");
   };
 
   return (
