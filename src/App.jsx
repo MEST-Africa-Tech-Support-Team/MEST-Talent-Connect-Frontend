@@ -11,6 +11,7 @@ import BrowserTalent from "./pages/employer-dashboard/browse-talent.jsx";
 import HiringAnalytics from "./pages/employer-dashboard/hiring-analytics.jsx";
 import CommunityEvents from "./pages/employer-dashboard/community-events.jsx";
 import OpenPositions from "./pages/employer-dashboard/open-positions.jsx";
+import Pipeline from "./pages/employer-dashboard/pipeline.jsx";
 import PostRequirementForm from "./pages/employer-dashboard/post-requirement.jsx";
 import FeedbackForm from "./pages/employer-dashboard/feedback-form.jsx";
 import PlacementProfile from "./pages/employer-dashboard/talent-profile.jsx";
@@ -61,7 +62,8 @@ const router = createBrowserRouter([
       { path: "post-requirement", element: <PostRequirementForm /> },
       { path: "feedback-form", element: <FeedbackForm /> },
       { path: "talent-profile/:id", element: <PlacementProfile />  },
-      { path: "profile-detail", element: <ProfileDetails />  }
+      { path: "profile-detail", element: <ProfileDetails />  },
+      { path: "pipeline", element: <Pipeline /> }
     ],
   },
 
