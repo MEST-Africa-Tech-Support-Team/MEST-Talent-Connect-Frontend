@@ -56,116 +56,111 @@ export default function EmployersManagement() {
               <AdminSecondStatsGrid stats={statsData} />
             </div>
 
-            {/* Search + Filter + Buttons */}
-            <div className="flex flex-col lg:flex-row justify-between gap-4 mb-6 border p-4 bg-white rounded-lg shadow-sm">
 
-              {/* Left side */}
-              <div className="flex flex-col md:flex-row items-center gap-3">
-
-                {/* Search */}
-                <div className="flex items-center bg-white px-3 py-2 w-full md:w-64 border rounded-md text-sm">
-                  <FaSearch size={18} className="text-gray-500" />
-                  <input
-                    placeholder="Search employers by name"
-                    className="ml-2 w-full outline-none text-sm"
-                  />
-                </div>
-
-                {/* Filter */}
-                <div className="flex items-center bg-white px-3 py-2 border rounded-md text-sm cursor-pointer">
-                  <FaFilter size={18} className="text-gray-600" />
-                  <select className="ml-2 text-sm outline-none bg-transparent">
-                    <option>Verification Status</option>
-                    <option>Verified</option>
-                    <option>Unverified</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Right side buttons */}
-              <div className="flex items-center gap-3">
-                <Link to={"/admin-more-employers-management"} className="px-4 py-2 border border-[#28BBBB] hover:bg-[#28BBBB] hover:text-white transition rounded-md text-sm font-medium text-[#28BBBB] flex items-center gap-2">
-                  <FaEye size={16} /> View More
-                </Link>
-
-                <Link to={"/admin-add-employer"} className="px-4 py-2 bg-[#28BBBB] border border-[#28BBBB] text-white rounded-md text-sm flex items-center gap-2">
-                  <FaPlus size={16} /> Add Employer
-                </Link>
-              </div>
-            </div>
 
             {/* Content Area */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-              {/* Table Area */}
-              <div className="lg:col-span-2 bg-white rounded-xl shadow p-4">
-                <h3 className="text-lg font-semibold mb-4">Employers List</h3>
-
-                <table className="w-full text-left">
-                  <thead>
-                    <tr className="border-b text-gray-500 text-sm">
-                      <th className="py-2">Employer Info</th>
-                      <th>Verification Status</th>
-                      <th>Open Positions</th>
-                      <th>Total Hires</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    {[
-                      {
-                        name: "TechCorp Inc.",
-                        contact: "John Smith",
-                        email: "john@techcorp.com",
-                        status: "Verified",
-                        positions: 12,
-                        hires: 23,
-                      },
-                      {
-                        name: "DataSoft Solutions",
-                        contact: "Sarah Johnson",
-                        email: "sarah@datasoft.com",
-                        status: "Pending",
-                        positions: 8,
-                        hires: 12,
-                      },
-                      {
-                        name: "Global Innovations",
-                        contact: "Michael Chen",
-                        email: "michael@global-inn.com",
-                        status: "Verified",
-                        positions: 15,
-                        hires: 45,
-                      },
-                    ].map((item, i) => (
-                      <tr key={i} className="border-b">
-                        <td className="py-3">
-                          <p className="font-medium">{item.name}</p>
-                          <p className="text-sm text-gray-500">{item.contact}</p>
-                          <p className="text-xs text-gray-400">{item.email}</p>
-                        </td>
-                        <td>
-                          <span
-                            className={`px-3 py-1 rounded-full text-sm text-white ${item.status === "Verified"
-                              ? "bg-[#28BBBB]"
-                              : "bg-[#FF6221]"
-                              }`}
-                          >
-                            {item.status}
-                          </span>
-                        </td>
-                        <td className="font-medium text-gray-700">{item.positions}</td>
-                        <td className="font-medium text-[#28BBBB]">{item.hires}</td>
-                        <td>
-                          <Link to={"/admin-employer-profile"} className="text-[#28BBBB] font-semibold">
-                            View
-                          </Link>
-                        </td>
+              <div className="lg:col-span-2">
+                {/* Search + Filter + Buttons */}
+                <div className="flex flex-col lg:flex-row justify-between gap-4 mb-6 border p-4 bg-white rounded-lg shadow-sm">
+                  {/* Left side */}
+                  <div className="flex flex-col md:flex-row items-center gap-3">
+                    {/* Search */}
+                    <div className="flex items-center bg-white px-3 py-2 w-full md:w-54 border rounded-md text-sm">
+                      <FaSearch size={18} className="text-gray-500" />
+                      <input
+                        placeholder="Search employers by name"
+                        className="ml-2 w-full outline-none text-xs"
+                      />
+                    </div>
+                    {/* Filter */}
+                    <div className="bg-white px-3 py-2 border rounded-md text-sm cursor-pointer">
+                      <select className="ml-2 text-xs font-medium outline-none bg-transparent text-gray-700">
+                        <option>Verification Status</option>
+                        <option>Verified</option>
+                        <option>Unverified</option>
+                      </select>
+                    </div>
+                  </div>
+                  {/* Right side buttons */}
+                  <div className="flex items-center gap-3 whitespace-nowrap">
+                    <Link to={"/admin-more-employers-management"} className="px-4 py-2 border border-[#28BBBB] hover:bg-[#28BBBB] hover:text-white transition rounded-md text-xs font-medium text-[#28BBBB] flex items-center gap-2">
+                      <FaEye size={16} /> View More
+                    </Link>
+                    <Link to={"/admin-add-employer"} className="px-4 py-2 bg-[#28BBBB] border border-[#28BBBB] text-white rounded-md text-xs flex items-center gap-2 font-medium">
+                      <FaPlus size={16} /> Add Employer
+                    </Link>
+                  </div>
+                </div>
+                {/* Table Area */}
+                <div className="lg:col-span-2 bg-white rounded-xl shadow p-4">
+                  <h3 className="text-lg font-semibold mb-4">Employers List</h3>
+                  <table className="w-full text-left">
+                    <thead>
+                      <tr className="border-b text-gray-500 text-sm">
+                        <th className="py-2">Employer Info</th>
+                        <th>Verification Status</th>
+                        <th>Open Positions</th>
+                        <th>Total Hires</th>
+                        <th>Actions</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {[
+                        {
+                          name: "TechCorp Inc.",
+                          contact: "John Smith",
+                          email: "john@techcorp.com",
+                          status: "Verified",
+                          positions: 12,
+                          hires: 23,
+                        },
+                        {
+                          name: "DataSoft Solutions",
+                          contact: "Sarah Johnson",
+                          email: "sarah@datasoft.com",
+                          status: "Pending",
+                          positions: 8,
+                          hires: 12,
+                        },
+                        {
+                          name: "Global Innovations",
+                          contact: "Michael Chen",
+                          email: "michael@global-inn.com",
+                          status: "Verified",
+                          positions: 15,
+                          hires: 45,
+                        },
+                      ].map((item, i) => (
+                        <tr key={i} className="border-b">
+                          <td className="py-3">
+                            <p className="font-medium">{item.name}</p>
+                            <p className="text-sm text-gray-500">{item.contact}</p>
+                            <p className="text-xs text-gray-400">{item.email}</p>
+                          </td>
+                          <td>
+                            <span
+                              className={`px-3 py-1 rounded-full text-sm text-white ${item.status === "Verified"
+                                ? "bg-[#28BBBB]"
+                                : "bg-[#FF6221]"
+                                }`}
+                            >
+                              {item.status}
+                            </span>
+                          </td>
+                          <td className="font-medium text-gray-700">{item.positions}</td>
+                          <td className="font-medium text-[#28BBBB]">{item.hires}</td>
+                          <td>
+                            <Link to={"/admin-employer-profile"} className="text-[#28BBBB] font-semibold">
+                              View
+                            </Link>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
               {/* Right Action Panel */}

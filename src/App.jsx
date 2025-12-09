@@ -39,6 +39,13 @@ import MatchingTalent from "./pages/admin-dashboard/MatchingTalent.jsx";
 import CreateEvent from "./pages/admin-dashboard/CreateEvent.jsx";
 import ViewFeedback from "./pages/admin-dashboard/ViewFeedback.jsx";
 
+// Talent Dashboard Pages
+import TalentDashboardOverview from "./pages/talent-dashboard/TalentDashboardOverview.jsx";
+import TalentProfileManagement from "./pages/talent-dashboard/TalentProfileManagement.jsx";
+import TalentEmploymentProcess from "./pages/talent-dashboard/TalentEmploymentProcess.jsx";
+import TalentCommunityEvents from "./pages/talent-dashboard/TalentCommunityEvents.jsx";
+import TalentSettings from "./pages/talent-dashboard/TalentSettings.jsx";
+
 // -----------------------------------------------------
 // CLEAN ROUTER
 // -----------------------------------------------------
@@ -92,6 +99,15 @@ const router = createBrowserRouter([
   { path: "/matching-talent", element: <MatchingTalent /> },
   { path: "/create-event", element: <CreateEvent /> },
   { path: "/view-feedback", element: <ViewFeedback /> },
+
+  // ============================
+  // TALENT ROUTES
+  // ============================
+  { path: "/talent-dashboard-overview", element: <TalentDashboardOverview /> },
+  { path: "/talent-profile-management", element: <TalentProfileManagement /> },
+  { path: "/talent-employment-process", element: <TalentEmploymentProcess /> },
+  { path: "/talent-community-&-events", element: <TalentCommunityEvents /> },
+  { path: "/talent-settings", element: <TalentSettings /> },
 ]);
 
 // ------------------------------------------------------

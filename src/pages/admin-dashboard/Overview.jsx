@@ -4,6 +4,7 @@ import AdminDashboardHeader from "../../components/AdminDashboardHeader";
 import AdminFirstStatsGrid from "../../components/AdminFirstStatsGrid";
 import { FaCalendar, FaUsers, FaFileAlt, FaBook, FaCheck, FaFile, FaPlus, FaUserPlus, FaSearch } from "react-icons/fa";
 import { FaDollarSign } from "react-icons/fa6";
+import { IoMegaphone } from "react-icons/io5";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { Link } from "react-router";
@@ -232,10 +233,10 @@ export default function Overview() {
               <div className="bg-white rounded-lg shadow-sm p-4">
                 <h4 className="text-md font-medium mb-3">Quick Actions</h4>
                 <div className="flex flex-col gap-3">
-                  <button className="w-full text-left px-4 py-3 rounded-lg text-[#28BBBB] border-2 border-[#28BBBB] hover:bg-[#28BBBB] transition hover:text-white font-medium  flex gap-2 items-center"><FaUserPlus /> Approve Employer</button>
+                  <Link to={"/admin-employers-management"} className="w-full text-left px-4 py-3 rounded-lg text-[#28BBBB] border-2 border-[#28BBBB] hover:bg-[#28BBBB] transition hover:text-white font-medium  flex gap-2 items-center"><FaUserPlus /> Approve Employer</Link>
                   <Link to={"/create-event"} className="w-full text-left px-4 py-3 rounded-lg text-[#28BBBB] border-2 border-[#28BBBB] hover:bg-[#28BBBB] transition hover:text-white font-medium flex gap-2 items-center"><FaPlus /> New Event</Link>
                   <button className="w-full text-left px-4 py-3 rounded-lg text-[#28BBBB] border-2 border-[#28BBBB] hover:bg-[#28BBBB] transition hover:text-white font-medium  flex gap-2 items-center"><FaSearch /> Review Apps</button>
-                  <button className="w-full text-left px-4 py-3 rounded-lg text-[#28BBBB] border-2 border-[#28BBBB] hover:bg-[#28BBBB] transition hover:text-white font-medium  flex gap-2 items-center">Send Alert</button>
+                  <button className="w-full text-left px-4 py-3 rounded-lg text-[#28BBBB] border-2 border-[#28BBBB] hover:bg-[#28BBBB] transition hover:text-white font-medium  flex gap-2 items-center"><IoMegaphone />Send Alert</button>
                 </div>
               </div>
             </div>
