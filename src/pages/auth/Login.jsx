@@ -49,7 +49,6 @@ export default function Login() {
           <form onSubmit={handleSubmit} className="mt-10 space-y-6">
             {/* Email */}
             <div>
-              <label className="text-sm text-gray-500">Input your User ID or Email</label>
               <div className="flex items-center border-b border-gray-300 py-2 mt-1">
                 <FiMail className="text-gray-400 mr-2" />
                 <input
@@ -65,7 +64,6 @@ export default function Login() {
 
             {/* Password */}
             <div>
-              <label className="text-sm text-gray-500">Input your password</label>
               <div className="flex items-center border-b border-gray-300 py-2 mt-1">
                 <FiLock className="text-gray-400 mr-2" />
                 <input
@@ -103,7 +101,7 @@ export default function Login() {
 
               <button
                 type="button"
-                className="text-gray-500 hover:text-teal-600"
+                className="text-gray-500 hover:text-teal-600 cursor-pointer"
                 onClick={() => navigate("/forgot-password")}
               >
                 Forgot Password?

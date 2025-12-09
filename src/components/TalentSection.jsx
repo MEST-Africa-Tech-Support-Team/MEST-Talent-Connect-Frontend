@@ -50,7 +50,7 @@ export default function TalentsSection() {
                 <img
                   src={eli}
                   alt="profile"
-                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover flex-shrink-0"
+                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover shrink-0"
                 />
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FiChevronLeft } from "react-icons/fi";
 
 export default function FeedbackForm() {
   const ratings = ["Very High", "High", "Neutral", "Low"];
@@ -18,6 +19,16 @@ export default function FeedbackForm() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-8">
+
+      <button
+        className="text-teal-600 inline-flex items-center gap-2 text-sm font-medium mb-5"
+        onClick={() => window.history.back()}
+      >
+        <FiChevronLeft />
+        Back to Feedback
+      </button>
+
+
       <div className="max-w-5xl mx-auto bg-white rounded-xl border border-gray-200 shadow-sm p-8">
         <h2 className="text-2xl font-semibold mb-1">Performance Tracking & Feedback</h2>
         <p className="text-gray-500 mb-6">

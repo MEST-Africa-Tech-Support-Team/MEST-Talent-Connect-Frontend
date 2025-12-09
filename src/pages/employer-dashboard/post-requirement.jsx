@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FiBriefcase, FiMapPin, FiDollarSign } from "react-icons/fi";
+import { FiBriefcase, FiMapPin, FiDollarSign, FiChevronLeft } from "react-icons/fi";
 // import { MdOutlineWorkOutline } from "react-icons/md";
 
 export default function PostRequirementForm() {
@@ -27,6 +27,14 @@ export default function PostRequirementForm() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-8">
+      <button
+        className="text-teal-600 inline-flex items-center gap-2 text-sm font-medium mb-5"
+        onClick={() => window.history.back()}
+      >
+        <FiChevronLeft />
+        Back to Open Positions
+      </button>
+
       <div className="max-w-6xl mx-auto bg-white rounded-xl p-8 shadow-sm border border-gray-100">
         {/* Job Details Card */}
         <section className="bg-white rounded-lg border border-gray-100 p-6 mb-8">
@@ -96,11 +104,10 @@ export default function PostRequirementForm() {
                     key={t}
                     type="button"
                     onClick={() => update("timeline", t)}
-                    className={`px-3 py-1.5 rounded-full text-sm border transform transition ${
-                      form.timeline === t
+                    className={`px-3 py-1.5 rounded-full text-sm border transform transition ${form.timeline === t
                         ? "bg-emerald-100 text-emerald-700 border-emerald-200"
                         : "bg-emerald-50 text-emerald-600 border-emerald-50"
-                    }`}
+                      }`}
                   >
                     {t}
                   </button>

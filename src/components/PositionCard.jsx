@@ -1,8 +1,12 @@
 import { HiUserGroup } from "react-icons/hi";
 import { FiClock } from "react-icons/fi";
 import { FaCalendar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export default function PositionCard({ p }) {
+  const navigate = useNavigate ();
+
+
   return (
     <>
       <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col justify-between">
@@ -41,7 +45,7 @@ export default function PositionCard({ p }) {
         </div>
 
         <div className="mt-4 flex gap-3">
-          <button className="flex-1 bg-[#28BBBB] text-white py-2 rounded-lg">View Pipeline</button>
+          <button onClick={() => navigate('/employer/pipeline')} className="flex-1 bg-[#28BBBB] text-white py-2 rounded-lg">View Pipeline</button>
           <button className="border rounded-lg py-2 px-3">Edit</button>
         </div>
       </div>
