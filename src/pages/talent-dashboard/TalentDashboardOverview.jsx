@@ -5,10 +5,16 @@ import {
   FaFileAlt,
   FaCalendar,
   FaChartLine,
-  FaCheckCircle,
+  FaClock,
+  FaDollarSign,
+  FaGlobe,
+  FaChevronDown,
+  FaExclamation,
+  FaArrowRight,
+  FaBell,
+  FaPaperPlane,
 } from "react-icons/fa";
-import { FaCircleExclamation } from "react-icons/fa6";
-import { FaBell } from "react-icons/fa";
+import { FaMessage } from "react-icons/fa6";
 import { Link } from "react-router";
 import AdminSecondStatsGrid from "../../components/AdminSecondStatsGrid";
 
@@ -72,39 +78,40 @@ export default function TalentDashboardOverview() {
             <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* LEFT — CURRENT AVAILABILITY CARD */}
               <div className="bg-[#28BBBB] rounded-xl shadow-sm p-5 border border-gray-100">
-                <h2 className="text-lg text-white font-semibold mb-4">
+                <h2 className="text-white font-semibold mb-4">
                   Your Current Availability Status
                 </h2>
 
-                <div className="bg-[#28BBBB] text-white rounded-lg p-4">
+                <div className="text-white rounded-lg p-4">
                   {/* Status Row */}
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm">Current Status</span>
-                    <span className="text-xs px-2 py-1 bg-white text-teal-600 rounded">
-                      Active
-                    </span>
-                  </div>
-
-                  {/* Dropdown (static UI) */}
-                  <div className="mt-3 bg-white text-gray-700 rounded-lg p-2 flex justify-between items-center text-sm cursor-pointer">
-                    Actively Looking
-                    <span>▼</span>
+                  <div className="bg-white/30 border border-white/20 rounded-lg p-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Current Status</span>
+                      <span className="text-xs px-2 py-1 bg-[#22C55E] text-white rounded-full">
+                        Active
+                      </span>
+                    </div>
+                    {/* Dropdown (static UI) */}
+                    <div className="mt-3 bg-white text-gray-700 rounded-lg p-2 flex justify-between items-center text-sm cursor-pointer">
+                      Actively Looking
+                      <span><FaChevronDown /></span>
+                    </div>
                   </div>
 
                   {/* Preferences */}
                   <div className="mt-4 space-y-3 text-white text-sm">
                     <div className="flex items-center gap-2">
-                      <span className="text-lg">💻</span> Remote Preferred
+                      <span className="text-lg p-1 bg-white/30 border-white/20 rounded"><FaGlobe className=""/></span> Remote Preferred
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-lg">🧑‍💼</span> Full-time Positions
+                      <span className="text-lg p-1 bg-white/30 border-white/20 rounded"><FaClock className=""/></span> Full-time Positions
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-lg">💰</span> $80k - $120k Range
+                      <span className="text-lg p-1 bg-white/30 border-white/20 rounded"><FaDollarSign className=""/></span> $80k - $120k Range
                     </div>
                   </div>
 
-                  <button className="mt-5 w-full bg-white text-teal-600 font-medium py-2 rounded-lg shadow hover:bg-gray-100">
+                  <button className="mt-5 w-full bg-white text-[#28BBBB] font-medium py-2 rounded-lg shadow hover:bg-gray-100 text-sm">
                     View My Visibility Profile
                   </button>
                 </div>
@@ -112,7 +119,7 @@ export default function TalentDashboardOverview() {
 
               {/* RIGHT — NOTIFICATIONS */}
               <div className="lg:col-span-2 bg-white rounded-xl shadow-sm p-5 border border-gray-100">
-                <h2 className="text-lg font-semibold mb-4">
+                <h2 className="text-lg font-bold mb-4 text-gray-700">
                   Recent MEST Notifications & Activity Timeline
                 </h2>
 
@@ -124,7 +131,7 @@ export default function TalentDashboardOverview() {
 
                   {/* Notification 1 */}
                   <div className="flex items-start gap-3 mb-5">
-                    <span className="text-teal-500 text-xl">
+                    <span className="text-[#28BBBB] text-lg bg-[#28BBBB]/10 p-2 rounded-full">
                       <FaCalendar />
                     </span>
 
@@ -136,17 +143,17 @@ export default function TalentDashboardOverview() {
 
                       <Link
                         to="#"
-                        className="text-teal-600 text-sm font-medium mt-1 inline-block"
+                        className="text-[#28BBBB] text-sm font-medium mt-1 flex gap-1 items-center"
                       >
-                        View Details &gt;
+                        View Details <FaArrowRight />
                       </Link>
                     </div>
                   </div>
 
                   {/* Notification 2 */}
                   <div className="flex items-start gap-3">
-                    <span className="text-yellow-500 text-xl">
-                      <FaCircleExclamation />
+                    <span className="text-yellow-500 text-lg bg-yellow-500/10 p-2 rounded-full">
+                      <FaExclamation />
                     </span>
 
                     <div className="flex-1">
@@ -157,7 +164,7 @@ export default function TalentDashboardOverview() {
                         Complete your profile to increase visibility
                       </p>
 
-                      <button className="mt-2 bg-teal-500 text-white text-sm px-3 py-1 rounded-lg">
+                      <button className="mt-2 bg-[#28BBBB] text-white text-sm px-3 py-1 rounded-sm">
                         Complete Now
                       </button>
                     </div>
@@ -171,7 +178,7 @@ export default function TalentDashboardOverview() {
 
                 {/* Notification 3 */}
                 <div className="flex items-start gap-3 mb-5">
-                  <span className="text-purple-500 text-xl">
+                  <span className="text-purple-500 text-lg bg-purple-500/10 p-2 rounded-full">
                     <FaBell />
                   </span>
                   <div className="flex-1">
@@ -186,8 +193,8 @@ export default function TalentDashboardOverview() {
 
                 {/* Notification 4 */}
                 <div className="flex items-start gap-3 mb-5">
-                  <span className="text-green-500 text-xl">
-                    <FaCheckCircle />
+                  <span className="text-green-500 text-lg bg-green-500/20 p-2 rounded-full">
+                    <FaMessage />
                   </span>
                   <div className="flex-1">
                     <p className="font-medium text-gray-800">
@@ -197,17 +204,17 @@ export default function TalentDashboardOverview() {
 
                     <Link
                       to="#"
-                      className="text-teal-600 text-sm font-medium mt-1 inline-block"
+                      className="text-teal-600 text-sm font-medium mt-1 flex gap-1 items-center"
                     >
-                      Read Feedback &gt;
+                      Read Feedback <FaArrowRight />
                     </Link>
                   </div>
                 </div>
 
                 {/* Notification 5 */}
                 <div className="flex items-start gap-3">
-                  <span className="text-blue-500 text-xl">
-                    <FaFileAlt />
+                  <span className="text-blue-500 text-lg bg-blue-500/10 p-2 rounded-full">
+                    <FaPaperPlane />
                   </span>
                   <div className="flex-1">
                     <p className="font-medium text-gray-800">
