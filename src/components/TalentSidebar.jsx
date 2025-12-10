@@ -1,18 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router";
 import {
-  FaTachometerAlt,
   FaUserTie,
-  FaUsers,
-  FaCommentDots,
-  FaChartBar,
   FaCog,
-  FaCalendarPlus,
+  FaCalendar,
 } from "react-icons/fa";
+import { GrPowerCycle } from "react-icons/gr";
+import { FaChartLine } from "react-icons/fa6";
 
 import logoteal from "../assets/logoteal.png";
 
-export default function AdminSidebar() {
+export default function TalentSidebar() {
   const linkClass = ({ isActive }) =>
     `flex items-center justify-center md:justify-start px-2 md:px-5 py-3 rounded-md transition text-sm ${
       isActive
@@ -21,13 +19,11 @@ export default function AdminSidebar() {
     }`;
 
   const items = [
-    { id: "dashboard", label: "Dashboard", icon: <FaTachometerAlt />, path: "/admin-dashboard" },
-    { id: "employers", label: "Employers Management", icon: <FaUserTie />, path: "/admin-employers-management" },
-    { id: "talents", label: "Talents Management", icon: <FaUsers />, path: "/admin-talent-management" },
-    { id: "events", label: "Event Management", icon: <FaCalendarPlus />, path: "/admin-event-management" },
-    { id: "feedback", label: "Feedback", icon: <FaCommentDots />, path: "/admin-feedback" },
-    { id: "analytics", label: "Analytics", icon: <FaChartBar />, path: "/admin-analytics" },
-    { id: "settings", label: "Settings", icon: <FaCog />, path: "/admin-settings" },
+    { id: "talent-dashboard", label: "Dashboard", icon: <FaChartLine />, path: "/talent-dashboard-overview" },
+    { id: "profile", label: "Profile Management", icon: <FaUserTie />, path: "/talent-profile-management" },
+    { id: "employment", label: "Employment Process", icon: <GrPowerCycle />, path: "/talent-employment-process" },
+    { id: "events", label: "Community & Events", icon: <FaCalendar />, path: "/talent-community-&-events" },
+    { id: "talent-settings", label: "Settings", icon: <FaCog />, path: "/talent-settings" },
   ];
 
   return (
